@@ -41,19 +41,19 @@
 #lista.desplegar{
   position: absolute;
   right: 0% !important;
-  top: 10vh;
+  top: 60px;
   background-color: #000;
   height: 100vh;
-  transition: .3s ease-in;
+  transition: all 1s ease-in;
 }
 
 #lista.contraer{
   position: absolute;
   right: calc(0% - 200px) !important;
-  top: 10vh;
+  top: 60px;
   background-color: #000;
   height: 100vh;
-  transition: .3s ease-out;
+  transition: all 1s ease-out;
   display: none;
 }
 

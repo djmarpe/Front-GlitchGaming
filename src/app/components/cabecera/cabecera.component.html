@@ -1,4 +1,4 @@
-<div class="row m-0 sticky-top background-black vh-10">
+<div class="row m-0 sticky-top background-black" style="height: 60px;">
   <div class="col-2 align-self-center">
     <a href="/" class="navbar-brand">
       <img src="../../assets/img/LOGO_GG.png" class="img-fluid" alt="GG_Logo" style="width: 50px;">
@@ -34,49 +34,31 @@
         </a>
       </li>
     </ul>
+    <script type="text/javascript">
+
+      function comprobarMedia() {
+        alert('Tamaño cambiado');
+        if (window.matchMedia("(min-width: 992px)").matches) {
+          console.log('Mas de 992px');
+          document.getElementById('padre').classList.remove('media-movil')
+          cargarMediaPC();
+        } else {
+          console.log('Menos de 992px');
+          document.getElementById('padre').classList.remove('media-pc')
+          cargarMediaMovil();
+        }
+      }
+      
+      function cargarMediaPC() {
+        document.getElementById('padre').classList.add('media-pc');
+      }
+      
+      function cargarMediaMovil() {
+        document.getElementById('padre').classList.add('media-movil');
+      }
+      
+      window.onresize = comprobarMedia()
+      
+      </script>
   </div>
-
-  <!--<div class="navbar navbar-expand-lg navbar-light col-8 background-black">
-    <div class="row m-0 p-0 w-100">
-      <div class="col-12 text-end">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <img src="../../../assets/img/menu-icon2.png" class="navbar-toggler-icon h-25">
-        </button>
-      </div>
-      <div class="col-12">
-        <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarSupportedContent">
-          <div class="d-flex">
-            <a class="nav-link text-white m-0 mx-3 p-0 py-2 h5 hover-rosa" routerLink="/torneos">Torneos</a>
-          </div>
-
-          <div class="d-flex">
-            <a class="nav-link text-white m-0 mx-3 p-0 py-2 h5 hover-azul" href="/juegos">Juegos</a>
-          </div>
-
-          <div class="d-flex">
-            <a class="nav-link dropdown-toggle text-white m-0 mx-3 p-0 py-2 h5 hover-rosa" href="#" id="navbarDropdown"
-              role="button" data-bs-toggle="dropdown" aria-expanded="false">Noticias</a>
-
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item text-white hover-rosa" href="#">Glitch Gaming</a></li>
-              <li><a class="dropdown-item text-white hover-rosa" href="#">Juegos</a></li>
-              <li>
-            </ul>
-
-          </div>
-
-          <div class="d-flex">
-            <a class="nav-link text-white m-0 mx-3 p-0 py-2 h5 hover-azul" href="/glitchgaming">Glitch Gaming</a>
-          </div>
-
-          <div class="d-flex">
-            <a class="nav-link text-white m-0 mx-3 p-0 py-2 h5 hover-rosa" href="#">
-              <fa-icon [icon]="faUser"></fa-icon>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>-->
 </div>
