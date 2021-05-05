@@ -1,0 +1,32 @@
+.separator-title {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.separator-title::before,
+.separator-title::after {
+    content: '';
+    flex: 1;
+    border-bottom: 3px solid #fff;
+}
+
+.separator-title:not(:empty)::before {
+    margin-right: 10px;
+}
+
+.separator-title:not(:empty)::after {
+    margin-left: 10px;
+}
+
+.with-linear-gradient {
+    border-style: solid;
+    border-width: 5px;
+    border-image: linear-gradient(323deg, rgba(0,0,0,1) 21%, rgba(0,255,255,1))1;
+}
+
+.with-linear-gradient-forza {
+    border-style: solid;
+    border-width: 5px;
+    border-image: linear-gradient(323deg, rgba(255,0,0,1) 0%, rgba(0,166,255,1))1;
+}
