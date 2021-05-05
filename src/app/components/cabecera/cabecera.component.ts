@@ -16,7 +16,6 @@ export class CabeceraComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   //Funciones para el menu
   desplegarMenu = () => {
     document.getElementById('lista').style.display = "block";

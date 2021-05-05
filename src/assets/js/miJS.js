@@ -11,11 +11,13 @@ function comprobarMedia() {
   }
   
   function cargarMediaPC() {
+    document.getElementById('padre').classList.remove('media-movil');
     document.getElementById('padre').classList.add('media-pc');
   }
   
   function cargarMediaMovil() {
+    document.getElementById('padre').classList.remove('media-pc');
     document.getElementById('padre').classList.add('media-movil');
   }
-
-window.addEventListener('resize', comprobarMedia);
+  window.addEventListener('load', comprobarMedia);
+  window.addEventListener('resize', comprobarMedia);
