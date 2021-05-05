@@ -1,0 +1,82 @@
+<div class="row m-0 sticky-top background-black">
+  <div class="col-2 align-self-center">
+    <a href="/" class="navbar-brand">
+      <img src="../../assets/img/LOGO_GG.png" class="img-fluid vh-10" alt="GG_Logo">
+    </a>
+  </div>
+  <div class="col-10 align-self-center d-flex justify-content-end media-pc media-movil" id="padre">
+    <div class="align-self-center" id="menu-icon">
+      <button class="btn" (click)="desplegarMenu()" id="menu-icon-open">
+        <img src="../../../assets/img/menu-icon2.png" style="width: 25px; height: 25px;">
+      </button>
+      <button class="btn" (click)="contraerMenu()" id="menu-icon-close">
+        <img src="../../../assets/img/cerrar-menu.png" style="width: 25px; height: 25px;">
+      </button>
+    </div>
+
+    <ul class="m-0 list-inline" id="lista">
+      <li class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h5 hover-rosa" routerLink="/torneos">Torneos</a>
+      </li>
+      <li class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h5 hover-azul" href="/juegos">Juegos</a>
+      </li>
+      <li class="my-3">
+        <a class="text-normal dropdown-toggle text-white m-0 mx-3 p-0 py-2 h5 hover-rosa" role="button"
+          data-bs-toggle="dropdown" aria-expanded="false">Noticias</a>
+      </li>
+      <li class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h5 hover-azul" href="/glitchgaming">Glitch Gaming</a>
+      </li>
+      <li class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h5 hover-rosa" href="#">
+          <fa-icon [icon]="faUser"></fa-icon>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!--<div class="navbar navbar-expand-lg navbar-light col-8 background-black">
+    <div class="row m-0 p-0 w-100">
+      <div class="col-12 text-end">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <img src="../../../assets/img/menu-icon2.png" class="navbar-toggler-icon h-25">
+        </button>
+      </div>
+      <div class="col-12">
+        <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarSupportedContent">
+          <div class="d-flex">
+            <a class="nav-link text-white m-0 mx-3 p-0 py-2 h5 hover-rosa" routerLink="/torneos">Torneos</a>
+          </div>
+
+          <div class="d-flex">
+            <a class="nav-link text-white m-0 mx-3 p-0 py-2 h5 hover-azul" href="/juegos">Juegos</a>
+          </div>
+
+          <div class="d-flex">
+            <a class="nav-link dropdown-toggle text-white m-0 mx-3 p-0 py-2 h5 hover-rosa" href="#" id="navbarDropdown"
+              role="button" data-bs-toggle="dropdown" aria-expanded="false">Noticias</a>
+
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item text-white hover-rosa" href="#">Glitch Gaming</a></li>
+              <li><a class="dropdown-item text-white hover-rosa" href="#">Juegos</a></li>
+              <li>
+            </ul>
+
+          </div>
+
+          <div class="d-flex">
+            <a class="nav-link text-white m-0 mx-3 p-0 py-2 h5 hover-azul" href="/glitchgaming">Glitch Gaming</a>
+          </div>
+
+          <div class="d-flex">
+            <a class="nav-link text-white m-0 mx-3 p-0 py-2 h5 hover-rosa" href="#">
+              <fa-icon [icon]="faUser"></fa-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
+</div>
