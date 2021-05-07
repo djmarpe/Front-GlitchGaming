@@ -1,6 +1,6 @@
 <app-cabecera onload="comprobarMedia()"></app-cabecera>
 <div class="row m-0 my-2 justify-content-center">
-    <div class="col-11 col-md-8">
+    <div class="col-11 col-md-8 w-50" id="carousel">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -32,40 +32,431 @@
 
 <div class="row m-0 p-0">
   <div class="col-12 my-4">
-    <h2 class="separator-title">ÚLTIMOS TORNEOS</h2>
+    <h2 class="separator-title font-Ethnocentric">ÚLTIMOS TORNEOS</h2>
   </div>
 </div>
 
+<!-- LEAGUE OF LEGENDS -->
+
 <div class="row m-0 p-0 justify-content-between">
-  <div class="col-12 col-md-5 m-1 p-3">
+  <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-lol background-lol">
     <div class="row m-0 p-0">
-      <div class="col-12 with-linear-gradient-forza">
-        <h5 class="text-center my-2">Forza Horizon 4</h5>
+      <div class="col-12">
+        <div class="text-center">
+          <img src="../../../assets/juegos/LEAGUE OF LEGENDS.png" alt="LEAGUE OF LEGENDS LOGO" class="img-200px">
+        </div>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <h2 class="m-0">Prize Pool</h2>
+        <h1 class="m-0">100€</h1>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-6 my-4 text-center">
+        <small class="d-block"><fa-icon [icon]="faExclamation"></fa-icon>&nbsp;Fin de inscripciones&nbsp;<fa-icon [icon]="faExclamation"></fa-icon></small>
+        <strong>15 Mayo 2021</strong>
+      </div>
+      <div class="col-6 my-4 text-center">
+        <small class="d-block">Número de equipos inscritos</small>
+        <strong>{{inscripciones}}</strong>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <small class="d-block"><fa-icon [icon]="faExclamation"></fa-icon>&nbsp;Comienzo del torneo:&nbsp;<fa-icon [icon]="faExclamation"></fa-icon></small>
+        <strong>16 Mayo 2021</strong>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <button class="btn background-btn-lol text-white w-50 p-2 h4 hover-btn-lol">INSCRIBETE</button>
+      </div>
+    </div>
+
+  </div>
+
+<!-- VALORANT -->
+
+  <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-valorant background-valorant">
+    <div class="row m-0 p-0">
+      <div class="col-12">
+        <div class="text-center">
+          <img src="../../../assets/juegos/VALORANT.png" alt="VALORANT LOGO" class="img-200px">
+        </div>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <h2 class="m-0">Prize Pool</h2>
+        <h1 class="m-0">100€</h1>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-6 my-4 text-center">
+        <small class="d-block"><fa-icon [icon]="faExclamation"></fa-icon>&nbsp;Fin de inscripciones&nbsp;<fa-icon [icon]="faExclamation"></fa-icon></small>
+        <strong>15 Mayo 2021</strong>
+      </div>
+      <div class="col-6 my-4 text-center">
+        <small class="d-block">Número de equipos inscritos</small>
+        <strong>3</strong>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <small class="d-block"><fa-icon [icon]="faExclamation"></fa-icon>&nbsp;Comienzo del torneo:&nbsp;<fa-icon [icon]="faExclamation"></fa-icon></small>
+        <strong>16 Mayo 2021</strong>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <button class="btn background-btn-valorant text-white w-50 p-2 h4 hover-btn-valorant">INSCRIBETE</button>
+      </div>
+    </div>
+
+  </div>
+
+<!-- COD -->
+
+  <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-cod background-cod">
+    <div class="row m-0 p-0">
+      <div class="col-12">
+        <div class="text-center">
+          <img src="../../../assets/juegos/CALL OF DUTY.png" alt="CALL OF DUTY LOGO" class="img-200px">
+        </div>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <h2 class="m-0">Prize Pool</h2>
+        <h1 class="m-0">100€</h1>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-6 my-4 text-center">
+        <small class="d-block"><fa-icon [icon]="faExclamation"></fa-icon>&nbsp;Fin de inscripciones&nbsp;<fa-icon [icon]="faExclamation"></fa-icon></small>
+        <strong>15 Mayo 2021</strong>
+      </div>
+      <div class="col-6 my-4 text-center">
+        <small class="d-block">Número de equipos inscritos</small>
+        <strong>3</strong>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <small class="d-block"><fa-icon [icon]="faExclamation"></fa-icon>&nbsp;Comienzo del torneo:&nbsp;<fa-icon [icon]="faExclamation"></fa-icon></small>
+        <strong>16 Mayo 2021</strong>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <button class="btn background-btn-cod text-white w-50 p-2 h4 hover-btn-cod">INSCRIBETE</button>
       </div>
     </div>
   </div>
 
-  <div class="col-12 col-md-5 m-1 p-3">
+<!-- FIFA -->
+
+  <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-fifa background-fifa">
     <div class="row m-0 p-0">
-      <div class="col-12 with-linear-gradient">
-        <h5 class="text-center my-2">Valorant</h5>
+      <div class="col-12">
+        <div class="text-center">
+          <img src="../../../assets/juegos/FIFA 21.png" alt="FIFA 21 LOGO" class="img-200px">
+        </div>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <h2 class="m-0">Prize Pool</h2>
+        <h1 class="m-0">100€</h1>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-6 my-4 text-center">
+        <small class="d-block"><fa-icon [icon]="faExclamation"></fa-icon>&nbsp;Fin de inscripciones&nbsp;<fa-icon [icon]="faExclamation"></fa-icon></small>
+        <strong>15 Mayo 2021</strong>
+      </div>
+      <div class="col-6 my-4 text-center">
+        <small class="d-block">Número de equipos inscritos</small>
+        <strong>3</strong>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <small class="d-block"><fa-icon [icon]="faExclamation"></fa-icon>&nbsp;Comienzo del torneo:&nbsp;<fa-icon [icon]="faExclamation"></fa-icon></small>
+        <strong>16 Mayo 2021</strong>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <button class="btn background-btn-fifa text-white w-50 p-2 h4 hover-btn-fifa">INSCRIBETE</button>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="col-12 col-md-5 m-1 p-3">
+<div class="row m-0 p-0">
+  <div class="col-12 my-4">
+    <h2 class="separator-title font-Ethnocentric">TOP JUGADORES / EQUIPOS</h2>
+  </div>
+</div>
+
+
+<!-- LEAGUE OF LEGENDS -->
+
+<div class="row m-0 p-0 justify-content-between">
+  <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-lol background-lol">
     <div class="row m-0 p-0">
-      <div class="col-12 with-linear-gradient">
-        <h5 class="text-center my-2">Call of Duty</h5>
+      <div class="col-12">
+        <div class="text-center">
+          <img src="../../../assets/juegos/LEAGUE OF LEGENDS.png" alt="LEAGUE OF LEGENDS LOGO" class="img-100px">
+        </div>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <div class="row m-0 p-0">
+          <div class="col-2">
+            <h5 class="m-0"># 1</h5>
+          </div>
+          <div class="col-10">
+            <h5 class="m-0 text-start">GG TEAM</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-4 text-center">
+        <div class="row m-0 p-0">
+          <div class="col-2">
+            <h5 class="m-0"># 2</h5>
+          </div>
+          <div class="col-10">
+            <h5 class="m-0 text-start">GG TEAM</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-4 text-center">
+        <div class="row m-0 p-0">
+          <div class="col-2">
+            <h5 class="m-0"># 3</h5>
+          </div>
+          <div class="col-10">
+            <h5 class="m-0 text-start">GG TEAM</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<!-- VALORANT -->
+
+  <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-valorant background-valorant">
+    <div class="row m-0 p-0">
+      <div class="col-12">
+        <div class="text-center">
+          <img src="../../../assets/juegos/VALORANT.png" alt="VALORANT LOGO" class="img-100px">
+        </div>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <div class="row m-0 p-0">
+          <div class="col-2">
+            <h5 class="m-0"># 1</h5>
+          </div>
+          <div class="col-10">
+            <h5 class="m-0 text-start">GG TEAM</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-4 text-center">
+        <div class="row m-0 p-0">
+          <div class="col-2">
+            <h5 class="m-0"># 2</h5>
+          </div>
+          <div class="col-10">
+            <h5 class="m-0 text-start">GG TEAM</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-4 text-center">
+        <div class="row m-0 p-0">
+          <div class="col-2">
+            <h5 class="m-0"># 3</h5>
+          </div>
+          <div class="col-10">
+            <h5 class="m-0 text-start">GG TEAM</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<!-- COD -->
+
+  <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-cod background-cod">
+    <div class="row m-0 p-0">
+      <div class="col-12">
+        <div class="text-center">
+          <img src="../../../assets/juegos/CALL OF DUTY.png" alt="CALL OF DUTY LOGO" class="img-100px">
+        </div>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <div class="row m-0 p-0">
+          <div class="col-2">
+            <h5 class="m-0"># 1</h5>
+          </div>
+          <div class="col-10">
+            <h5 class="m-0 text-start">GG TEAM</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-4 text-center">
+        <div class="row m-0 p-0">
+          <div class="col-2">
+            <h5 class="m-0"># 2</h5>
+          </div>
+          <div class="col-10">
+            <h5 class="m-0 text-start">GG TEAM</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-4 text-center">
+        <div class="row m-0 p-0">
+          <div class="col-2">
+            <h5 class="m-0"># 3</h5>
+          </div>
+          <div class="col-10">
+            <h5 class="m-0 text-start">GG TEAM</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<!-- FIFA -->
+
+  <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-fifa background-fifa">
+    <div class="row m-0 p-0">
+      <div class="col-12">
+        <div class="text-center">
+          <img src="../../../assets/juegos/FIFA 21.png" alt="FIFA 21 LOGO" class="img-100px">
+        </div>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-12 my-4 text-center">
+        <div class="row m-0 p-0">
+          <div class="col-2">
+            <h5 class="m-0"># 1</h5>
+          </div>
+          <div class="col-10">
+            <h5 class="m-0 text-start">GG TEAM</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-4 text-center">
+        <div class="row m-0 p-0">
+          <div class="col-2">
+            <h5 class="m-0"># 2</h5>
+          </div>
+          <div class="col-10">
+            <h5 class="m-0 text-start">GG TEAM</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-4 text-center">
+        <div class="row m-0 p-0">
+          <div class="col-2">
+            <h5 class="m-0"># 3</h5>
+          </div>
+          <div class="col-10">
+            <h5 class="m-0 text-start">GG TEAM</h5>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="col-12 col-md-5 m-1 p-3">
+<div class="row m-0 p-0">
+  <div class="col-12 my-4">
+    <h2 class="separator-title font-Ethnocentric">ÚLTIMAS NOTICIAS</h2>
+  </div>
+</div>
+
+<!-- Noticias -->
+
+<!-- Valorant noticias -->
+
+<div class="row m-0 p-0" id="noticias-valorant">
+  <div class="col-12 my-4">
     <div class="row m-0 p-0">
-      <div class="col-12 with-linear-gradient">
-        <h5 class="text-center my-2">FIFA 21</h5>
+      <div class="col-12 p-0">
+        <h5 class="m-0 separator-title-valorant-news text-left font-Ethnocentric">VALORANT</h5>
       </div>
     </div>
+    
+    <div class="row my-2 p-0 justify-content-between">
+      <div class="col-12 col-md-5 p-4">
+        <p>Última Hora. Camikaze readmitido en el equipo de Valorant de Glitch Gaming debido a que ha pedido disculpas al fundador Kiimpy, tras el envío de un sticker ofensivo de un monigote chupandole el nepe a otro monigote. El jugador está en su momento crítico, ya que si continua haciendo el gamberro, será expulsado permanentemente del club de eSports.</p>
+      </div>
+
+      <div class="col-12 col-md-5 align-self-center p-4">
+        <img src="../../../assets/noticias/VALORANT NOTICIAS.jpeg" class="w-100 img-fluid">
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="row m-0 p-0" id="noticias-lol">
+  <div class="col-12 my-4">
+    <div class="row m-0 p-0">
+      <div class="col-12 p-0">
+        <h5 class="m-0 separator-title-lol-news text-left font-Ethnocentric">LEAGUE OF LEGENDS</h5>
+      </div>
+    </div>
+    
+    <div class="row my-2 p-0 justify-content-between">
+
+      <div class="col-12 col-md-5 align-self-center p-4" id="lol_news_img">
+        <img src="../../../assets/noticias/LOL NOTICIAS.jpeg" class="w-100 img-fluid">
+      </div>
+
+      <div class="col-12 col-md-5 p-4" id="lol_news_description">
+        <p>Kiimpy se pone a mandos de Qiyana, pero no consigue nada, ¿porque? Dicen por ahí que el jungla del equipo Marpe, le hace mas KS con su Nocturne "Terror helado" que un YI dandole a la Q. En su ulti esconde más daño que la últi del Mordekaiser. La estela de su Q le da más velocidad de movimiento que el cañon de Jinx, es una bala.</p>
+      </div>
+
+      <div class="col-12 col-md-5 align-self-center p-4" id="lol_news_after"></div>
+
+    </div>
+
   </div>
 </div>

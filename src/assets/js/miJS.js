@@ -5,11 +5,15 @@ function comprobarMedia() {
         document.getElementById('lista').classList.remove('desplegar');
         document.getElementById('lista').classList.remove('contraer');
         cargarMediaPC();
+        //Carousel pequeño / mediano para PC
+        document.getElementById('carousel').classList.add('w-50');
     } else {
         console.log('Menos de 992px');
         document.getElementById('padre').classList.remove('media-pc');
         document.getElementById('lista').classList.add('desplegar');
         cargarMediaMovil();
+        //Carousel grande para movil
+        document.getElementById('carousel').classList.remove('w-50');
     }
 }
 

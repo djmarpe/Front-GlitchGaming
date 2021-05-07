@@ -1,3 +1,4 @@
+//SEPARADOR TITULO
 .separator-title {
     display: flex;
     align-items: center;
@@ -19,14 +20,147 @@
     margin-left: 10px;
 }
 
+//Separador VALORANT
+.separator-title-valorant-news {
+    display: flex;
+    align-items: center;
+    color: rgba(243,68,83,1);
+}
+
+.separator-title-valorant-news::before,
+.separator-title-valorant-news::after {
+    content: '';
+    flex: 1;
+    border-bottom: 3px solid rgba(243,68,83,1);
+}
+
+.separator-title-valorant-news::before {
+    margin-right: 10px;
+    left: 0;
+    max-width: 10%;
+}
+
+.separator-title-valorant-news:not(:empty)::after {
+    margin-left: 10px;
+}
+
+//Separador LOL
+.separator-title-lol-news {
+    display: flex;
+    align-items: center;
+    color: rgb(125,92,28);
+}
+
+.separator-title-lol-news::before,
+.separator-title-lol-news::after {
+    content: '';
+    flex: 1;
+    border-bottom: 3px solid rgb(125,92,28);
+}
+
+.separator-title-lol-news:not(:empty)::before {
+    margin-right: 10px;
+}
+
+.separator-title-lol-news::after {
+    margin-left: 10px;
+    right: 0;
+    max-width: 10%;
+}
+
 .with-linear-gradient {
     border-style: solid;
     border-width: 5px;
     border-image: linear-gradient(323deg, rgba(0,0,0,1) 21%, rgba(0,255,255,1))1;
 }
 
-.with-linear-gradient-forza {
+.with-linear-gradient-lol {
     border-style: solid;
     border-width: 5px;
-    border-image: linear-gradient(323deg, rgba(255,0,0,1) 0%, rgba(0,166,255,1))1;
+    border-image: linear-gradient(323deg, rgba(194,143,44,1) 0%, rgba(83,91,250,1))1;
+}
+
+.background-lol{
+    background: rgb(20,33,47);
+    background: linear-gradient(45deg, rgba(20,33,47,1) 0%, rgba(50,37,12,1) 100%);
+}
+
+.background-btn-lol{
+    background: rgb(125,92,28);
+    background: linear-gradient(41deg, rgba(125,92,28,1) 0%, rgba(140,103,31,1) 100%);
+}
+.hover-btn-lol:hover{
+    background: rgb(59,44,14);
+    color: white;
+}
+
+.with-linear-gradient-valorant {
+    border-style: solid;
+    border-width: 5px;
+    border-image: linear-gradient(248deg, rgba(243,68,83,1) 15%, rgba(80,25,29,1))1;
+}
+
+.background-valorant{
+    background: rgb(25,8,10);
+    background: linear-gradient(238deg, rgba(25,8,10,1) 0%, rgba(57,16,20,1) 100%);
+}
+
+.background-btn-valorant{
+    background: rgb(175,50,61);
+    background: linear-gradient(41deg, rgba(175,50,61,1) 0%, rgba(177,50,61,1) 100%);
+}
+
+.hover-btn-valorant:hover{
+    background: rgb(115,33,40);
+    color: white;
+}
+
+.with-linear-gradient-cod {
+    border-style: solid;
+    border-width: 5px;
+    border-image: linear-gradient(141deg, rgba(114,152,156,1) 0%, rgba(216,231,234,1) 50%, rgba(114,152,156,1))1;
+}
+
+.background-cod{
+    background: rgb(35,46,47);
+    background: linear-gradient(238deg, rgba(35,46,47,1) 0%, rgba(84,89,88,1) 51%, rgba(35,46,47,1) 100%);
+}
+
+.background-btn-cod{
+    background: rgb(75,99,101);
+    background: linear-gradient(41deg, rgba(75,99,101,1) 0%, rgba(78,102,105,1) 100%);
+}
+
+.hover-btn-cod:hover{
+    background: rgb(47,61,62);
+    color: white;
+}
+
+.with-linear-gradient-fifa {
+    border-style: solid;
+    border-width: 5px;
+    border-image: linear-gradient(141deg, rgba(86,153,224,1) 0%, rgba(110,101,237,1) 46%, rgba(192,32,250,1))1;
+}
+
+.background-fifa{
+    background: rgb(35,46,47);
+    background: linear-gradient(321deg, rgba(35,46,47,1) 0%, rgba(37,20,66,1) 50%, rgba(58,11,75,1) 100%);
+}
+
+.background-btn-fifa{
+    background: rgb(78,72,168);
+    background: linear-gradient(41deg, rgba(78,72,168,1) 0%, rgba(64,105,162,1) 50%, rgba(86,64,167,1) 100%);
+}
+
+.hover-btn-fifa:hover{
+    background: rgb(50,60,115);
+    color: white;
+}
+
+.img-200px{
+    width: 200px;
+}
+
+.img-100px{
+    width: 100px;
 }
