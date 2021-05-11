@@ -74,6 +74,7 @@
     border-image: linear-gradient(323deg, rgba(0,0,0,1) 21%, rgba(0,255,255,1))1;
 }
 
+//League of Legends
 .with-linear-gradient-lol {
     border-style: solid;
     border-width: 5px;
@@ -94,6 +95,7 @@
     color: white;
 }
 
+//VALORANT
 .with-linear-gradient-valorant {
     border-style: solid;
     border-width: 5px;
@@ -115,6 +117,7 @@
     color: white;
 }
 
+//Call Of Duty
 .with-linear-gradient-cod {
     border-style: solid;
     border-width: 5px;
@@ -136,6 +139,8 @@
     color: white;
 }
 
+
+//FIFA
 .with-linear-gradient-fifa {
     border-style: solid;
     border-width: 5px;
@@ -163,4 +168,13 @@
 
 .img-100px{
     width: 100px;
+}
+
+.btn-enviar{
+    background: linear-gradient(41deg, rgba(136,0,138,1) 0%, rgba(44,166,167,1) 100%);
+    color: white;
+}
+.btn-enviar:hover{
+    background: linear-gradient(41deg, rgba(68,0,69,1) 0%, rgba(27,101,102,1) 100%);
+    color: white;
 }
