@@ -1,0 +1,25 @@
+<div *ngFor="let noticia of noticias; index as i;" class="row m-0 p-0" id="noticias-{{i}}">
+    <div class="col-12 my-4">
+      <div class="row m-0 p-0">
+        <div class="col-12 p-0">
+            <h5 *ngIf=" noticia['idJuego'] == 1" class="m-0 separator-title-1-news text-left font-Ethnocentric">League of Legends</h5>
+            <h5 *ngIf=" noticia['idJuego'] == 2" class="m-0 separator-title-2-news text-left font-Ethnocentric">Valorant</h5>
+        </div>
+      </div>
+  
+      <div class="row my-2 p-0 justify-content-between">
+  
+        <div class="col-12 col-md-5 align-self-center p-4" id="{{i}}_news_img">
+          <img src="../../../assets/noticias/{{i}}.jpeg" class="w-100 img-fluid">
+        </div>
+  
+        <div class="col-12 col-md-5 p-4" id="{{i}}_news_description">
+            <p>{{noticia['noticia']}}</p>
+        </div>
+  
+        <div class="col-12 col-md-5 align-self-center p-4" id="{{i}}_news_after"></div>
+  
+      </div>
+  
+    </div>
+  </div>

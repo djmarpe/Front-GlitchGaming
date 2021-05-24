@@ -1,0 +1,83 @@
+.sticky-top{
+  position: -webkit-sticky !important;
+  position: -moz-sticky !important;
+  position: -o-sticky !important;
+  position: -ms-sticky !important;
+  position: sticky !important;
+}
+
+.text-normal{
+  text-decoration: none;
+}
+
+.hover-rosa:hover{
+    color: #F900FF !important;
+}
+
+.hover-azul:hover{
+    color: #3EFEFF !important;
+}
+
+.media-pc{
+  #menu-icon{
+    #menu-icon-open{
+      display: none !important;
+    }
+    #menu-icon-close{
+      display: none !important;
+    }
+  }
+  #lista{
+    display: flex !important;
+  }
+}
+
+.media-movil{
+  #menu-icon{
+    display: flex !important;
+    #menu-icon-close{
+      display: none;
+    }
+  }
+  #lista{
+    /*position: absolute;
+    right: calc(0% - 200px);*/
+    display: none;
+  }
+}
+
+#lista.desplegar{
+  position: absolute;
+  right: 0% !important;
+  top: 60px;
+  background-color: #000;
+  height: 100vh;
+  transition: all 1s ease-in;
+}
+
+#lista.contraer{
+  position: absolute;
+  right: calc(0% - 200px) !important;
+  top: 60px;
+  background-color: #000;
+  height: 100vh;
+  transition: all 1s ease-out;
+  display: none;
+}
+
+#menu-icon-close.visible{
+ display: flex !important;
+}
+
+#menu-icon-open.visible{
+  display: flex !important;
+}
+
+#menu-icon-close.oculto{
+  display: none !important;
+}
+
+#menu-icon-open.oculto{
+  display: none !important;
+}
+

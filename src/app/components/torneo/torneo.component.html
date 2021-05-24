@@ -1,0 +1,41 @@
+<div *ngFor="let torneo of torneos; index as i;" class="col-11 col-md-5 m-3 p-3 with-linear-gradient-{{i}} background-{{i}}">
+    <div class="row m-0 p-0">
+        <div class="col-12">
+            <div class="text-center">
+                <img src="../../../assets/juegos/{{i}}.png" alt="LOGO" class="img-200px">
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-0 p-0">
+        <div class="col-12 my-4 text-center">
+            <h2 class="m-0">Prize Pool</h2>
+            <h1 class="m-0" id="premio{{i}}">{{torneo.premio}}€</h1>
+        </div>
+    </div>
+
+    <div class="row m-0 p-0">
+        <div class="col-6 my-4 text-center">
+            <small class="d-block">¡Fin de inscripciones!</small>
+            <strong id="finInscripciones{{i}}">{{torneo.diaFin}}/{{torneo.mesFin}}/{{torneo.anioFin}}</strong>
+        </div>
+        <div class="col-6 my-4 text-center">
+            <small class="d-block">Número de equipos inscritos</small>
+            <strong id="numInscritos{{i}}">{{torneo.equiposInscritos}}</strong>
+        </div>
+    </div>
+
+    <div class="row m-0 p-0">
+        <div class="col-12 my-4 text-center">
+            <small class="d-block">¡Comienzo del torneo:!</small>
+            <strong id="comienzoTorneo{{i}}">{{torneo.diaComienzo}}/{{torneo.mesComienzo}}/{{torneo.anioComienzo}}</strong>
+        </div>
+    </div>
+
+    <div class="row m-0 p-0">
+        <div class="col-12 my-4 text-center">
+            <button class="btn background-btn-{{i}} text-white w-50 p-2 h4 hover-btn-{{i}}" name="inscribir{{i}}">INSCRIBETE</button>
+        </div>
+    </div>
+
+</div>
