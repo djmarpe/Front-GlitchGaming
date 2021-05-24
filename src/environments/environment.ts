@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  url_api: 'http://localhost/EjerciciosPHP2020/Back-GlitchGaming/public/api/',
+  APP_NAME: 'Glitch Gaming',
   production: false
 };
 

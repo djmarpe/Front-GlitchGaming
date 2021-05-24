@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './views/home/home.component';
-import { TorneoComponent } from './views/torneo/torneo.component';
+import { LoginComponent } from './views/login/login.component'; 
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent },
-  { path:'**', redirectTo: 'home'},
-  { path: 'torneos', component: TorneoComponent },
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

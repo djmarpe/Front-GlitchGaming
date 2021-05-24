@@ -1,0 +1,47 @@
+//Separador League of Legends
+.separator-title-1-news {
+    display: flex;
+    align-items: center;
+    color: rgb(125,92,28);
+}
+
+.separator-title-1-news::before,
+.separator-title-1-news::after {
+    content: '';
+    flex: 1;
+    border-bottom: 3px solid rgb(125,92,28);
+}
+
+.separator-title-1-news:not(:empty)::before {
+    margin-right: 10px;
+}
+
+.separator-title-1-news::after {
+    margin-left: 10px;
+    right: 0;
+    max-width: 10%;
+}
+
+//Separador VALORANT
+.separator-title-2-news {
+    display: flex;
+    align-items: center;
+    color: rgba(243,68,83,1);
+}
+
+.separator-title-2-news::before,
+.separator-title-2-news::after {
+    content: '';
+    flex: 1;
+    border-bottom: 3px solid rgba(243,68,83,1);
+}
+
+.separator-title-2-news::before {
+    margin-right: 10px;
+    left: 0;
+    max-width: 10%;
+}
+
+.separator-title-2-news:not(:empty)::after {
+    margin-left: 10px;
+}
