@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import * as icon from '@fortawesome/free-solid-svg-icons';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-cabecera',
@@ -11,7 +12,11 @@ export class CabeceraComponent implements OnInit {
 
   faUser = icon.faUser;
 
-  constructor() { }
+  userAux: any
+
+  constructor(private user: UserService) {
+    this.userAux = user
+  }
 
   ngOnInit(): void {
   }

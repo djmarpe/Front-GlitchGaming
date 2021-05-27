@@ -23,6 +23,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "bootstrap": "^5.0.0-beta3",
+    "flag-icon-css": "^3.5.0",
+    "ng-country-flags": "^1.0.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "twitch-api-v5": "^2.0.4",

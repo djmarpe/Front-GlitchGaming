@@ -1,1 +1,91 @@
-<p>perfil-personal works!</p>
+<app-cabecera onload="comprobarMedia()"></app-cabecera>
+<div class="row m-0 p-0 d-flex justify-content-center">
+    <div class="col-11 p-0">
+        <!-- Imagen + nombre + edad -->
+        <div class="row m-3 p-0 text-center">
+            <div class="col-12 m-0 p-0">
+                <img src="../../../assets/img/LOGO_GG_negro.png" class="col-4 col-md-1" style="border-radius: 50%;">
+            </div>
+            <div class="col-12 m-0 p-0">
+                <h6 class="my-1">{{nombre}}</h6>
+            </div>
+            <div class="col-12 m-0 p-0">
+                <h6 class="my-1">{{edad}} años</h6>
+            </div>
+        </div>
+
+        <div class="row m-3 p-0 d-flex justify-content-between">
+            <!-- Email -->
+            <form [formGroup]="emailForm" (ngSubmit)="guardarEmail()" class="col-12 col-md-5 my-3 p-0" id="em">
+                <strong class="d-block">Email *</strong>
+                <p class="my-2" id="originalEmail">{{email}}</p>
+                <input type="email" id="email" name="email" class="form-control d-none" formControlName="email"
+                    [value]="email">
+                <div class="d-block">
+                    <small *ngIf="modifyEmail == 1" class="alert-success my-1 px-1">Email modificado</small>
+                    <small *ngIf="modifyEmail == 2" class="alert-danger my-1 px-1">{{error}}</small>
+                </div>
+
+                <small class="edit mx-1" id="editEmail" (click)="editEmail()">[ Editar ]</small>
+                <small class="edit mx-1 d-none" id="cancelEmail" (click)="cancelEmail()">[ Cancelar ]</small>
+                <button class="btn p-0 edit mx-1 d-none font-14px border-none" id="applyEmail"
+                    [disabled]=emailForm.invalid>[ Guardar cambios ]</button>
+            </form>
+
+
+            <form [formGroup]="passwordForm" (ngSubmit)="guardarPassword()" class="col-12 col-md-5 my-3 p-0" id="pass">
+                <strong class="d-block">Contraseña *</strong>
+                <div class="d-block my-2" id="btnVerPass">
+                    <small id="originalPassword">**********</small>&nbsp;<small class="btn p-0" (click)="verPassword()">
+                        <fa-icon [icon]="faEye" class="text-white"></fa-icon>
+                    </small>
+                </div>
+                <input type="password" id="password" name="password" class="form-control d-none"
+                    formControlName="password" [value]="password">
+                <div class="d-block">
+                    <small *ngIf="modifyPassword == 1" class="alert-success my-1 px-1">Contraseña modificada</small>
+                    <small *ngIf="modifyPassword == 2" class="alert-danger my-1 px-1">{{error}}</small>
+                </div>
+                <small class="edit mx-1" id="editPassword" (click)="editPassword()">[ Editar ]</small>
+                <small class="edit mx-1 d-none" id="cancelPassword" (click)="cancelPassword()">[ Cancelar
+                    ]</small>
+                <button class="btn p-0 edit mx-1 d-none font-14px border-none" id="applyPassword"
+                    [disabled]=passwordForm.invalid>[ Guardar cambios ]</button>
+            </form>
+
+            <form [formGroup]="usernameForm" (ngSubmit)="guardarUsername()"
+                class="col-12 col-md-5 my-3 p-0 align-self-center" id="usr">
+                <strong class="d-block">Nombre de usuario *</strong>
+                <p id="originalUsername" class="my-2">{{username}}</p>
+                <input type="text" id="username" name="username" class="form-control d-none" formControlName="username"
+                    [value]="username">
+                <div class="d-block">
+                    <small *ngIf="modifyUsername == 1" class="alert-success my-1 px-1">nombre de usuario
+                        modificado</small>
+                    <small *ngIf="modifyUsername == 2" class="alert-danger my-1 px-1">{{error}}</small>
+                </div>
+                <small class="edit mx-1" id="editUsername" (click)="editUsername()">[ Editar ]</small>
+                <small class="edit mx-1 d-none" id="cancelUsername" (click)="cancelUsername()">[ Cancelar
+                    ]</small>
+                <button class="btn p-0 edit mx-1 d-none font-14px border-none" id="applyUsername"
+                    [disabled]=usernameForm.invalid>[ Guardar cambios ]</button>
+            </form>
+
+            <form [formGroup]="descriptionForm" (ngSubmit)="guardarDescription()" class="col-12 col-md-5 my-3 p-0"
+                id="desc">
+                <strong class="d-block">Descripciòn</strong>
+                <p id="originalDescription" class="my-2">{{description}}</p>
+                <textarea id="description" name="description" rows="5" class="form-control d-none"formControlName="description">{{description}}</textarea>
+                <div class="d-block">
+                    <small *ngIf="modifyDescription == 1" class="alert-success my-1 px-1">Descripcion modificada</small>
+                    <small *ngIf="modifyDescription == 2" class="alert-danger my-1 px-1">{{error}}</small>
+                </div>
+                <small class="edit mx-1" id="editDescription" (click)="editDescription()">[ Editar ]</small>
+                <small class="edit mx-1 d-none" id="cancelDescription" (click)="cancelDescription()">[ Cancelar
+                    ]</small>
+                <button class="btn p-0 edit mx-1 d-none font-14px border-none" id="applyDescription"
+                    [disabled]=descriptionForm.invalid>[ Guardar cambios ]</button>
+            </form>
+        </div>
+    </div>
+</div>

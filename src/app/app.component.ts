@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'Glitch Gaming';
 
   ngAfterViewChecked(): void{
-    comprobarMedia;
+    comprobarMedia();
   }
 
 }

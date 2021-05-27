@@ -27,11 +27,60 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   login = (user: any) => {
-    
+
     const url = environment.url_api + 'login';
     const extra = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json',
-       'X-Requested-With': 'XMLHttpRequest'}),
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }),
+    };
+    return this.http.post(url, user, extra);
+  }
+
+  editarEmail = (user: any) => {
+    
+    const url = environment.url_api + 'editEmail';
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }),
+    };
+    return this.http.post(url, user, extra);
+  }
+
+  editarUsername = (user: any) => {
+    
+    const url = environment.url_api + 'editUsername';
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }),
+    };
+    return this.http.post(url, user, extra);
+  }
+
+  editarPassword = (user: any) => {
+    
+    const url = environment.url_api + 'editPassword';
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }),
+    };
+    return this.http.post(url, user, extra);
+  }
+
+  editarDescription = (user: any) => {
+    const url = environment.url_api + 'editDescription';
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }),
     };
     return this.http.post(url, user, extra);
   }

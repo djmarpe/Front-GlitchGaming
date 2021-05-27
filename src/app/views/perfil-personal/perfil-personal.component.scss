@@ -1,0 +1,25 @@
+.btn-enviar{
+    background: linear-gradient(41deg, rgba(136,0,138,1) 0%, rgba(44,166,167,1) 100%);
+    color: white;
+}
+.btn-enviar:hover{
+    background: linear-gradient(41deg, rgba(68,0,69,1) 0%, rgba(27,101,102,1) 100%);
+    color: white;
+}
+
+.edit{
+    color: white;
+    cursor: pointer;
+}
+
+.edit:hover{
+    color: grey;
+}
+
+.font-14px{
+    font-size: 14px;
+}
+
+.border-none{
+    border: 0px;
+}
