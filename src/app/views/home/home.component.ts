@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as icon from '@fortawesome/free-solid-svg-icons'
+import { MailService } from 'src/app/services/mail.service';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit {
   asunto: string;
   mensaje: string;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {    
+  constructor(private formBuilder: FormBuilder, private router: Router, private mail: MailService) {    
 
     this.homeContact = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -37,13 +38,23 @@ export class HomeComponent implements OnInit {
 
   enviarCorreo = () => {
     if (this.homeContact.valid) {
-      //Enviar 
-      console.log('Valido');
+      let mailAux = this.homeContact.value
+      const mail = {
+        nombre: mailAux.nombre,
+        de: mailAux.email,
+        asunto: mailAux.asunto,
+        mensaje: mailAux.mensaje
+      }
 
+      this.mail.enviarCorreo(mail).subscribe(
+        (response) => {
+          return true
+        },
+        (error) => {
+          return false
+        }
+      )
       this.homeContact.reset();
-    } else {
-      console.log('No valido');
-
     }
   }
 }
