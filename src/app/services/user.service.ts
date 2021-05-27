@@ -38,6 +38,10 @@ export class UserService {
     return this.http.post(url, user, extra);
   }
 
+  logOut = (user: any) => {
+    this.isLoged = false
+  }
+
   editarEmail = (user: any) => {
     
     const url = environment.url_api + 'editEmail';

@@ -34,7 +34,6 @@ export class PerfilPersonalComponent implements OnInit {
   descriptionForm: FormGroup
 
   constructor(private formBuilder: FormBuilder, private router: Router, private user: UserService) {
-    console.log(this.user);
 
     this.nombre = this.user.nombre + ' ' + this.user.apellidos
     this.id = this.user.id

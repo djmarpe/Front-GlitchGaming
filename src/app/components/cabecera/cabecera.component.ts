@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, Routes } from '@angular/router';
 import * as icon from '@fortawesome/free-solid-svg-icons';
 import { UserService } from 'src/app/services/user.service';
 
@@ -11,10 +11,11 @@ import { UserService } from 'src/app/services/user.service';
 export class CabeceraComponent implements OnInit {
 
   faUser = icon.faUser;
+  faExit = icon.faSignOutAlt
 
   userAux: any
 
-  constructor(private user: UserService) {
+  constructor(private user: UserService, private router: Router) {
     this.userAux = user
   }
 
@@ -50,4 +51,8 @@ export class CabeceraComponent implements OnInit {
     document.getElementById('lista').classList.add('contraer');
   }
 
+  logOut = () => {
+    this.user.logOut(this.userAux)
+    this.router.navigate(['/home']);
+  }
 }
