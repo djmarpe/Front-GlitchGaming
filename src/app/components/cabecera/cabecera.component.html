@@ -37,7 +37,7 @@
         </a>
       </li>
       <li *ngIf="userAux.isLoged" class="my-3">
-        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" (click)="logOut()">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" (click)="logOut()" style="cursor: pointer;">
           <fa-icon [icon]="faExit"></fa-icon>&nbsp;Salir
         </a>
       </li>
@@ -46,7 +46,6 @@
     <script type="text/javascript">
 
       function comprobarMedia() {
-        alert('Tamaño cambiado');
         if (window.matchMedia("(min-width: 992px)").matches) {
           console.log('Mas de 992px');
           document.getElementById('padre').classList.remove('media-movil')
