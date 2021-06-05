@@ -33,7 +33,7 @@ export class PerfilPersonalComponent implements OnInit {
   usernameForm: FormGroup
   descriptionForm: FormGroup
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private user: UserService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, public user: UserService) {
 
     this.nombre = this.user.nombre + ' ' + this.user.apellidos
     this.id = this.user.id
@@ -44,19 +44,19 @@ export class PerfilPersonalComponent implements OnInit {
     this.description = this.user.descripcion
 
     this.emailForm = this.formBuilder.group({
-      email: ['', [Validators.email, Validators.required]]
+      email: [user.email, [Validators.email, Validators.required]]
     })
 
     this.passwordForm = this.formBuilder.group({
-      password: ['', [Validators.required]]
+      password: [user.contra, [Validators.required]]
     })
 
     this.usernameForm = this.formBuilder.group({
-      username: ['', [Validators.required]]
+      username: [user.nombreUsuario, [Validators.required]]
     })
 
     this.descriptionForm = this.formBuilder.group({
-      description: ['', [Validators.required]]
+      description: [user.descripcion, [Validators.required]]
     })
 
   }
