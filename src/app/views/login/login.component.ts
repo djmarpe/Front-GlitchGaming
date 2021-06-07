@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
 
     this.user.login(user).subscribe(
       (response) => {
+        console.log(response)
         this.user.isLoged = true
         this.user.set(response)
         this.router.navigate(['/perfilPersonal']);

@@ -13,10 +13,13 @@ export class CabeceraComponent implements OnInit {
   faUser = icon.faUser;
   faExit = icon.faSignOutAlt
 
+  loged: boolean
   userAux: any
 
   constructor(private user: UserService, private router: Router) {
-    this.userAux = user
+    if (sessionStorage.getItem(UserService.SESSION_STORAGE_USER)) {
+      this.loged = true
+    }
   }
 
   ngOnInit(): void {
@@ -52,7 +55,31 @@ export class CabeceraComponent implements OnInit {
   }
 
   logOut = () => {
-    this.user.logOut(this.userAux)
-    this.router.navigate(['/home']);
+    this.user.logOut().subscribe(
+      (response) => {
+        this.resetVal()
+        this.loged = false
+        this.router.navigate(['/home'])
+      }
+    )
+  }
+
+  resetVal = () => {
+    this.user.nombre = undefined;
+    this.user.apellidos = undefined;
+    this.user.edad = undefined;
+    this.user.access_token = undefined;
+    this.user.id = undefined;
+    this.user.nombreUsuario = undefined;
+    this.user.password = undefined;
+    this.user.descripcion = undefined;
+    this.user.pais = undefined;
+    this.user.estado = undefined;
+    this.user.estado = undefined;
+    this.user.verificado = undefined;
+    this.user.rol = undefined;
+
+    sessionStorage.removeItem(UserService.SESSION_STORAGE_TOKEN);
+    sessionStorage.removeItem(UserService.SESSION_STORAGE_USER);
   }
 }

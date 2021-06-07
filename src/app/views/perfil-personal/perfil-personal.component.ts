@@ -40,7 +40,7 @@ export class PerfilPersonalComponent implements OnInit {
     this.edad = this.user.edad
     this.email = this.user.email
     this.username = this.user.nombreUsuario
-    this.password = this.user.contra
+    this.password = this.user.password
     this.description = this.user.descripcion
 
     this.emailForm = this.formBuilder.group({
@@ -48,7 +48,7 @@ export class PerfilPersonalComponent implements OnInit {
     })
 
     this.passwordForm = this.formBuilder.group({
-      password: [user.contra, [Validators.required]]
+      password: [user.password, [Validators.required]]
     })
 
     this.usernameForm = this.formBuilder.group({

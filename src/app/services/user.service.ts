@@ -17,7 +17,7 @@ export class UserService {
   apellidos: string
   edad: number
   email: string
-  contra: string
+  password: string
   nombreUsuario: string
   access_token: any
   descripcion: string
@@ -48,8 +48,15 @@ export class UserService {
     return this.http.post(url, user, extra);
   }
 
-  logOut = (user: any) => {
+  logOut =  () => {
     this.isLoged = false
+    const url = `${environment.url_api}logout`;
+    const extra = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' ,
+       'X-Requested-With': 'XMLHttpRequest' ,
+       'Authorization' : 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)}),
+    };
+    return this.http.post(url,'',extra);
   }
 
   editarEmail = (user: any) => {
@@ -58,7 +65,8 @@ export class UserService {
     const extra = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization' : 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN),
       }),
     };
     return this.http.post(url, user, extra);
@@ -70,7 +78,8 @@ export class UserService {
     const extra = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization' : 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN),
       }),
     };
     return this.http.post(url, user, extra);
@@ -82,7 +91,8 @@ export class UserService {
     const extra = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization' : 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN),
       }),
     };
     return this.http.post(url, user, extra);
@@ -93,7 +103,8 @@ export class UserService {
     const extra = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization' : 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN),
       }),
     };
     return this.http.post(url, user, extra);
@@ -109,20 +120,20 @@ export class UserService {
       if (!response.hasOwnProperty('edad')) response.edad = user.edad;
       if (!response.hasOwnProperty('email')) response.email = user.email;
       if (!response.hasOwnProperty('rol')) response.rol = user.rol;
-      if (!response.hasOwnProperty('contra')) response.contra = user.contra;
+      if (!response.hasOwnProperty('password')) response.password = user.password;
       if (!response.hasOwnProperty('pais')) response.pais = user.pais;
       if (!response.hasOwnProperty('nombreUsuario')) response.nombreUsuario = user.nombreUsuario;
       if (!response.hasOwnProperty('estado')) response.estado = user.estado;
       if (!response.hasOwnProperty('verificado')) response.verificado = user.verificado;
       if (!response.hasOwnProperty('descripcion')) response.descripcion = user.descripcion;
     }
-    
+
     this.id = response.id;
     this.nombre = response.nombre;
     this.apellidos = response.apellidos;
     this.edad = response.edad;
     this.email = response.email;
-    this.contra = response.contra;
+    this.password = response.password;
     this.pais = response.pais;
     this.nombreUsuario = response.nombreUsuario;
     this.access_token = response.access_token;
@@ -131,7 +142,7 @@ export class UserService {
     this.descripcion = response.descripcion;
     this.rol = response.rol;
     if (response.hasOwnProperty('access_token')) {
-      console.log(this.access_token);
+      // console.log(this.access_token);
       this.access_token = response.acces_token;
       sessionStorage.setItem(UserService.SESSION_STORAGE_TOKEN, response.access_token);
     }
