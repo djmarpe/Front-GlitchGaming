@@ -28,13 +28,18 @@ export class LoginComponent implements OnInit {
   iniciarSesion = () => {
 
     let datos = this.loginForm.value;
+
     const user = {
-      username: datos.username,
+      nombreUsuario: datos.username,
       password: datos.password
     };
-    
+
+    console.log(user);
+
+
     this.user.login(user).subscribe(
       (response) => {
+        console.log(response)
         this.user.isLoged = true
         this.user.set(response)
         this.router.navigate(['/perfilPersonal']);

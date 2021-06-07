@@ -29,14 +29,14 @@
         <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" href="/glitchgaming">Glitch Gaming</a>
       </li>
       <li class="my-3">
-        <a *ngIf="userAux.isLoged" class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" href="/perfilPersonal">
+        <a *ngIf="loged" class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" href="/perfilPersonal">
           <fa-icon [icon]="faUser"></fa-icon>&nbsp;Mi cuenta
         </a>
-        <a *ngIf="!userAux.isLoged" class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" href="/login">
+        <a *ngIf="!loged" class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" href="/login">
           <fa-icon [icon]="faUser"></fa-icon>&nbsp;Log-in
         </a>
       </li>
-      <li *ngIf="userAux.isLoged" class="my-3">
+      <li *ngIf="loged" class="my-3">
         <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" (click)="logOut()" style="cursor: pointer;">
           <fa-icon [icon]="faExit"></fa-icon>&nbsp;Salir
         </a>
