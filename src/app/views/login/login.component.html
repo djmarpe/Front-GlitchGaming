@@ -1,40 +1,166 @@
-<div class="row m-0 p-0 d-flex justify-content-center vh-100">
-    <div class="col-11 col-sm-5 p-0 align-self-center">
-        <form class="w-100 p-0 m-0 bg-black with-linear-gradient-gg" [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
-            <div class="row m-0 p-0">
-                <div class="col-12 m-0 p-0">
-                    <a href="/home">
-                        <img src="../../../assets/img/carrousel/BANNER_GG_YOUTUBE.png" class="img-fluid w-au">
-                    </a>
-                </div>
-            </div>
-            <div class="row m-0 my-3 p-0">
-                <div class="col-12">
-                    <h5 class="m-0">Nombre de usuario:</h5>
-                    <input type="text" name="username" id="username" class="form-control"
-                        placeholder="Nombre de usuario" formControlName="username">
-                    <div *ngIf="loginForm.get('username').errors && loginForm.get('username').dirty">
-                        <small class="alert-danger px-1" *ngIf="loginForm.get('username').hasError('required')">El
-                            nombre de usuario es
-                            obligatorio</small>
+<app-cabecera onload="comprobarMedia()"></app-cabecera>
+<div class="row m-0 p-0 justify-content-between">
+    <div class="col-12 col-md-5 align-self-center my-5">
+        <div class="row m-0 p-0">
+            <div class="col-12">
+                <form class="p-0 m-0 bg-black with-linear-gradient-gg" [formGroup]="loginForm"
+                    (ngSubmit)="iniciarSesion()">
+
+                    <div class="row m-0 my-3 p-0">
+                        <div class="col-12 text-center">
+                            <h4>Inicia sesiòn</h4>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="row m-0 my-3 p-0">
+                        <div class="col-12">
+                            <h5 class="m-0">Nombre de usuario:</h5>
+                            <input type="text" name="username" id="username" class="form-control"
+                                placeholder="Nombre de usuario" formControlName="username">
+                            <div *ngIf="loginForm.get('username').errors && loginForm.get('username').dirty">
+                                <small class="alert-danger px-1"
+                                    *ngIf="loginForm.get('username').hasError('required')">El
+                                    nombre de usuario es
+                                    obligatorio</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-3 p-0">
+                        <div class="col-12">
+                            <h5 class="m-0">Contraseña:</h5>
+                            <input type="password" name="password" id="password" class="form-control"
+                                placeholder="Contraseña" formControlName="password">
+                        </div>
+                        <div *ngIf="loginForm.get('password').errors && loginForm.get('password').dirty">
+                            <small class="alert-danger px-1" *ngIf="loginForm.get('password').hasError('required')">La
+                                contrseña
+                                es obligatoria</small>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-3 p-0">
+                        <div class="col-12 text-center">
+                            <button class="btn btn-enviar w-50" [disabled]=loginForm.invalid>Iniciar sesiòn</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="row m-0 my-3 p-0">
-                <div class="col-12">
-                    <h5 class="m-0">Contraseña:</h5>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña"
-                        formControlName="password">
-                </div>
-                <div *ngIf="loginForm.get('password').errors && loginForm.get('password').dirty">
-                    <small class="alert-danger px-1" *ngIf="loginForm.get('password').hasError('required')">La contrseña es obligatoria</small>
-                </div>
+        </div>
+    </div>
+
+    <!-- Registro -->
+
+    <div class="col-12 col-md-5 align-self-center my-5">
+        <div class="row m-0 p-0">
+            <div class="col-12">
+                <form class="p-0 m-0 bg-black with-linear-gradient-gg" [formGroup]="registroForm"
+                    (ngSubmit)="registrar()">
+
+                    <div *ngIf="verCorreo == 1" class="row m-0 my-3 p-0">
+                        <div class="col-12 text-center">
+                            <h6 class="alert-success">Compruebe su correo eletrónico</h6>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-3 p-0">
+                        <div class="col-12 text-center">
+                            <h4>Nuevo usuario</h4>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-3 p-0">
+                        <div class="col-12">
+                            <h5 class="m-0">Nombre:</h5>
+                            <input type="text" name="new_name" id="new_name" class="form-control"
+                                placeholder="Nombre" formControlName="new_name">
+                            <div *ngIf="registroForm.get('new_name').errors && registroForm.get('new_name').dirty">
+                                <small class="alert-danger px-1"
+                                    *ngIf="registroForm.get('new_name').hasError('required')">El
+                                    nombre es obligatorio</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-3 p-0">
+                        <div class="col-12">
+                            <h5 class="m-0">Apellidos:</h5>
+                            <input type="text" name="new_surname" id="new_surname" class="form-control"
+                                placeholder="Apellidos" formControlName="new_surname">
+                            <div *ngIf="registroForm.get('new_surname').errors && registroForm.get('new_surname').dirty">
+                                <small class="alert-danger px-1"
+                                    *ngIf="registroForm.get('new_surname').hasError('required')">El
+                                    apellido es obligatorio</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-3 p-0">
+                        <div class="col-12">
+                            <h5 class="m-0">Fecha de nacimiento:</h5>
+                            <input type="number" name="new_diaNacimiento" id="new_diaNacimiento" class=""
+                                placeholder="dd" formControlName="new_diaNacimiento" min="1" max="31">
+                            <input type="number" name="new_mesNacimiento" id="new_mesNacimiento" class=""
+                                placeholder="mm" formControlName="new_mesNacimiento" min="1" max="12">
+                            <input type="number" name="new_anioNacimiento" id="new_anioNacimiento" class=""
+                                placeholder="aaaa" formControlName="new_anioNacimiento" min="1921" max="2021">
+                                
+                            <div
+                                *ngIf="registroForm.get('new_diaNacimiento').dirty || registroForm.get('new_mesNacimiento').dirty || registroForm.get('new_anioNacimiento').dirty">
+                                <small class="alert-danger px-1" *ngIf="registroForm.get('new_diaNacimiento').hasError('required') ||
+                                    registroForm.get('new_mesNacimiento').hasError('required') ||
+                                    registroForm.get('new_anioNacimiento').hasError('required')">
+                                    La fecha de nacimiento es obligatoria</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-3 p-0">
+                        <div class="col-12">
+                            <h5 class="m-0">Email:</h5>
+                            <input type="email" name="new_email" id="new_email" class="form-control"
+                                placeholder="Email" formControlName="new_email">
+                            <div *ngIf="registroForm.get('new_email').errors && registroForm.get('new_email').dirty">
+                                <small class="alert-danger px-1"
+                                    *ngIf="registroForm.get('new_email').hasError('required')">El
+                                    email es obligatorio</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-3 p-0">
+                        <div class="col-12">
+                            <h5 class="m-0">Nombre de usuario:</h5>
+                            <input type="email" name="new_username" id="new_username" class="form-control"
+                                placeholder="Nombre de usuario" formControlName="new_username">
+                            <div *ngIf="registroForm.get('new_username').errors && registroForm.get('new_username').dirty">
+                                <small class="alert-danger px-1"
+                                    *ngIf="registroForm.get('new_username').hasError('required')">El
+                                    nombre de usuario es obligatorio</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-3 p-0">
+                        <div class="col-12">
+                            <h5 class="m-0">Contraseña:</h5>
+                            <input type="password" name="password" id="password" class="form-control"
+                                placeholder="Contraseña" formControlName="new_password" pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/">
+                        </div>
+                        <div *ngIf="registroForm.get('password').errors && registroForm.get('password').dirty">
+                            <small class="alert-danger px-1" *ngIf="registroForm.get('password').hasError('required')">La
+                                contrseña
+                                es obligatoria</small>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-3 p-0">
+                        <div class="col-12 text-center">
+                            <button class="btn btn-enviar w-50" [disabled]=registroForm.invalid>Registrarse</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="row m-0 my-3 p-0">
-                <div class="col-12 text-center">
-                    <button class="btn btn-enviar w-50" [disabled]=loginForm.invalid>Iniciar sesiòn</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>

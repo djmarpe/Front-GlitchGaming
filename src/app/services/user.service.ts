@@ -36,6 +36,17 @@ export class UserService {
 
   }
 
+  register = (user: any) => {
+    const url = environment.url_api + 'register';
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }),
+    };
+    return this.http.post(url, user, extra);
+  }
+
   login = (user: any) => {
 
     const url = environment.url_api + 'login';
