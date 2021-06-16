@@ -81,6 +81,7 @@ export class GestionUsuariosComponent implements OnInit {
       (response) => {
         console.log(response);
         this.getUsers()
+        document.getElementById('btn-cerrar-create').click()
       }
     )
   }
