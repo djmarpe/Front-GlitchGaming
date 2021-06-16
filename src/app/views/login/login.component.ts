@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import * as icon from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +11,41 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  //Formulario de login
+  faEye = icon.faEye
+
+  // Formulario de login
   loginForm: FormGroup
   username: string
   password: string
+
+  // Formulario de registro
+  registroForm: FormGroup
+  new_name: string  // Nombre
+  new_surname: string  // Apellidos
+  new_diaNacimiento: number  // Dia nacimiento
+  new_mesNacimiento: number  // Mes nacimiento
+  new_anioNacimiento: number  // Año nacimiento 
+  new_email: string  // Email
+  new_username: string  // Nombre de usuario
+  new_password: string  // Contraseña
+
+  verCorreo: number
 
   constructor(private formBuilder: FormBuilder, private router: Router, private user: UserService) {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
+    });
+
+    this.registroForm = this.formBuilder.group({
+      new_name: ['', [Validators.required]],
+      new_surname: ['', [Validators.required]],
+      new_diaNacimiento: ['', [Validators.required]],
+      new_mesNacimiento: ['', [Validators.required]],
+      new_anioNacimiento: ['', [Validators.required]],
+      new_email: ['', [Validators.required]],
+      new_username: ['', [Validators.required]],
+      new_password: ['', [Validators.required]],
     });
   }
 
@@ -34,9 +61,6 @@ export class LoginComponent implements OnInit {
       password: datos.password
     };
 
-    console.log(user);
-
-
     this.user.login(user).subscribe(
       (response) => {
         console.log(response)
@@ -47,5 +71,28 @@ export class LoginComponent implements OnInit {
     )
 
   }
+
+registrar = () => {
+  let datos = this.registroForm.value
+  
+  const newUser = {
+    nombre: datos.new_name,
+    apellidos: datos.new_surname,
+    diaNacimiento: datos.new_diaNacimiento,
+    mesNacimiento: datos.new_mesNacimiento,
+    anioNacimiento: datos.new_anioNacimiento,
+    email: datos.new_email,
+    nombreUsuario: datos.new_username,
+    password: datos.new_password
+  }
+  
+  this.user.register(newUser).subscribe(
+    (response) => {
+      this.verCorreo = 1
+      this.registroForm.reset()
+    }
+  )
+
+}
 
 }

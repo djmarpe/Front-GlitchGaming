@@ -1,0 +1,19 @@
+.tabla {
+    height: calc(100vh - 111px);
+    table {
+        .col-nombreUsuario {
+            width: 45%;
+        }
+        .col-email {
+            width: 45%;
+        }
+        .col-botones {
+            min-width: 110px;
+        }
+    }
+}
+
+.background-black {
+    background: black !important;
+    
+}

@@ -1,0 +1,130 @@
+<app-cabecera onload="comprobarMedia()"></app-cabecera>
+
+
+<!-- Modal Borrar usuario -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content background-black">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Eliminar usuario?</h5>
+            </div>
+            <div class="modal-body">
+                <small>¿Estas seguro que deseas eliminar al usuario <b>{{nombreUsuarioAux}}</b>?</small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                    (click)="deleteUser()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin borrar usuario -->
+
+<!-- Modal Añadir usuario -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content background-black">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo usuario</h5>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formularioNuevoUser">
+                    <div class="row my-3 p-0">
+                        <div class="col-12">
+                            <h6>Nombre:</h6>
+                            <input type="text" name="new_name" placeholder="Nombre" class="form-control" formControlName="nombre">
+                        </div>
+                    </div>
+                    <div class="row my-3 p-0">
+                        <div class="col-12">
+                            <h6>Apellidos:</h6>
+                            <input type="text" name="new_surname" placeholder="Apellidos" class="form-control" formControlName="apellidos">
+                        </div>
+                    </div>
+                    <div class="row my-3 p-0">
+                        <div class="col-12">
+                            <h6>Fecha de nacimiento:</h6>
+                            <input type="number" name="new_diaNacimiento" id="new_diaNacimiento" class=""
+                                placeholder="dd" min="1" max="31" formControlName="diaNacimiento">
+                            <input type="number" name="new_mesNacimiento" id="new_mesNacimiento" class=""
+                                placeholder="mm" min="1" max="12" formControlName="mesNacimiento">
+                            <input type="number" name="new_anioNacimiento" id="new_anioNacimiento" class=""
+                                placeholder="aaaa" min="1921" max="2021" formControlName="anioNacimiento">
+                        </div>
+                    </div>
+                    <div class="row my-3 p-0">
+                        <div class="col-12">
+                            <h6>Email:</h6>
+                            <input type="email" name="new_email" placeholder="Email" class="form-control" formControlName="email">
+                        </div>
+                    </div>
+                    <div class="row my-3 p-0">
+                        <div class="col-12">
+                            <h6>Nombre de usuario:</h6>
+                            <input type="text" name="new_username" placeholder="Nombre de usuario" class="form-control" formControlName="nombreUsuario">
+                        </div>
+                    </div>
+                    <div class="row my-3 p-0">
+                        <div class="col-12">
+                            <h6>Contraseña:</h6>
+                            <input type="password" name="new_password" placeholder="**********" class="form-control" formControlName="password">
+                        </div>
+                    </div>
+                    <div class="row my-3 p-0">
+                        <div class="col-12">
+                            <h6>Rol asignado:</h6>
+                            <select [(ngModel)]="rolSeleccionado" class="form-control" formControlName="rol">
+                                <option *ngFor="let rol of roles" [ngValue]="rol">{{rol.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="newUser()">Crear usuario</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin borrar usuario -->
+
+<div class="row m-0 p-0">
+    <div class="col-12">
+        <table class="table text-white">
+            <thead>
+                <tr>
+                    <th colspan="3">
+                        <h2 class="d-inline-block">Usuarios</h2>
+                        <button class="btn btn-primary float-end" name="addUser" title="Agregar usuario"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal1" cy-id="addUser">
+                            <fa-icon [icon]="faAddSquare"></fa-icon>
+                        </button>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Nombre de usuario</th>
+                    <th>Correo electrónico</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of usuarios; index as i;" scope="row">
+                    <td class="col-nombreUsuario">{{usuario.nombreUsuario}}</td>
+                    <td class="col-email">{{usuario.email}}</td>
+                    <td class="col-botones text-end">
+                        <button class="btn btn-sm btn-primary" name="editUser" title="Editar usuario"
+                            data-toggle="modal" data-target="#editUser">
+                            <fa-icon [icon]="faPencil" class="text-white"></fa-icon>
+                        </button>
+                        <button class="btn btn-sm btn-danger" type="submit" name="borrarUsuario" title="Borrar usuario"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="seleccionarUsuario(i)">
+                            <fa-icon [icon]="faTrash"></fa-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
