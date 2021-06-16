@@ -13,6 +13,7 @@ import { TorneoComponent } from './components/torneo/torneo.component';
 import { NoticiaComponent } from './components/noticia/noticia.component';
 import { LoginComponent } from './views/login/login.component';
 import { PerfilPersonalComponent } from './views/perfil-personal/perfil-personal.component';
+import { GestionUsuariosComponent } from './views/gestion-usuarios/gestion-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PerfilPersonalComponent } from './views/perfil-personal/perfil-personal
     NoticiaComponent,
     LoginComponent,
     PerfilPersonalComponent,
+    GestionUsuariosComponent,
   ],
   imports: [
     BrowserModule,
