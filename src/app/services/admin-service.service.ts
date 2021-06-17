@@ -35,7 +35,6 @@ export class AdminServiceService {
   }
 
   newUser = (newUser: any) => {
-    // console.log(newUser);
     const extra = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -44,6 +43,17 @@ export class AdminServiceService {
       }),
     };
     return this.http.post(environment.url_api + 'superAdmin/newUser', newUser, extra);
+  }
+
+  editUser = (user: any) => {
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
+      }),
+    };
+    return this.http.post(environment.url_api + 'superAdmin/editUser', user, extra);
   }
 
 }
