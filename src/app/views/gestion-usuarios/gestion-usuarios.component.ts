@@ -39,6 +39,16 @@ export class GestionUsuariosComponent implements OnInit {
   indiceSeleccionado: number
 
   constructor(private router: Router, public user: UserService, private admin: AdminServiceService, private formBuilder: FormBuilder) {
+    
+    if(this.user.rol != 1){
+      this.user.logOut().subscribe(
+        (response) => {
+          this.resetVal()
+          this.router.navigate(['/home'])
+        }
+      )
+    }
+
     this.formularioNuevoUser = this.formBuilder.group({
       nombre: ['', [Validators.required]],
       apellidos: ['', [Validators.required]],
@@ -78,6 +88,25 @@ export class GestionUsuariosComponent implements OnInit {
         this.usuarios = response['listaUsuarios']
       }
     )
+  }
+
+  resetVal = () => {
+    this.user.nombre = undefined;
+    this.user.apellidos = undefined;
+    this.user.edad = undefined;
+    this.user.access_token = undefined;
+    this.user.id = undefined;
+    this.user.nombreUsuario = undefined;
+    this.user.password = undefined;
+    this.user.descripcion = undefined;
+    this.user.pais = undefined;
+    this.user.estado = undefined;
+    this.user.estado = undefined;
+    this.user.verificado = undefined;
+    this.user.rol = undefined;
+
+    sessionStorage.removeItem(UserService.SESSION_STORAGE_TOKEN);
+    sessionStorage.removeItem(UserService.SESSION_STORAGE_USER);
   }
 
   seleccionarUsuario = (i) => {
