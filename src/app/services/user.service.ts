@@ -152,6 +152,7 @@ export class UserService {
     this.verificado = response.verificado;
     this.descripcion = response.descripcion;
     this.rol = response.rol;
+    this.isLoged= true
     if (response.hasOwnProperty('access_token')) {
       // console.log(this.access_token);
       this.access_token = response.acces_token;

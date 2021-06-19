@@ -1,0 +1,22 @@
+<app-cabecera onload="comprobarMedia()"></app-cabecera>
+<div *ngFor="let pregunta of preguntas; index as i" class="row m-0 p-0 d-flex justify-content-center">
+    <div class="col-10 my-5 py-1 bg-black rounded">
+        <div class="row m-0 p-0 d-flex justify-content-center">
+            <div class="col-12 m-0">
+                <small class="d-block">Creador: <span class="fw-bold">{{pregunta.pregunta.usuarioCreador.nombreUsuario}}</span></small>
+                <p class="my-1">{{pregunta.pregunta.pregunta}}</p>
+            </div>
+            <div *ngFor="let respuesta of preguntas[i].respuestas; index2 as j" class="col-10 my-3 bg-white text-dark">
+                <p class="my-1">{{respuesta.descripcion}}</p>
+                <small class="fw-bold d-block">{{respuesta.usuarioResponde.nombreUsuario}}</small>
+            </div>
+
+            <div  class="col-10 my-3 bg-white text-dark d-flex justify-content-center">
+                <textarea class="form-control my-1" rows="5" id="respuesta{{pregunta.pregunta.id}}"></textarea>
+            </div>
+            <button *ngIf="user.isLoged"  class="w-25 my-1 btn btn-enviar" (click)="enviarRespuesta(pregunta.pregunta.id)">Enviar</button>
+            <small *ngIf="!user.isLoged" class="text-center my-1">Para comentar en el foro tienes que <a href="/login">iniciar sesion</a> primero.</small>
+        </div>
+        
+    </div>
+</div>
