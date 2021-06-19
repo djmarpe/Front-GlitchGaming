@@ -42,10 +42,29 @@ export class ForoComponent implements OnInit {
         this.respuestas = this.preguntas.respuestas
         
         this.preguntas.forEach(pregunta => {
-          console.log(pregunta.respuestas);
+          console.log(pregunta.pregunta);
           
         });
 
+      }
+    )
+  }
+
+  enviarRespuesta = (id) => {
+    const respuesta = {
+      "idUsuarioRespuesta": this.user.id,
+      "idPregunta": id,
+      "respuesta": (<HTMLInputElement>document.getElementById('respuesta'+id)).value
+    }
+
+    console.log(respuesta);
+    
+
+    this.foro.responder(respuesta).subscribe(
+      (response) => {
+        document.getElementById('respuesta'+id).innerText = ""
+        this.cargarPreguntas()
+        this.router.navigate(['/foro'])
       }
     )
   }

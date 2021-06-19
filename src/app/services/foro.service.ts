@@ -20,4 +20,16 @@ export class ForoService {
     };
     return this.http.get(url, extra);
   }
+
+  responder = (respuesta: any) => {
+    const url = environment.url_api + 'foro/setRespuesta';
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization' : 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN),
+      }),
+    };
+    return this.http.post(url, respuesta, extra);
+  }
 }
