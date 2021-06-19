@@ -3,11 +3,12 @@
     <div class="col-10 my-5 py-1 bg-black rounded">
         <div class="row m-0 p-0 d-flex justify-content-center">
             <div class="col-12 m-0">
-                <small class="d-block">Creador: {{pregunta.pregunta.usuarioCreador.nombreUsuario}}</small>
+                <small class="d-block">Creador: <span class="fw-bold">{{pregunta.pregunta.usuarioCreador.nombreUsuario}}</span></small>
                 <p class="my-1">{{pregunta.pregunta.pregunta}}</p>
             </div>
             <div *ngFor="let respuesta of preguntas[i].respuestas; index2 as j" class="col-10 my-3 bg-white text-dark">
-                <small class="d-block">{{respuesta.descripcion}}</small>
+                <p class="my-1">{{respuesta.descripcion}}</p>
+                <small class="fw-bold d-block">{{respuesta.usuarioResponde.nombreUsuario}}</small>
             </div>
             
         </div>
