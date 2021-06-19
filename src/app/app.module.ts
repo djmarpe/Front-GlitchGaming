@@ -14,6 +14,7 @@ import { NoticiaComponent } from './components/noticia/noticia.component';
 import { LoginComponent } from './views/login/login.component';
 import { PerfilPersonalComponent } from './views/perfil-personal/perfil-personal.component';
 import { GestionUsuariosComponent } from './views/gestion-usuarios/gestion-usuarios.component';
+import { ForoComponent } from './views/foro/foro.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { GestionUsuariosComponent } from './views/gestion-usuarios/gestion-usuar
     LoginComponent,
     PerfilPersonalComponent,
     GestionUsuariosComponent,
+    ForoComponent,
   ],
   imports: [
     BrowserModule,
