@@ -13,6 +13,8 @@ import { ForoService } from 'src/app/services/foro.service';
 })
 export class ForoComponent implements OnInit {
 
+  faTrash = icon.faTrashAlt
+
   // Preguntas
   idPregunta: number
   usuarioCreador: any //Usuario que ha creado la pregunta
@@ -37,13 +39,15 @@ export class ForoComponent implements OnInit {
   cargarPreguntas = () => {
     this.foro.loadPreguntas().subscribe(
       (response) => {
-        
+
         this.preguntas = response['listaPreguntas']
-        this.respuestas = this.preguntas.respuestas
+        console.log(this.preguntas);
         
+        this.respuestas = this.preguntas.respuestas
+
         this.preguntas.forEach(pregunta => {
-          console.log(pregunta.pregunta);
-          
+          // console.log(pregunta.pregunta);
+
         });
 
       }
@@ -54,15 +58,27 @@ export class ForoComponent implements OnInit {
     const respuesta = {
       "idUsuarioRespuesta": this.user.id,
       "idPregunta": id,
-      "respuesta": (<HTMLInputElement>document.getElementById('respuesta'+id)).value
+      "respuesta": (<HTMLInputElement>document.getElementById('respuesta' + id)).value
     }
 
     console.log(respuesta);
-    
+
 
     this.foro.responder(respuesta).subscribe(
       (response) => {
-        document.getElementById('respuesta'+id).innerText = ""
+        document.getElementById('respuesta' + id).innerText = ""
+        this.cargarPreguntas()
+        this.router.navigate(['/foro'])
+      }
+    )
+  }
+
+  deleteRespuesta = (id) => {
+    const pregunta = {
+      id: id
+    }
+    this.foro.deleteRespuesta(pregunta).subscribe(
+      (response) => {
         this.cargarPreguntas()
         this.router.navigate(['/foro'])
       }

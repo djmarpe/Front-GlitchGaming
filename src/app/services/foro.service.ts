@@ -32,4 +32,16 @@ export class ForoService {
     };
     return this.http.post(url, respuesta, extra);
   }
+
+  deleteRespuesta = (pregunta) => {
+    const url = environment.url_api + 'foro/deleteRespuesta';
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization' : 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN),
+      }),
+    };
+    return this.http.post(url, pregunta, extra);
+  }
 }

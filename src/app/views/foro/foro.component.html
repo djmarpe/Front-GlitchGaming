@@ -9,6 +9,9 @@
             <div *ngFor="let respuesta of preguntas[i].respuestas; index2 as j" class="col-10 my-3 bg-white text-dark">
                 <p class="my-1">{{respuesta.descripcion}}</p>
                 <small class="fw-bold d-block">{{respuesta.usuarioResponde.nombreUsuario}}</small>
+                <button *ngIf="user.isLoged && user.rol == 1 || user.rol == 2 || respuesta.usuarioResponde.nombreUsuario == user.nombreUsuario" class="btn m-0 my-2 p-0" id="{{respuesta.id}}" (click)="deleteRespuesta(respuesta.id)">
+                    <fa-icon [icon]="faTrash" class="btn btn-enviar"></fa-icon>
+                </button>
             </div>
 
             <div  class="col-10 my-3 bg-white text-dark d-flex justify-content-center">
