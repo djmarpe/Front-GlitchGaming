@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
         console.log(response)
         this.user.isLoged = true
         this.user.set(response)
-        this.router.navigate(['/perfilPersonal']);
+        this.router.navigate(['/foro']);
       }
     )
 
