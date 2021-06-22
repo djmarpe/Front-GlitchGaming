@@ -42,7 +42,7 @@ export class ForoComponent implements OnInit {
 
         this.preguntas = response['listaPreguntas']
         console.log(this.preguntas);
-        
+
         this.respuestas = this.preguntas.respuestas
 
         this.preguntas.forEach(pregunta => {
@@ -83,6 +83,21 @@ export class ForoComponent implements OnInit {
         this.router.navigate(['/foro'])
       }
     )
+  }
+
+  crearTema = () => {
+    const nuevaPregunta = {
+      idCreador: this.user.id,
+      descripcion: (<HTMLInputElement>document.getElementById('nuevoTema')).value
+    }
+    this.foro.addPregunta(nuevaPregunta).subscribe(
+      (response) => {
+        document.getElementById('nuevoTema').innerText = ""
+        this.cargarPreguntas()
+        this.router.navigate(['/foro'])
+      }
+    )
+
   }
 
 }
