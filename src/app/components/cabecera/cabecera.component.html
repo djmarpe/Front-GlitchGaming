@@ -16,22 +16,22 @@
 
     <ul class="m-0 list-inline font-Ethnocentric" id="lista">
       <li class="my-3">
-        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" href="/torneos">Torneos</a>
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" routerLink="/torneos">Torneos</a>
       </li>
       <li class="my-3">
-        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" href="/juegos">Juegos</a>
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" routerLink="/juegos">Juegos</a>
       </li>
       <li class="my-3">
-        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" href="/foro">Foro</a>
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" routerLink="/foro">Foro</a>
       </li>
       <li class="my-3">
-        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" href="/glitchgaming">Glitch Gaming</a>
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" routerLink="/glitchgaming">Glitch Gaming</a>
       </li>
       <li class="my-3">
-        <a *ngIf="loged" class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" href="/perfilPersonal">
+        <a *ngIf="loged" class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" routerLink="/perfilPersonal">
           <fa-icon [icon]="faUser"></fa-icon>&nbsp;Mi cuenta
         </a>
-        <a *ngIf="!loged" class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" href="/login">
+        <a *ngIf="!loged" class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" routerLink="/login">
           <fa-icon [icon]="faUser"></fa-icon>&nbsp;Log-in / Registro
         </a>
       </li>
