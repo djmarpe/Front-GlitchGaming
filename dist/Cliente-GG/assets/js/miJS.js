@@ -1,6 +1,5 @@
 function comprobarMedia() {
     if (window.matchMedia("(min-width: 992px)").matches) {
-        console.log('Mas de 992px');
         //document.getElementById('menu-icon-close').click();
         document.getElementById('lista').classList.remove('desplegar');
         document.getElementById('lista').classList.remove('contraer');
@@ -8,7 +7,6 @@ function comprobarMedia() {
         //Carousel pequeño / mediano para PC
         document.getElementById('carousel').classList.add('w-50');
     } else {
-        console.log('Menos de 992px');
         document.getElementById('padre').classList.remove('media-pc');
         document.getElementById('lista').classList.add('desplegar');
         cargarMediaMovil();
