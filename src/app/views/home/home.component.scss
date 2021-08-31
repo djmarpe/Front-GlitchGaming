@@ -170,6 +170,10 @@
     width: 100px;
 }
 
+.img-discord-banner{
+    width: 20px !important;
+}
+
 .btn-enviar{
     background: linear-gradient(41deg, rgba(136,0,138,1) 0%, rgba(44,166,167,1) 100%);
     color: white;
@@ -177,4 +181,22 @@
 .btn-enviar:hover{
     background: linear-gradient(41deg, rgba(68,0,69,1) 0%, rgba(27,101,102,1) 100%);
     color: white;
+}
+
+.bg-black{
+    background-color: black;
+    opacity: 0.9;
+}
+
+.top-20{
+    top: 20%;
+}
+.left-20{
+    left: 20%;
+}
+.bottom-20{
+    bottom: 20%;
+}
+.right-20{
+    right: 20%;
 }

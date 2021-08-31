@@ -23,35 +23,39 @@ export class CabeceraComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    document.getElementById('menu-icon-close').style.cssText = 'display: none !important'
   }
 
   //Funciones para el menu
   desplegarMenu = () => {
-    document.getElementById('lista').style.display = "block";
+    document.getElementById('lista-movil-hijo').style.display = "block";
 
     document.getElementById('menu-icon-open').classList.remove('visible');
     document.getElementById('menu-icon-open').classList.add('oculto');
 
 
-    document.getElementById('menu-icon-close').classList.remove('oculto');
+    document.getElementById('menu-icon-close').style.cssText = '';
+    document.getElementById('menu-icon-close').style.cssText = 'display: block !important'
     document.getElementById('menu-icon-close').classList.add('visible');
 
 
-    document.getElementById('lista').classList.remove('contraer');
-    document.getElementById('lista').classList.add('desplegar');
+    document.getElementById('lista-movil-padre').classList.remove('d-none');
+    document.getElementById('lista-movil-hijo').classList.remove('contraer');
+    document.getElementById('lista-movil-hijo').classList.add('desplegar');
   }
 
   contraerMenu = () => {
-    document.getElementById('lista').style.display = "none";
+    document.getElementById('lista-movil-hijo').style.display = "none";
 
-    document.getElementById('menu-icon-close').classList.remove('visible');
-    document.getElementById('menu-icon-close').classList.add('oculto');
+    document.getElementById('menu-icon-close').style.cssText = '';
+    document.getElementById('menu-icon-close').style.cssText = 'display: none !important'
 
     document.getElementById('menu-icon-open').classList.remove('oculto');
     document.getElementById('menu-icon-open').classList.add('visible');
 
-    document.getElementById('lista').classList.remove('desplegar');
-    document.getElementById('lista').classList.add('contraer');
+    document.getElementById('lista-movil-padre').classList.add('d-none');
+    document.getElementById('lista-movil-hijo').classList.remove('desplegar');
+    document.getElementById('lista-movil-hijo').classList.add('contraer');
   }
 
   logOut = () => {
