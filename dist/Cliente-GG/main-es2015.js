@@ -2226,6 +2226,7 @@ class CabeceraComponent {
     }
     ngOnInit() {
         document.getElementById('menu-icon-close').style.cssText = 'display: none !important';
+        document.getElementById('lista-pc-padre').style.cssText = 'display: none !important';
     }
 }
 CabeceraComponent.ɵfac = function CabeceraComponent_Factory(t) { return new (t || CabeceraComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](src_app_services_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"])); };

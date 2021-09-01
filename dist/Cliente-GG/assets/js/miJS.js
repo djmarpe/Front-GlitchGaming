@@ -15,6 +15,7 @@ function comprobarMedia() {
 
 function cargarMediaPC() {
     document.getElementById('lista-pc-padre').classList.remove('d-none')
+    document.getElementById('lista-pc-padre').style.cssText = '';
     document.getElementById('menu-icon-movil').classList.add('d-none')
 }
 

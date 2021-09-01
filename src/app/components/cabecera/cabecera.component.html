@@ -126,23 +126,23 @@
       if (window.matchMedia("(min-width: 992px)").matches) {
         console.log('Mas de 992px');
         document.getElementById('lista-movil-padre').classList.add('d-none')
-
-
+        document.getElementById('lista-pc-padre').style.cssText='display: flex !important'
         cargarMediaPC();
       } else {
         console.log('Menos de 992px');
-        document.getElementById('lista-pc-padre').classList.add('d-none')
+        document.getElementById('lista-pc-padre').style.cssText = ''
+        document.getElementById('lista-pc-padre').style.cssText = 'display: none !important'
 
         cargarMediaMovil();
       }
     }
 
     function cargarMediaPC() {
-      document.getElementById('lista-pc-padre').classList.remove('d-none');
+      document.getElementById('lista-pc-padre').classList = ""
+      document.getElementById('lista-pc-padre').style.cssText = 'display: flex !important'
     }
 
     function cargarMediaMovil() {
-      document.getElementById('lista-movil-padre').classList.remove('d-none');
       document.getElementById('menu-icon-movil').classList.remove('d-none')
     }
 

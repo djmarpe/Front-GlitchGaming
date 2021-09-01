@@ -4202,6 +4202,7 @@
           key: "ngOnInit",
           value: function ngOnInit() {
             document.getElementById('menu-icon-close').style.cssText = 'display: none !important';
+            document.getElementById('lista-pc-padre').style.cssText = 'display: none !important';
           }
         }]);
 
