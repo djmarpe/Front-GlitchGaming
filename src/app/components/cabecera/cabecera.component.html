@@ -1,10 +1,87 @@
 <div class="row m-0 sticky-top background-black" style="height: 60px;">
-  <div class="col-2 align-self-center">
+  <div class="col-2">
     <a href="/" class="navbar-brand">
       <img src="../../assets/img/LOGO_GG_negro.png" class="img-fluid" alt="GG_Logo" style="width: 50px;">
     </a>
   </div>
-  <div class="col-10 align-self-center d-flex justify-content-end" id="padre">
+
+  <div class="col-10 d-flex justify-content-end" id="menu-icon-movil">
+    <button class="btn d-flex align-self-center" (click)="desplegarMenu()" id="menu-icon-open">
+      <img src="../../../assets/img/menu-icon2.png" style="width: 25px; height: 25px;">
+    </button>
+    <button class="btn d-flex align-self-center" (click)="contraerMenu()" id="menu-icon-close">
+      <img src="../../../assets/img/cerrar-menu.png" style="width: 25px; height: 25px;">
+    </button>
+  </div>
+
+  <!-- Lista en PC / Nav horizontal -->
+
+  <!-- <div class="col-10 align-self-center d-flex justify-content-end" id="lista-pc-padre">
+    <ul class="m-0 list-inline font-Ethnocentric" id="lista-pc-hijo">
+      <li class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" routerLink="/torneos">Torneos</a>
+      </li>
+      <li class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" routerLink="/juegos">Juegos</a>
+      </li>
+      <li class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" routerLink="/foro">Foro</a>
+      </li>
+      <li class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" routerLink="/glitchgaming">Glitch Gaming</a>
+      </li>
+      <li class="my-3">
+        <a *ngIf="loged" class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" routerLink="/perfilPersonal">
+          <fa-icon [icon]="faUser"></fa-icon>&nbsp;Mi cuenta
+        </a>
+        <a *ngIf="!loged" class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" routerLink="/login">
+          <fa-icon [icon]="faUser"></fa-icon>&nbsp;Log-in / Registro
+        </a>
+      </li>
+      <li *ngIf="loged" class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" (click)="logOut()" style="cursor: pointer;">
+          <fa-icon [icon]="faExit"></fa-icon>&nbsp;Salir
+        </a>
+      </li>
+
+    </ul>
+  </div> -->
+
+  <!-- Lista de movil / Nav vertical-->
+
+  <div class="col-12 d-flex justify-content-end" id="lista-movil-padre">
+    <ul class="m-0 list-inline font-Ethnocentric" id="lista-movil-hijo">
+      <li class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" routerLink="/torneos">Torneos</a>
+      </li>
+      <!--<li class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" routerLink="/juegos">Juegos</a>
+      </li> -->
+      <li class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" routerLink="/foro">Foro</a>
+      </li>
+      <li class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-rosa" routerLink="/glitchgaming">Glitch Gaming</a>
+      </li>
+      <li class="my-3">
+        <a *ngIf="loged" class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" routerLink="/perfilPersonal">
+          <fa-icon [icon]="faUser"></fa-icon>&nbsp;Mi cuenta
+        </a>
+        <a *ngIf="!loged" class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" routerLink="/login">
+          <fa-icon [icon]="faUser"></fa-icon>&nbsp;Log-in / Registro
+        </a>
+      </li>
+      <li *ngIf="loged" class="my-3">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" (click)="logOut()" style="cursor: pointer;">
+          <fa-icon [icon]="faExit"></fa-icon>&nbsp;Salir
+        </a>
+      </li>
+
+    </ul>
+  </div>
+
+
+  <!--<div class="col-10 align-self-center d-flex justify-content-end" id="padre">
     <div class="align-self-center" id="menu-icon">
       <button class="btn" (click)="desplegarMenu()" id="menu-icon-open">
         <img src="../../../assets/img/menu-icon2.png" style="width: 25px; height: 25px;">
@@ -42,30 +119,36 @@
       </li>
 
     </ul>
-    <script type="text/javascript">
+  -->
+  <script type="text/javascript">
 
-      function comprobarMedia() {
-        if (window.matchMedia("(min-width: 992px)").matches) {
-          console.log('Mas de 992px');
-          document.getElementById('padre').classList.remove('media-movil')
-          cargarMediaPC();
-        } else {
-          console.log('Menos de 992px');
-          document.getElementById('padre').classList.remove('media-pc')
-          cargarMediaMovil();
-        }
+    function comprobarMedia() {
+      if (window.matchMedia("(min-width: 992px)").matches) {
+        console.log('Mas de 992px');
+        document.getElementById('lista-movil-padre').classList.add('d-none')
+        document.getElementById('lista-pc-padre').style.cssText='display: flex !important'
+        cargarMediaPC();
+      } else {
+        console.log('Menos de 992px');
+        document.getElementById('lista-pc-padre').style.cssText = ''
+        document.getElementById('lista-pc-padre').style.cssText = 'display: none !important'
+
+        cargarMediaMovil();
       }
+    }
 
-      function cargarMediaPC() {
-        document.getElementById('padre').classList.add('media-pc');
-      }
+    function cargarMediaPC() {
+      document.getElementById('lista-pc-padre').classList = ""
+      document.getElementById('lista-pc-padre').style.cssText = 'display: flex !important'
+    }
 
-      function cargarMediaMovil() {
-        document.getElementById('padre').classList.add('media-movil');
-      }
+    function cargarMediaMovil() {
+      document.getElementById('menu-icon-movil').classList.remove('d-none')
+    }
 
-      window.onresize = comprobarMedia()
+    window.onresize = comprobarMedia()
+    window.onload = comprobarMedia()
 
-    </script>
-  </div>
+  </script>
+  <!--</div> -->
 </div>

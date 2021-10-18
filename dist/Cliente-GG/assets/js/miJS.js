@@ -1,14 +1,12 @@
 function comprobarMedia() {
     if (window.matchMedia("(min-width: 992px)").matches) {
-        //document.getElementById('menu-icon-close').click();
-        document.getElementById('lista').classList.remove('desplegar');
-        document.getElementById('lista').classList.remove('contraer');
+        console.log('Mas de 992px');
+        document.getElementById('lista-movil-padre').classList.add('d-none')
         cargarMediaPC();
         //Carousel pequeño / mediano para PC
         document.getElementById('carousel').classList.add('w-50');
     } else {
-        document.getElementById('padre').classList.remove('media-pc');
-        document.getElementById('lista').classList.add('desplegar');
+        document.getElementById('lista-pc-padre').classList.add('d-none')
         cargarMediaMovil();
         //Carousel grande para movil
         document.getElementById('carousel').classList.remove('w-50');
@@ -16,13 +14,14 @@ function comprobarMedia() {
 }
 
 function cargarMediaPC() {
-    document.getElementById('padre').classList.remove('media-movil');
-    document.getElementById('padre').classList.add('media-pc');
+    document.getElementById('lista-pc-padre').classList.remove('d-none')
+    document.getElementById('lista-pc-padre').style.cssText = '';
+    document.getElementById('menu-icon-movil').classList.add('d-none')
 }
 
 function cargarMediaMovil() {
-    document.getElementById('padre').classList.remove('media-pc');
-    document.getElementById('padre').classList.add('media-movil');
+    document.getElementById('lista-movil-padre').classList.remove('d-none');
+    document.getElementById('menu-icon-movil').classList.remove('d-none')
 }
 window.addEventListener('load', comprobarMedia);
 window.addEventListener('resize', comprobarMedia);
