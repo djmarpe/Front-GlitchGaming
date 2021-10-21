@@ -26,11 +26,11 @@ export class HomeComponent implements OnInit {
   //Formulario player stats
   playerStatsForm: FormGroup
   playerAux: string
-  kda: string
+  rank: string
 
   constructor(private formBuilder: FormBuilder, private router: Router, private mail: MailService, private jugador: JugadorService) {    
 
-    this.kda = ''
+    this.rank = ''
 
     this.homeContact = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -72,8 +72,6 @@ export class HomeComponent implements OnInit {
 
   consultarStats = () => {
     if(this.playerStatsForm.valid){
-
-      this.kda = ''
       this.playerAux = this.playerStatsForm.value.player
       
       var newString1 = this.playerAux.replace(/\s/g,'%20')
@@ -85,8 +83,7 @@ export class HomeComponent implements OnInit {
       this.jugador.getPlayerStats(this.playerAux).subscribe(
         (response) => {
           console.log(response);
-          let kdaAux = JSON.stringify(response['kda'])
-          this.kda = kdaAux.replace(/['"]+/g,'')
+          this.rank = response['rank']
         }
       )
     }
