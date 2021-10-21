@@ -24,7 +24,7 @@ export class CabeceraComponent implements OnInit {
 
   ngOnInit(): void {
     document.getElementById('menu-icon-close').style.cssText = 'display: none !important'
-    document.getElementById('lista-pc-padre').style.cssText = 'display: none !important'
+    // document.getElementById('lista-pc-padre').style.cssText = 'display: none !important'
   }
 
   //Funciones para el menu

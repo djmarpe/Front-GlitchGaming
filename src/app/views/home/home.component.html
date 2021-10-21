@@ -105,9 +105,9 @@
 
   </div> -->
 
-  <!-- VALORANT -->
+<!-- VALORANT -->
 
-  <!-- <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-valorant background-valorant">
+<!-- <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-valorant background-valorant">
     <div class="row m-0 p-0">
       <div class="col-12">
         <div class="text-center">
@@ -151,9 +151,9 @@
 
   </div> -->
 
-  <!-- COD -->
+<!-- COD -->
 
-  <!-- <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-cod background-cod">
+<!-- <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-cod background-cod">
     <div class="row m-0 p-0">
       <div class="col-12">
         <div class="text-center">
@@ -197,9 +197,9 @@
 
   </div> -->
 
-  <!-- FIFA -->
+<!-- FIFA -->
 
-  <!-- <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-fifa background-fifa">
+<!-- <div class="col-11 col-md-5 m-3 p-3 with-linear-gradient-fifa background-fifa">
     <div class="row m-0 p-0">
       <div class="col-12">
         <div class="text-center">
@@ -262,67 +262,81 @@
 </div>
 
 <div class="row m-0 p-0 justify-content-between">
-  <div class="col-12 col-md-5">
-    <div class="row m0 p-0">
-      <div class="col-12">
-        <h5 class="my-2 text-center">¿Tienes dudas o quieres ser patrocinador?</h5>
-      </div>
-      <div class="col-12">
-        <form [formGroup]="homeContact" (ngSubmit)="enviarCorreo()" class="p-3 m-3">
-          <div class="py-2">
-            <strong class="d-block">Correo electrónico</strong>
-            <input type="email" formControlName="email" name="email" id="email" class="form-control m-auto my-2"
-              placeholder="Introduzca su correo electrónico">
-            <div *ngIf="homeContact.get('email').errors && homeContact.get('email').dirty">
-              <small class="alert-danger px-1" *ngIf="homeContact.get('email').hasError('required')">El email es
-                obligatorio</small>
-              <small class="alert-danger px-1" *ngIf="homeContact.get('email').hasError('email')">El email no es
-                valido</small>
-            </div>
+  <div class="col-12 col-md-5 m-0 p-0">
+    <div class="col-12">
+      <h5 class="my-2 text-center">¿Tienes dudas o quieres ser patrocinador?</h5>
+    </div>
+    <div class="col-12">
+      <form [formGroup]="homeContact" (ngSubmit)="enviarCorreo()" class="p-3 m-3">
+        <div class="py-2">
+          <strong class="d-block">Correo electrónico</strong>
+          <input type="email" formControlName="email" name="email" id="email" class="form-control m-auto my-2"
+            placeholder="Introduzca su correo electrónico">
+          <div *ngIf="homeContact.get('email').errors && homeContact.get('email').dirty">
+            <small class="alert-danger px-1" *ngIf="homeContact.get('email').hasError('required')">El email es
+              obligatorio</small>
+            <small class="alert-danger px-1" *ngIf="homeContact.get('email').hasError('email')">El email no es
+              valido</small>
           </div>
+        </div>
 
-          <div class="py-2">
-            <strong class="d-block">Nombre</strong>
-            <input type="text" formControlName="nombre" name="nombre" id="nombre" class="form-control m-auto my-2"
-              placeholder="Introduzca su nombre">
-            <div *ngIf="homeContact.get('nombre').errors && homeContact.get('nombre').dirty">
-              <small class="alert-danger px-1" *ngIf="homeContact.get('nombre').hasError('required')">El nombre es
-                obligatorio</small>
-            </div>
+        <div class="py-2">
+          <strong class="d-block">Nombre</strong>
+          <input type="text" formControlName="nombre" name="nombre" id="nombre" class="form-control m-auto my-2"
+            placeholder="Introduzca su nombre">
+          <div *ngIf="homeContact.get('nombre').errors && homeContact.get('nombre').dirty">
+            <small class="alert-danger px-1" *ngIf="homeContact.get('nombre').hasError('required')">El nombre es
+              obligatorio</small>
           </div>
+        </div>
 
-          <div class="py-2">
-            <strong class="d-block">Asunto</strong>
-            <select class="form-control" formControlName="asunto" id="asunto">
-              <option>Quiero ser patrocinador</option>
-              <option>Tengo dudas</option>
-            </select>
-            <div *ngIf="homeContact.get('asunto').errors && homeContact.get('asunto').dirty">
-              <small class="alert-danger px-1" *ngIf="homeContact.get('asunto').hasError('required')">El asunto es
-                obligatorio</small>
-            </div>
+        <div class="py-2">
+          <strong class="d-block">Asunto</strong>
+          <select class="form-control" formControlName="asunto" id="asunto">
+            <option>Quiero ser patrocinador</option>
+            <option>Tengo dudas</option>
+          </select>
+          <div *ngIf="homeContact.get('asunto').errors && homeContact.get('asunto').dirty">
+            <small class="alert-danger px-1" *ngIf="homeContact.get('asunto').hasError('required')">El asunto es
+              obligatorio</small>
           </div>
+        </div>
 
-          <div class="py-2">
-            <strong class="d-block">Mensaje</strong>
-            <textarea class="form-control" rows="5" formControlName="mensaje" id="mensaje"
-              placeholder="Escriba aqui el mensaje..."></textarea>
-            <div *ngIf="homeContact.get('mensaje').errors && homeContact.get('mensaje').dirty">
-              <small class="alert-danger px-1" *ngIf="homeContact.get('mensaje').hasError('required')">El mensaje es
-                obligatorio</small>
-            </div>
+        <div class="py-2">
+          <strong class="d-block">Mensaje</strong>
+          <textarea class="form-control" rows="5" formControlName="mensaje" id="mensaje"
+            placeholder="Escriba aqui el mensaje..."></textarea>
+          <div *ngIf="homeContact.get('mensaje').errors && homeContact.get('mensaje').dirty">
+            <small class="alert-danger px-1" *ngIf="homeContact.get('mensaje').hasError('required')">El mensaje es
+              obligatorio</small>
           </div>
+        </div>
 
-          <div class="py-2 text-center">
-            <button class="btn btn-enviar w-25" [disabled]=homeContact.invalid>Enviar</button>
-          </div>
-
-        </form>
-      </div>
+        <div class="py-2 text-center">
+          <button class="btn btn-enviar w-25" [disabled]=homeContact.invalid>Enviar</button>
+        </div>
+      </form>
     </div>
   </div>
 
   <div class="col-12 col-md-5">
-    Otros enlaces
+    <div class="col-12">
+      <h5 class="my-2 text-center">Player Stats</h5>
+    </div>
+    <div class="col-12">
+      <form [formGroup]="playerStatsForm" (ngSubmit)="consultarStats()" class="p-3 m-3">
+        <div class="py-2">
+          <strong class="d-block">Player:</strong>
+          <input type="text" formControlName="player" name="player" id="player" class="form-control m-auto my-2"
+            placeholder="GG TheCharlesD#ESP">
+        </div>
+        <div class="py-2 text-center">
+          <button class="btn btn-enviar w-25" [disabled]=playerStatsForm.invalid>Buscar</button>
+        </div>
+        <div *ngIf="kda != ''" class="py-2">
+          <strong class="d-block py-1">El KDA de <b>{{playerAux}}</b> es: {{kda}}</strong>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
