@@ -36,18 +36,18 @@
                     <div class="align-self-center col-9 my-1 p-0">
                         <p class="m-0">{{miembro.nombreUsuario}}</p>
                     </div>
-                    <div *ngIf="miembro.id != idCreador" class="align-self-center col-1 my-1 p-0">
-                        <button class="btn border float-end" id="{{miembro.id}}" (click)="deleteMember(miembro.id)">
+                    <div *ngIf="idCreador == this.user.id" class="align-self-center col-1 my-1 p-0">
+                        <button *ngIf="idCreador != miembro.id" class="btn border float-end" id="{{miembro.id}}" (click)="deleteMember(miembro.id)">
                             <fa-icon [icon]="faTimes" class="text-white"></fa-icon>
                         </button>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                <button *ngIf="this.user.id == idCreador" type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                     (click)="deleteTeam()">Eliminar equipo</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                    (click)="limpiarMiembros()">Salir del equipo</button>
+                    (click)="exitTeam()">Salir del equipo</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                     (click)="limpiarMiembros()" id="membersCloseModal">Cerrar</button>
             </div>

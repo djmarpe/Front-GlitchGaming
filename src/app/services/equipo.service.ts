@@ -53,4 +53,15 @@ export class EquipoService {
     };
     return this.http.post(environment.url_api + 'deleteTeam', id, extra);
   }
+
+  exitTeam = (id) => {
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
+      }),
+    };
+    return this.http.post(environment.url_api + 'exitTeam', id, extra);
+  }
 }

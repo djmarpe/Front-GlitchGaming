@@ -25,7 +25,7 @@ export class EquiposComponent implements OnInit {
 
   miembrosEquipo: any
 
-  constructor(private user: UserService, private equipoService: EquipoService) { }
+  constructor(public user: UserService, private equipoService: EquipoService) { }
 
   ngOnInit(): void {
     const id = {
@@ -89,6 +89,22 @@ export class EquiposComponent implements OnInit {
       }
     )
 
+  }
+
+  exitTeam = () => {
+    const jugador = {
+      "idEquipo": this.idEquipo,
+      "idJugador": this.user.id
+    }
+    this.equipoService.exitTeam(jugador).subscribe(
+      (response) => {        
+        document.getElementById('membersCloseModal').click()
+        const id = {
+          "id": this.user.id
+        }
+        this.cargarMisEquipos(id) 
+      }
+    )
   }
 
   limpiarMiembros = () => {
