@@ -1,0 +1,58 @@
+<div *ngFor="let equipo of equipos; index as i" class="row m-0 p-0 d-flex justify-content-center">
+    <div class="col-12 m-0 my-1 p-1 bg-black">
+        <div class="row m-0 p-0">
+            <div class="col-8 align-self-center">
+                <p class="m-0 fs-5 text">{{equipo.nombre}}</p>
+            </div>
+            <div class="col-4 align-self-center">
+                <p class="m-0 float-end">{{equipo.miembros}}&nbsp;miembros</p>
+            </div>
+        </div>
+        <div class="row m-0 p-0">
+            <div class="col-8 align-self-center">
+                <p class="m-0">{{equipo.juego}}</p>
+            </div>
+            <div class="col-4">
+                <button class="btn border float-end" id="{{equipo.idEquipo}}" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" (click)="verMiembros(equipo.idEquipo, equipo.idCreador)">
+                    <fa-icon [icon]="faEye" class="text-white"></fa-icon>
+                </button>
+            </div>
+            <input type="hidden" value="{{equipo.idCreador}}">
+        </div>
+    </div>
+</div>
+
+<!-- Modal ver miembros del equipo -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content background-black">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Miembros</h5>
+            </div>
+            <div class="modal-body">
+                <div *ngFor="let miembro of miembrosEquipo; index as i" class="row m-0 my-2 p-0 px-2 bg-secondary justify-content-between">
+                    <div class="align-self-center col-9 my-1 p-0">
+                        <p class="m-0">{{miembro.nombreUsuario}}</p>
+                    </div>
+                    <div *ngIf="miembro.id != idCreador" class="align-self-center col-1 my-1 p-0">
+                        <button class="btn border float-end" id="{{miembro.id}}" (click)="deleteMember(miembro.id)">
+                            <fa-icon [icon]="faTimes" class="text-white"></fa-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    (click)="deleteTeam()">Eliminar equipo</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    (click)="limpiarMiembros()">Salir del equipo</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    (click)="limpiarMiembros()" id="membersCloseModal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fin Modal ver mimebros del equipo -->
