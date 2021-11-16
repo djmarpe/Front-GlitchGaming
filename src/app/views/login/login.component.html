@@ -41,7 +41,9 @@
 
                     <div class="row m-0 my-3 p-0">
                         <div class="col-12 text-center">
-                            <button class="btn btn-enviar w-50" [disabled]=loginForm.invalid>Iniciar sesiòn</button>
+                            <button class="btn btn-enviar w-50" [disabled]=loginForm.invalid *ngIf="!loading1">Iniciar
+                                sesiòn</button>
+                            <img src="../../../assets/gif/loading.gif" *ngIf="loading1" class="img-fluid size-25">
                         </div>
                     </div>
                 </form>
@@ -72,8 +74,8 @@
                     <div class="row m-0 my-3 p-0">
                         <div class="col-12">
                             <h5 class="m-0">Nombre:</h5>
-                            <input type="text" name="new_name" id="new_name" class="form-control"
-                                placeholder="Nombre" formControlName="new_name">
+                            <input type="text" name="new_name" id="new_name" class="form-control" placeholder="Nombre"
+                                formControlName="new_name">
                             <div *ngIf="registroForm.get('new_name').errors && registroForm.get('new_name').dirty">
                                 <small class="alert-danger px-1"
                                     *ngIf="registroForm.get('new_name').hasError('required')">El
@@ -87,7 +89,8 @@
                             <h5 class="m-0">Apellidos:</h5>
                             <input type="text" name="new_surname" id="new_surname" class="form-control"
                                 placeholder="Apellidos" formControlName="new_surname">
-                            <div *ngIf="registroForm.get('new_surname').errors && registroForm.get('new_surname').dirty">
+                            <div
+                                *ngIf="registroForm.get('new_surname').errors && registroForm.get('new_surname').dirty">
                                 <small class="alert-danger px-1"
                                     *ngIf="registroForm.get('new_surname').hasError('required')">El
                                     apellido es obligatorio</small>
@@ -104,7 +107,7 @@
                                 placeholder="mm" formControlName="new_mesNacimiento" min="1" max="12">
                             <input type="number" name="new_anioNacimiento" id="new_anioNacimiento" class=""
                                 placeholder="aaaa" formControlName="new_anioNacimiento" min="1921" max="2021">
-                                
+
                             <div
                                 *ngIf="registroForm.get('new_diaNacimiento').dirty || registroForm.get('new_mesNacimiento').dirty || registroForm.get('new_anioNacimiento').dirty">
                                 <small class="alert-danger px-1" *ngIf="registroForm.get('new_diaNacimiento').hasError('required') ||
@@ -118,8 +121,8 @@
                     <div class="row m-0 my-3 p-0">
                         <div class="col-12">
                             <h5 class="m-0">Email:</h5>
-                            <input type="email" name="new_email" id="new_email" class="form-control"
-                                placeholder="Email" formControlName="new_email">
+                            <input type="email" name="new_email" id="new_email" class="form-control" placeholder="Email"
+                                formControlName="new_email">
                             <div *ngIf="registroForm.get('new_email').errors && registroForm.get('new_email').dirty">
                                 <small class="alert-danger px-1"
                                     *ngIf="registroForm.get('new_email').hasError('required')">El
@@ -133,7 +136,8 @@
                             <h5 class="m-0">Nombre de usuario:</h5>
                             <input type="email" name="new_username" id="new_username" class="form-control"
                                 placeholder="Nombre de usuario" formControlName="new_username">
-                            <div *ngIf="registroForm.get('new_username').errors && registroForm.get('new_username').dirty">
+                            <div
+                                *ngIf="registroForm.get('new_username').errors && registroForm.get('new_username').dirty">
                                 <small class="alert-danger px-1"
                                     *ngIf="registroForm.get('new_username').hasError('required')">El
                                     nombre de usuario es obligatorio</small>
@@ -145,10 +149,12 @@
                         <div class="col-12">
                             <h5 class="m-0">Contraseña:</h5>
                             <input type="password" name="password" id="password" class="form-control"
-                                placeholder="Contraseña" formControlName="new_password" pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/">
+                                placeholder="Contraseña" formControlName="new_password"
+                                pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/">
                         </div>
                         <div *ngIf="registroForm.get('password').errors && registroForm.get('password').dirty">
-                            <small class="alert-danger px-1" *ngIf="registroForm.get('password').hasError('required')">La
+                            <small class="alert-danger px-1"
+                                *ngIf="registroForm.get('password').hasError('required')">La
                                 contrseña
                                 es obligatoria</small>
                         </div>

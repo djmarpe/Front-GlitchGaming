@@ -1,3 +1,21 @@
+<div class="row m-0 p-0">
+    <div class="col-6 m-0 my-2 p-0 text-center">
+        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal2"
+            (click)="cargarJuegosDisponibles()">Crear equipo
+        </button>
+    </div>
+    <div class="col-6 m-0 my-2 p-0 text-center">
+        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal1">Unirse a un equipo
+        </button>
+    </div>
+</div>
+
+<div *ngIf="loading1" class="row m-0 p-0 d-flex justify-content-center">
+    <div class="col-12 m-0 my-1 p-1 text-center">
+        <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
+    </div>
+</div>
+
 <div *ngFor="let equipo of equipos; index as i" class="row m-0 p-0 d-flex justify-content-center">
     <div class="col-12 m-0 my-1 p-1 bg-black">
         <div class="row m-0 p-0">
@@ -32,27 +50,117 @@
                 <h5 class="modal-title" id="exampleModalLabel">Miembros</h5>
             </div>
             <div class="modal-body">
-                <div *ngFor="let miembro of miembrosEquipo; index as i" class="row m-0 my-2 p-0 px-2 bg-secondary justify-content-between">
+                <div *ngIf="loading2" class="row m-0 p-0 d-flex justify-content-center">
+                    <div class="col-12 m-0 my-1 p-1 text-center">
+                        <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
+                    </div>
+                </div>
+                <div *ngFor="let miembro of miembrosEquipo; index as i"
+                    class="row m-0 my-2 p-0 px-2 bg-secondary justify-content-between">
                     <div class="align-self-center col-9 my-1 p-0">
                         <p class="m-0">{{miembro.nombreUsuario}}</p>
                     </div>
                     <div *ngIf="idCreador == this.user.id" class="align-self-center col-1 my-1 p-0">
-                        <button *ngIf="idCreador != miembro.id" class="btn border float-end" id="{{miembro.id}}" (click)="deleteMember(miembro.id)">
+                        <button *ngIf="idCreador != miembro.id && !loading3" class="btn border float-end"
+                            (click)="deleteMember(miembro.id)">
                             <fa-icon [icon]="faTimes" class="text-white"></fa-icon>
                         </button>
                     </div>
                 </div>
+                <div class="row m-0 p-0 d-flex" *ngIf="idCreador == this.user.id">
+                    <div class="col-6 m-0 p-0">
+                        <button class="btn btn-secondary" id="{{idEquipo}}" (click)="verCodigoInvitacion()">Generar
+                            codigo de invitacion</button>
+                    </div>
+                    <div class="col-6 m-0 p-0 align-self-center text-center">
+                        <p class="text fs-3 m-0" *ngIf="code">{{code}}</p>
+                        <img src="../../../assets/gif/loading.gif" class="img-fluid size-25" *ngIf="loading5">
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button *ngIf="this.user.id == idCreador" type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                    (click)="deleteTeam()">Eliminar equipo</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                    (click)="exitTeam()">Salir del equipo</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                    (click)="limpiarMiembros()" id="membersCloseModal">Cerrar</button>
+                <button *ngIf="this.user.id == idCreador" type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal" (click)="deleteTeam()">Eliminar equipo</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="exitTeam()">Salir del
+                    equipo</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarMiembros()"
+                    id="membersCloseModal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Fin Modal ver mimebros del equipo -->
+
+<!-- Modal unirse a un equipo -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content background-black">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Unirse a un equipo</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row m-0 p-0">
+                    <form class="col-12 m-0 p-0 text-center" [formGroup]="formUnirseEquipo">
+                        <input type="number" minlength="6" maxlength="6" class="form-control" formControlName="codigo">
+                        <button class="btn btn-secondary my-2" (click)="unirseEquipo()">Unirse</button>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    id="cerrarUnirseTeam">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin Modal unirse a un equipo -->
+
+<!-- Modal crear un equipo -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content background-black">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear un equipo</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row m-0 p-0">
+                    <form class="col-12 m-0 p-0" [formGroup]="formCrearEquipo">
+                        <div class="row m-0 p-0">
+                            <div class="col-12 my-2 p-0">
+                                <label>Nombre del equipo:</label>
+                                <input type="text" class="form-control" required formControlName="newNombre">
+                            </div>
+                            <div class="col-12 my-2 p-0 text-center" *ngIf="loading6">
+                                <img src="../../../assets/gif/loading.gif"
+                                    class="img-fluid size-25 justify-content-center">
+                            </div>
+                            <div class="col-12 my-2 p-0" *ngIf="!loading6">
+                                <label>Selecciona un juego de la lista:</label>
+                                <select class="form-control" formControlName="idJuego">
+                                    <option *ngFor="let juego of juegosDisponibles; index as i" value="{{juego.id}}">
+                                        {{juego.juego}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6 my-2 p-0">
+                                <label>Máximo de participantes:</label>
+                                <input type="number" class="form-control" formControlName="maxPlayers">
+                            </div>
+                            <div class="col-6 my-2 p-0 align-self-end text-center" *ngIf="!loading7">
+                                <button class="btn btn-secondary" (click)="crearEquipo()">Crear equipo</button>
+                            </div>
+                            <div class="col-6 my-2 p-0 align-self-end text-center" *ngIf="loading7">
+                                <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    id="cerrarCrearTeam">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin Modal crear un equipo -->

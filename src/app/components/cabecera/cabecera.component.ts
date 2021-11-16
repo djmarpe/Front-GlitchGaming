@@ -10,6 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CabeceraComponent implements OnInit {
 
+  loading1: boolean
+
   faUser = icon.faUser;
   faExit = icon.faSignOutAlt
 
@@ -60,10 +62,12 @@ export class CabeceraComponent implements OnInit {
   }
 
   logOut = () => {
+    this.loading1 = true
     this.user.logOut().subscribe(
       (response) => {
         this.resetVal()
         this.loged = false
+        this.loading1 = false
         this.router.navigate(['/home'])
       }
     )

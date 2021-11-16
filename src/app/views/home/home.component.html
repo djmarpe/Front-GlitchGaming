@@ -333,6 +333,11 @@
         <div class="py-2 text-center">
           <button class="btn btn-enviar w-25" [disabled]=playerStatsForm.invalid>Buscar</button>
         </div>
+        <div *ngIf="loading1" class="row m-0 p-0 d-flex justify-content-center">
+          <div class="col-12 m-0 my-1 p-1 text-center">
+            <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
+          </div>
+        </div>
         <div *ngIf="rank != ''" class="py-2">
           <strong class="d-block py-1">El rango de <b>{{playerAux}}</b> es: {{rank}}</strong>
         </div>

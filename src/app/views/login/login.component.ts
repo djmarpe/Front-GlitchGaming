@@ -12,6 +12,7 @@ import * as icon from '@fortawesome/free-solid-svg-icons';
 export class LoginComponent implements OnInit {
 
   faEye = icon.faEye
+  loading1: boolean
 
   // Formulario de login
   loginForm: FormGroup
@@ -61,9 +62,10 @@ export class LoginComponent implements OnInit {
       password: datos.password
     };
 
+    this.loading1 = true
     this.user.login(user).subscribe(
       (response) => {
-        console.log(response)
+        this.loading1=false
         this.user.isLoged = true
         this.user.set(response)
         this.router.navigate(['/home']);

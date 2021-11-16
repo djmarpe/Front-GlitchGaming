@@ -64,4 +64,59 @@ export class EquipoService {
     };
     return this.http.post(environment.url_api + 'exitTeam', id, extra);
   }
+
+  verCodigoInvitacion = (id) => {
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
+      }),
+    };
+    return this.http.post(environment.url_api + 'getCode', id, extra);
+  }
+
+  eliminarCodigoInvitacion = (id) => {
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
+      }),
+    };
+    return this.http.post(environment.url_api + 'deleteCode', id, extra);
+  }
+
+  unirseEquipo = (codigo) => {
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
+      }),
+    };
+    return this.http.post(environment.url_api + 'unirseEquipo', codigo, extra);
+  }
+
+  getJuegosDisponibles = () => {
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
+      }),
+    };
+    return this.http.post(environment.url_api + 'getJuegosDisponibles', extra);
+  }
+
+  crearEquipo = (nuevoEquipo) => {
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
+      }),
+    };
+    return this.http.post(environment.url_api + 'createTeam', nuevoEquipo, extra);
+  }
 }

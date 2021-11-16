@@ -72,9 +72,13 @@
         </a>
       </li>
       <li *ngIf="loged" class="my-3">
-        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" (click)="logOut()" style="cursor: pointer;">
+        <a class="text-normal text-white m-0 mx-3 p-0 py-2 h6 hover-azul" (click)="logOut()" style="cursor: pointer;" *ngIf="!loading1">
           <fa-icon [icon]="faExit"></fa-icon>&nbsp;Salir
         </a>
+      </li>
+
+      <li *ngIf="loading1" class="my-3 text-center">
+        <img src="../../../assets/gif/loading.gif" class="img-fluid size-25 text-center" *ngIf="loading1">
       </li>
 
     </ul>

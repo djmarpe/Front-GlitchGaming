@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
 
   faExclamation = icon.faExclamation;
 
+  loading1: boolean
+
   inscripciones: number;
 
   //Formulario de contacto
@@ -75,14 +77,13 @@ export class HomeComponent implements OnInit {
       this.playerAux = this.playerStatsForm.value.player
       
       var newString1 = this.playerAux.replace(/\s/g,'%20')
-      var newString2 = newString1.replace('#',"%23")
+      var newString2 = newString1.replace('#',"%23")      
 
-      console.log(newString2);
-      
+      this.loading1 = true
 
       this.jugador.getPlayerStats(this.playerAux).subscribe(
         (response) => {
-          console.log(response);
+          this.loading1 = false
           this.rank = response['rank']
         }
       )
