@@ -15,6 +15,7 @@ import { LoginComponent } from './views/login/login.component';
 import { PerfilPersonalComponent } from './views/perfil-personal/perfil-personal.component';
 import { GestionUsuariosComponent } from './views/gestion-usuarios/gestion-usuarios.component';
 import { ForoComponent } from './views/foro/foro.component';
+import { EquiposComponent } from './components/equipos/equipos.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ForoComponent } from './views/foro/foro.component';
     PerfilPersonalComponent,
     GestionUsuariosComponent,
     ForoComponent,
+    EquiposComponent,
   ],
   imports: [
     BrowserModule,
