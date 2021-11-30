@@ -27,6 +27,9 @@ export class ListaTorneosComponent implements OnInit {
   torneoDetalle: any
   reglas: string
 
+  es1vs1: boolean
+  pertencezco1vs1: boolean
+
   token: any
 
   miEquipo: any
@@ -148,9 +151,23 @@ export class ListaTorneosComponent implements OnInit {
         if (response['equipos'] != undefined) {
           this.equipos = response['equipos']
           console.log(this.equipos);
-          
         }
+      }
+    )
 
+    this.torneoService.pertenezco1vs1(params).subscribe(
+      (response) => {
+        this.pertencezco1vs1 = response['pertenezco1vs1']
+      }
+    )
+
+    const param = {
+      idTorneo: this.idTorneo
+    }  
+
+    this.torneoService.es1vs1(param).subscribe(
+      (response) => {
+        this.es1vs1 = response['es1vs1']
       }
     )
 
@@ -162,6 +179,21 @@ export class ListaTorneosComponent implements OnInit {
       idTorneo: this.idTorneo
     }
     this.torneoService.inscribirEquipo(params).subscribe(
+      (response) => {
+        this.loading4 = undefined
+        document.getElementById('btn-closeInscripciones').click()
+        this.getTorneos()
+      }
+
+    )
+  }
+
+  inscribirse1vs1 = () => {
+    const params = {
+      idJugador: this.user.id,
+      idTorneo: this.idTorneo
+    }
+    this.torneoService.inscribir1vs1(params).subscribe(
       (response) => {
         this.loading4 = undefined
         document.getElementById('btn-closeInscripciones').click()
@@ -719,6 +751,11 @@ export class ListaTorneosComponent implements OnInit {
       }
     )
     
+  }
+
+  limpiarDatos = () => {
+    this.es1vs1 = null
+    this.pertencezco1vs1 = null
   }
 }
 

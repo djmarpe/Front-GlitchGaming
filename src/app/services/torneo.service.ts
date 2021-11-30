@@ -150,4 +150,37 @@ export class TorneoService {
     return this.http.post(environment.url_api + 'torneo/getReglas', params, extra);
   }
 
+  es1vs1 = (param) => {
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
+      }),
+    };
+    return this.http.post(environment.url_api + 'torneo/es1vs1', param, extra);
+  }
+
+  inscribir1vs1 = (params) => {
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
+      }),
+    };
+    return this.http.post(environment.url_api + 'torneo/inscribirse1vs1', params, extra);
+  }
+
+  pertenezco1vs1 = (params) => {
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
+      }),
+    };
+    return this.http.post(environment.url_api + 'torneo/pertenezco1vs1', params, extra);
+  }
+
 }

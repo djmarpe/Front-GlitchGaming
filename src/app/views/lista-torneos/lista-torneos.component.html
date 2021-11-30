@@ -307,33 +307,49 @@
             <div class="row m-0 p-0" *ngIf="miEquipo != undefined">
                 <div class="col-12 m-0 p-0">
                     <div class="row m-2 p-0 text-center background-gg text-white">
-                        <div class="col-12 m-0 my-3 p-0">
+                        <div class="col-12 m-0 my-3 p-0" *ngIf="!es1vs1">
                             <small class="d-block">Nombre del equipo a inscribir</small>
                             <h5 class="m-0"><b>{{miEquipo.nombre}}</b></h5>
                         </div>
 
-                        <div class="col-12 m-0 my-3 p-0">
+                        <div class="col-12 m-0 my-3 p-0" *ngIf="es1vs1 && !pertencezco1vs1">
+                            <small class="d-block">¿Quieres apuntarte en este torneo?</small>
+                        </div>
+
+                        <div class="col-12 m-0 my-3 p-0" *ngIf="!es1vs1">
                             <small class="d-block">Miembros del
                                 equipo:&nbsp;{{miEquipo.participantes}}/{{miEquipo.max_players}}</small>
                         </div>
 
-                        <div class="col-12 m-0 my-3 p-0" *ngIf="miEquipo.participantes == 5 && miEquipo.pertenece == 0">
+                        <div class="col-12 m-0 my-3 p-0" *ngIf="es1vs1 && pertencezco1vs1">
+                            <small class="d-block">No puedes inscribirte a este torneo porque ya perteneces.</small>
+                            <button type="button" class="btn btn-secondary w-25 mx-2 my-3" id="btn-closeInscripciones"
+                                data-bs-dismiss="modal" (click)="limpiarDatos()">Cerrar</button>
+                        </div>
+
+                        <div class="col-12 m-0 my-3 p-0" *ngIf="es1vs1 && !pertencezco1vs1">
+                            <button class="btn btn-secondary w-25 mx-2" (click)="inscribirse1vs1()">Inscribirse</button>
+                            <button type="button" class="btn btn-secondary w-25 mx-2" id="btn-closeInscripciones"
+                                data-bs-dismiss="modal" (click)="limpiarDatos()">Cerrar</button>
+                        </div>
+
+                        <div class="col-12 m-0 my-3 p-0" *ngIf="miEquipo.participantes == 5 && miEquipo.pertenece == 0 && !es1vs1">
                             <button class="btn btn-secondary w-25 mx-2" (click)="inscribirEquipo(miEquipo.id)">Inscribir
                                 equipo</button>
                             <button type="button" class="btn btn-secondary w-25 mx-2" id="btn-closeInscripciones"
-                                data-bs-dismiss="modal">Cerrar</button>
+                                data-bs-dismiss="modal" (click)="limpiarDatos()">Cerrar</button>
                         </div>
                         <div class="col-12 m-0 my-3 p-0"
-                            *ngIf="miEquipo.participantes < miEquipo.max_players || miEquipo.participantes > miEquipo.max_players">
+                            *ngIf="!es1vs1 && miEquipo.participantes < miEquipo.max_players || miEquipo.participantes > miEquipo.max_players">
                             <small class="d-block">No puedes inscribir a este equipo en el torneo porque faltan
                                 miembros.</small>
                             <button type="button" class="btn btn-secondary my-2 w-25"
-                                data-bs-dismiss="modal">Cerrar</button>
+                                data-bs-dismiss="modal" (click)="limpiarDatos()">Cerrar</button>
                         </div>
                         <div class="col-12 m-0 my-3 p-0" *ngIf="miEquipo.pertenece == 1">
                             <small class="d-block">No puedes inscribir a este equipo porque ya está inscrito</small>
                             <button type="button" class="btn btn-secondary my-2 w-25"
-                                data-bs-dismiss="modal">Cerrar</button>
+                                data-bs-dismiss="modal" (click)="limpiarDatos()">Cerrar</button>
                         </div>
                     </div>
                 </div>
