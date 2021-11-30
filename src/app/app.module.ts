@@ -16,6 +16,8 @@ import { PerfilPersonalComponent } from './views/perfil-personal/perfil-personal
 import { GestionUsuariosComponent } from './views/gestion-usuarios/gestion-usuarios.component';
 import { ForoComponent } from './views/foro/foro.component';
 import { EquiposComponent } from './components/equipos/equipos.component';
+import { TorneoViewComponent } from './views/torneo-view/torneo-view.component';
+import { ListaTorneosComponent } from './views/lista-torneos/lista-torneos.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { EquiposComponent } from './components/equipos/equipos.component';
     GestionUsuariosComponent,
     ForoComponent,
     EquiposComponent,
+    TorneoViewComponent,
+    ListaTorneosComponent,
   ],
   imports: [
     BrowserModule,

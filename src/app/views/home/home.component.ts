@@ -76,12 +76,13 @@ export class HomeComponent implements OnInit {
     if(this.playerStatsForm.valid){
       this.playerAux = this.playerStatsForm.value.player
       
-      var newString1 = this.playerAux.replace(/\s/g,'%20')
-      var newString2 = newString1.replace('#',"%23")      
+      const jugador = {
+        "jugador": this.playerAux
+      }
 
       this.loading1 = true
 
-      this.jugador.getPlayerStats(this.playerAux).subscribe(
+      this.jugador.getPlayerStats(jugador).subscribe(
         (response) => {
           this.loading1 = false
           this.rank = response['rank']

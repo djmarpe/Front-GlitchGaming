@@ -1,0 +1,27 @@
+<app-cabecera onload="comprobarMedia()"></app-cabecera>
+
+<div class="row m-0 p-0">
+    <div class="col-12 my-4 p-0">
+        <h2 class="separator-title font-Ethnocentric">Todos los juegos</h2>
+        
+    </div>
+</div>
+
+<div class="row m-0 p-0">
+    <div *ngFor="let juego of juegosDisponibles; index as i;" class="col-6 col-sm-3 col-md-2 my-4 text-center img-wrapper">
+        <img *ngIf="juego.foto == 'valorant.jpg'" src="../../../assets/img/juegos/valorant.jpg"
+            alt="Imagen" class="img-fluid inner-img" (click)="listaTorneo(juego.id)" />
+        <img *ngIf="juego.foto == 'lol.jpg'" src="../../../assets/img/juegos/lol.jpg" alt="Imgen"
+            class="img-fluid inner-img" (click)="listaTorneo(juego.id)" />
+        <img *ngIf="juego.foto == 'csgo.jpg'" src="../../../assets/img/juegos/csgo.jpg" alt="Imgen"
+            class="img-fluid inner-img" (click)="listaTorneo(juego.id)" />
+        <img *ngIf="juego.foto == 'fh5.jpg'" src="../../../assets/img/juegos/fh5.jpg" alt="Imgen"
+            class="img-fluid inner-img" (click)="listaTorneo(juego.id)" />
+        <img *ngIf="juego.foto == 'f1-2021.webp'" src="../../../assets/img/juegos/f1-2021.webp" alt="Imgen"
+            class="img-fluid inner-img" (click)="listaTorneo(juego.id)" />
+        <img *ngIf="juego.foto == 'fifa22.jpg'" src="../../../assets/img/juegos/fifa22.jpg" alt="Imgen"
+            class="img-fluid inner-img" (click)="listaTorneo(juego.id)" />
+        <img *ngIf="juego.foto == 'rocket-league.jpg'" src="../../../assets/img/juegos/rocket-league.jpg" alt="Imgen"
+            class="img-fluid inner-img" (click)="listaTorneo(juego.id)" />
+    </div>
+</div>
