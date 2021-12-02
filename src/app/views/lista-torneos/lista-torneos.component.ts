@@ -70,6 +70,7 @@ export class ListaTorneosComponent implements OnInit {
   ngOnInit(): void {
     this.idJuego = this.torneoService.idJuego
     this.getTorneos()
+    this.torneoDetalle = null
   }
 
   getTorneos = () => {
@@ -756,6 +757,30 @@ export class ListaTorneosComponent implements OnInit {
   limpiarDatos = () => {
     this.es1vs1 = null
     this.pertencezco1vs1 = null
+  }
+
+  comenzarTorneo = (idTorneo) => {
+    const params = {
+      id: idTorneo
+    }
+
+    this.torneoService.comenzarTorneo(params).subscribe(
+      (response) => {
+        this.getTorneos()
+      }
+    )
+  }
+
+  finalizarTorneo = (idTorneo)=> {
+    const params = {
+      id: idTorneo
+    }
+
+    this.torneoService.finalizarTorneo(params).subscribe(
+      (response) => {
+        this.getTorneos()
+      }
+    )
   }
 }
 
