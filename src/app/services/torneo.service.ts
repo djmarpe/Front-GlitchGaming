@@ -9,6 +9,7 @@ import { UserService } from './user.service';
 export class TorneoService {
 
   idJuego: number
+  idTorneo: number
 
   constructor(private http: HttpClient) { }
 
@@ -203,6 +204,39 @@ export class TorneoService {
       }),
     };
     return this.http.post(environment.url_api + 'torneo/finalizarTorneo', params, extra);
+  }
+
+  getFases = (params) => {
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
+      }),
+    };
+    return this.http.post(environment.url_api + 'torneo/getFases', params, extra);
+  }
+
+  aumentarPuntuacion = (params) => {
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
+      }),
+    };
+    return this.http.post(environment.url_api + 'encuentro/aumentarMarcador', params, extra);
+  }
+
+  pasarFase = (params) => {
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
+      }),
+    };
+    return this.http.post(environment.url_api + 'encuentro/pasarFase', params, extra);
   }
 
 }

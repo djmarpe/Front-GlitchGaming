@@ -9,7 +9,8 @@
                 <h5 class="modal-title" id="exampleModalLabel">¿Eliminar usuario?</h5>
             </div>
             <div class="modal-body">
-                <small *ngIf="userAux !== undefined">¿Estas seguro que deseas eliminar al usuario <b>{{userAux['nombreUsuario']}}</b>?</small>
+                <small *ngIf="userAux !== undefined">¿Estas seguro que deseas eliminar al usuario
+                    <b>{{userAux['nombreUsuario']}}</b>?</small>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -33,13 +34,15 @@
                     <div class="row my-3 p-0">
                         <div class="col-12">
                             <h6>Nombre:</h6>
-                            <input type="text" name="new_name" placeholder="Nombre" class="form-control" formControlName="nombre">
+                            <input type="text" name="new_name" placeholder="Nombre" class="form-control"
+                                formControlName="nombre">
                         </div>
                     </div>
                     <div class="row my-3 p-0">
                         <div class="col-12">
                             <h6>Apellidos:</h6>
-                            <input type="text" name="new_surname" placeholder="Apellidos" class="form-control" formControlName="apellidos">
+                            <input type="text" name="new_surname" placeholder="Apellidos" class="form-control"
+                                formControlName="apellidos">
                         </div>
                     </div>
                     <div class="row my-3 p-0">
@@ -56,19 +59,22 @@
                     <div class="row my-3 p-0">
                         <div class="col-12">
                             <h6>Email:</h6>
-                            <input type="email" name="new_email" placeholder="Email" class="form-control" formControlName="email">
+                            <input type="email" name="new_email" placeholder="Email" class="form-control"
+                                formControlName="email">
                         </div>
                     </div>
                     <div class="row my-3 p-0">
                         <div class="col-12">
                             <h6>Nombre de usuario:</h6>
-                            <input type="text" name="new_username" placeholder="Nombre de usuario" class="form-control" formControlName="nombreUsuario">
+                            <input type="text" name="new_username" placeholder="Nombre de usuario" class="form-control"
+                                formControlName="nombreUsuario">
                         </div>
                     </div>
                     <div class="row my-3 p-0">
                         <div class="col-12">
                             <h6>Contraseña:</h6>
-                            <input type="password" name="new_password" placeholder="**********" class="form-control" formControlName="password">
+                            <input type="password" name="new_password" placeholder="**********" class="form-control"
+                                formControlName="password">
                         </div>
                     </div>
                     <div class="row my-3 p-0">
@@ -82,7 +88,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-cerrar-create">Cerrar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    id="btn-cerrar-create">Cerrar</button>
                 <button type="button" class="btn btn-primary" (click)="newUser()">Crear usuario</button>
             </div>
         </div>
@@ -102,13 +109,15 @@
                     <div class="row my-3 p-0">
                         <div class="col-12">
                             <h6>Nombre:</h6>
-                            <input type="text" name="new_name" placeholder="Nombre" class="form-control" formControlName="edit_nombre">
+                            <input type="text" name="new_name" placeholder="Nombre" class="form-control"
+                                formControlName="edit_nombre">
                         </div>
                     </div>
                     <div class="row my-3 p-0">
                         <div class="col-12">
                             <h6>Apellidos:</h6>
-                            <input type="text" name="new_surname" placeholder="Apellidos" class="form-control" formControlName="edit_apellidos">
+                            <input type="text" name="new_surname" placeholder="Apellidos" class="form-control"
+                                formControlName="edit_apellidos">
                         </div>
                     </div>
                     <div class="row my-3 p-0">
@@ -125,19 +134,22 @@
                     <div class="row my-3 p-0">
                         <div class="col-12">
                             <h6>Email:</h6>
-                            <input type="email" name="new_email" placeholder="Email" class="form-control" formControlName="edit_email">
+                            <input type="email" name="new_email" placeholder="Email" class="form-control"
+                                formControlName="edit_email">
                         </div>
                     </div>
                     <div class="row my-3 p-0">
                         <div class="col-12">
                             <h6>Nombre de usuario:</h6>
-                            <input type="text" name="new_username" placeholder="Nombre de usuario" class="form-control" formControlName="edit_nombreUsuario">
+                            <input type="text" name="new_username" placeholder="Nombre de usuario" class="form-control"
+                                formControlName="edit_nombreUsuario">
                         </div>
                     </div>
                     <div class="row my-3 p-0">
                         <div class="col-12">
                             <h6>Contraseña:</h6>
-                            <input type="password" name="new_password" placeholder="**********" class="form-control" formControlName="edit_password">
+                            <input type="password" name="new_password" placeholder="**********" class="form-control"
+                                formControlName="edit_password">
                         </div>
                     </div>
                     <div class="row my-3 p-0">
@@ -153,7 +165,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-cerrar-edit" (click)="limpiarRol()">Cerrar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-cerrar-edit"
+                    (click)="limpiarRol()">Cerrar</button>
                 <button type="button" class="btn btn-primary" (click)="editUser()">Editar usuario</button>
             </div>
         </div>
@@ -181,7 +194,18 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="loading1">
+                <tr>
+                    <td colspan="5">
+                        <div class="row m-0 p-0 d-flex justify-content-center">
+                            <div class="col-12 m-0 my-1 p-1 text-center">
+                                <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="!loading1">
                 <tr *ngFor="let usuario of usuarios; index as i;" scope="row">
                     <td *ngIf="usuario.estado == 0">
                         <fa-icon [icon]="faCircle" class="text-danger"></fa-icon>
@@ -193,11 +217,12 @@
                     <td class="col-email">{{usuario.email}}</td>
                     <td class="col-botones text-end">
                         <button class="btn btn-sm btn-primary" name="editUser" title="Editar usuario"
-                        data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="seleccionarUsuario(i)">
+                            data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="seleccionarUsuario(i)">
                             <fa-icon [icon]="faPencil" class="text-white"></fa-icon>
                         </button>
-                        <button *ngIf="usuario.id != idUserLogin" class="btn btn-sm btn-danger" type="submit" name="borrarUsuario" title="Borrar usuario"
-                            data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="seleccionarUsuario(i)">
+                        <button *ngIf="usuario.id != idUserLogin" class="btn btn-sm btn-danger" type="submit"
+                            name="borrarUsuario" title="Borrar usuario" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" (click)="seleccionarUsuario(i)">
                             <fa-icon [icon]="faTrash"></fa-icon>
                         </button>
                     </td>

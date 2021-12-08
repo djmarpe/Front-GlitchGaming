@@ -12,6 +12,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class GestionUsuariosComponent implements OnInit {
 
+  loading1: boolean
+
   faAddSquare = icon.faPlusSquare
   faTrash = icon.faTrashAlt
   faPencil = icon.faPencilAlt
@@ -83,8 +85,10 @@ export class GestionUsuariosComponent implements OnInit {
 
 
   getUsers = () => {
+    this.loading1 = true
     this.admin.getUsers().subscribe(
       (response) => {
+        this.loading1 = false
         this.usuarios = response['listaUsuarios']
       }
     )

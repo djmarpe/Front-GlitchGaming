@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import * as icon from '@fortawesome/free-solid-svg-icons'
 import { TorneoService } from 'src/app/services/torneo.service';
 import { ThisReceiver } from '@angular/compiler';
+import { BracketComponent } from 'src/app/components/bracket/bracket.component';
 
 @Component({
   selector: 'app-lista-torneos',
@@ -38,9 +39,12 @@ export class ListaTorneosComponent implements OnInit {
   tipoFase: any[]
   modalidad: any[]
 
+  // Encuentros
+  encuentros: any[]
+
   formularioCrearTorneo: FormGroup
 
-  constructor(private torneoService: TorneoService, private router: Router, public user: UserService, private formBuilder: FormBuilder) {
+  constructor(private torneoService: TorneoService, private router: Router, public user: UserService, private formBuilder: FormBuilder, private bracket: BracketComponent) {
 
     this.token = sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN)
 
@@ -115,8 +119,8 @@ export class ListaTorneosComponent implements OnInit {
 
   verDetalles = (idTorneoAux) => {
     this.idTorneo = idTorneoAux
-    console.log('El torneo sobre el que se ha pulsado es: ' + this.idTorneo);
-
+    sessionStorage.setItem('idTorneo',idTorneoAux)
+    this.torneoService.idTorneo = this.idTorneo
 
     this.loading4 = 1
     const idTorneo = {
@@ -771,7 +775,7 @@ export class ListaTorneosComponent implements OnInit {
     )
   }
 
-  finalizarTorneo = (idTorneo)=> {
+  finalizarTorneo = (idTorneo) => {
     const params = {
       id: idTorneo
     }
@@ -781,6 +785,13 @@ export class ListaTorneosComponent implements OnInit {
         this.getTorneos()
       }
     )
+  }
+
+  verFases = (idTorneo) => {
+    const params = {
+      id: idTorneo
+    }
+    sessionStorage.setItem('idTorneo',idTorneo)
   }
 }
 

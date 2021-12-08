@@ -18,6 +18,7 @@ import { ForoComponent } from './views/foro/foro.component';
 import { EquiposComponent } from './components/equipos/equipos.component';
 import { TorneoViewComponent } from './views/torneo-view/torneo-view.component';
 import { ListaTorneosComponent } from './views/lista-torneos/lista-torneos.component';
+import { BracketComponent } from './components/bracket/bracket.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ListaTorneosComponent } from './views/lista-torneos/lista-torneos.compo
     EquiposComponent,
     TorneoViewComponent,
     ListaTorneosComponent,
+    BracketComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,10 @@ import { ListaTorneosComponent } from './views/lista-torneos/lista-torneos.compo
     ReactiveFormsModule,
   ],
 
-  providers: [],
+  providers: [
+    BracketComponent,
+  ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
