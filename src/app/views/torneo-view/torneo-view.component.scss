@@ -1,0 +1,40 @@
+.w-10x100 {
+    width: 10% !important;
+}
+
+//SEPARADOR TITULO
+.separator-title {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.separator-title::before,
+.separator-title::after {
+    content: "";
+    flex: 1;
+    border-bottom: 3px solid #fff;
+}
+
+.separator-title:not(:empty)::before {
+    margin-right: 10px;
+}
+
+.separator-title:not(:empty)::after {
+    margin-left: 10px;
+}
+
+/* */
+.img-wrapper {
+    overflow: hidden;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.inner-img {
+    transition: 0.3s;
+}
+
+.inner-img:hover {
+    transform: scale(1.1);
+}

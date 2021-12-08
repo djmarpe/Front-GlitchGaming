@@ -1,0 +1,414 @@
+<app-cabecera onload="comprobarMedia()"></app-cabecera>
+
+
+<div style="min-height: calc(100vh - 60px) !important;">
+
+
+    <div class="row m-0 p-0">
+        <div class="col-12 my-4 p-0">
+            <h2 class="separator-title font-Ethnocentric">{{juego}}</h2>
+        </div>
+    </div>
+
+    <div class="row m-0 p-0 justify-content-between">
+        <div class="col-12 col-sm-7 m-0 p-0">
+            <div class="row m-0 p-0 text-center" *ngIf="user.rol == 1 || user.rol == 2">
+                <div class="col-12 my-4 p-0">
+                    <button class="btn btn-secondary w-50" data-bs-toggle="modal"
+                        data-bs-target="#bs-example-modal-md-crear" (click)="obtenerDatosCrearTorneo()">Crear nuevo
+                        torneo</button>
+                </div>
+            </div>
+            <div class="row m-0 p-0">
+                <div class="col-12 my-4 p-0">
+                    <h4 class="separator-title font-Ethnocentric">Torneos en curso</h4>
+                </div>
+            </div>
+            <div *ngIf="loading1" class="rowm-0 p-0 col-12 text-center">
+                <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
+            </div>
+
+            <div *ngIf="!loading1" class="row m-0 p-0 justify-content-between">
+                <div *ngFor="let torneoEnCurso of torneosEnCurso; index as i"
+                    class="col-12 col-sm-4 col-md-3 m-0 my-2 p-0 p-4 bg-black text-center">
+                    <h6 class="my-2 text-center"><b>{{torneoEnCurso.nombre}}</b></h6>
+                    <small class="d-block text-center h5 my-4">{{torneoEnCurso.premio}}</small>
+                    <small class="d-block my-2">Participantes:
+                        <b>{{torneoEnCurso.participantes}}/{{torneoEnCurso.max_players}}</b></small>
+                    <small class="d-block my-2">Inscripcion hasta:
+                        <b>{{torneoEnCurso.dia_fin}}/{{torneoEnCurso.mes_fin}}/{{torneoEnCurso.anio_fin}}</b></small>
+                    <button class="btn btn-secondary" (click)="verDetalles(torneoEnCurso.id)">Ver detalles</button>
+                </div>
+                <div *ngIf="torneosEnCurso.length < 1" class="col-12 m-0 my-2 p-0 p-4 bg-black text-center">
+                    <h6 class="m-0">No hay torneos en curso actualmente</h6>
+                </div>
+            </div>
+
+            <div class="row m-0 p-0">
+                <div class="col-12 my-4 p-0">
+                    <h4 class="separator-title font-Ethnocentric">Torneos programados</h4>
+                </div>
+            </div>
+
+            <div *ngIf="loading2" class="rowm-0 p-0 col-12 text-center">
+                <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
+            </div>
+
+            <div *ngIf="!loading2" class="row m-0 p-0 justify-content-between">
+                <div *ngFor="let torneoProgramado of torneosProgramados; index as i"
+                    class="col-12 col-sm-4 col-md-3 m-0 my-2 p-0 p-4 bg-black text-center">
+                    <h6 class="my-2 text-center"><b>{{torneoProgramado.nombre}}</b></h6>
+                    <small class="d-block text-center h5 my-4">{{torneoProgramado.premio}}</small>
+                    <small class="d-block my-2">Participantes:
+                        <b>{{torneoProgramado.participantes}}/{{torneoProgramado.max_players}}</b></small>
+                    <small class="d-block my-2">Inscripcion hasta:
+                        <b>{{torneoProgramado.dia_fin}}/{{torneoProgramado.mes_fin}}/{{torneoProgramado.anio_fin}}</b></small>
+                    <button class="btn btn-secondary" (click)="verDetalles(torneoProgramado.id)">Ver detalles</button>
+                </div>
+                <div *ngIf="torneosProgramados.length < 1" class="col-12 m-0 my-2 p-0 p-4 bg-black text-center">
+                    <h6 class="m-0">No hay torneos programados actualmente</h6>
+                </div>
+            </div>
+
+            <div class="row m-0 p-0">
+                <div class="col-12 my-4 p-0">
+                    <h4 class="separator-title font-Ethnocentric">Torneos finalizados</h4>
+                </div>
+            </div>
+
+            <div *ngIf="loading3" class="rowm-0 p-0 col-12 text-center">
+                <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
+            </div>
+
+            <div *ngIf="!loading3" class="row m-0 p-0 justify-content-between">
+                <div *ngFor="let torneoFinalizado of torneosFinalizados; index as i"
+                    class="col-12 col-sm-4 col-md-3 m-0 my-2 p-0 p-4 bg-black text-center">
+                    <h6 class="my-2 text-center"><b>{{torneoFinalizado.nombre}}</b></h6>
+                    <small class="d-block text-center h5 my-4">{{torneoFinalizado.premio}}</small>
+                    <small class="d-block my-2">Participantes:
+                        <b>{{torneoFinalizado.participantes}}/{{torneoFinalizado.max_players}}</b></small>
+                    <small class="d-block my-2">Inscripcion hasta:
+                        <b>{{torneoFinalizado.dia_fin}}/{{torneoFinalizado.mes_fin}}/{{torneoFinalizado.anio_fin}}</b></small>
+                    <button class="btn btn-secondary" (click)="verDetalles(torneoFinalizado.id)">Ver detalles</button>
+                </div>
+                <div *ngIf="torneosFinalizados.length < 1" class="col-12 m-0 my-2 p-0 p-4 bg-black text-center">
+                    <h6 class="m-0">No hay torneos finalizados actualmente</h6>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Detalles del torneo -->
+        <div class="col-12 col-sm-4 m-0 p-0">
+            <div class="row m-0 p-0">
+                <div class="col-12 my-4 p-0">
+                    <h4 class="separator-title font-Ethnocentric">Detalles del torneo</h4>
+                </div>
+            </div>
+            <div *ngIf="loading4 == 1" class="rowm-0 p-0 col-12 text-center">
+                <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
+            </div>
+            <div *ngIf="loading4 == 0" class="row m-0 p-0 justify-content-center">
+                <div class="col-11 m-0 my-2 p-0 p-4 bg-black text-center">
+                    <div class="row col-12 m-0 p-0">
+                        <h3 class="my-2 text-center"><b>{{torneoDetalle.nombre}}</b></h3>
+                    </div>
+
+                    <div class="row m-0 my-4 p-0 justify-content-between">
+                        <div class="col-4 m-0 p-0" *ngIf="torneoDetalle.estado != 0">
+                            <button class="btn btn-secondary" data-bs-toggle="modal"
+                                data-bs-target="#bs-example-modal-lg-bracket" (click)="verFases(torneoDetalle.id)">Brackets</button>
+                        </div>
+                        <div class="col-4 m-0 p-0">
+                            <button class="btn btn-secondary">Participantes</button>
+                        </div>
+                        <div class="col-4 m-0 p-0">
+                            <button class="btn btn-secondary" data-bs-toggle="modal"
+                                data-bs-target="#bs-example-modal-lg-reglas"
+                                (click)="cargarReglas(torneoDetalle.id)">Reglas</button>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-4 p-0 text-center">
+                        <div class="col-12 m-0 p-0">
+                            <h4 class="m-0">Premio</h4>
+                        </div>
+                        <div class="col-12 m-0 p-0">
+                            <h5 class="m-0">{{torneoDetalle.premio}}</h5>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-4 p-0">
+                        <div class="col-6 m-0 p-0 px-1">
+                            <small class="d-block">Inscripcion hasta
+                                <b>{{torneoDetalle.dia_fin}}/{{torneoDetalle.mes_fin}}/{{torneoDetalle.anio_fin}}</b></small>
+                        </div>
+                        <div class="col-6 m-0 p-0 px-1">
+                            <small class="d-block">Participantes
+                                <b>{{torneoDetalle.participantes}}/{{torneoDetalle.max_players}}</b></small>
+                        </div>
+                        <div class="col-6 m-0 p-0 px-1">
+                            <small class="d-block">Comienzo del torneo
+                                <b>{{torneoDetalle.dia_comienzo}}/{{torneoDetalle.mes_comienzo}}/{{torneoDetalle.anio_comienzo}}</b></small>
+                        </div>
+                        <div class="col-6 m-0 p-0 px-1">
+                            <small class="d-block">Modalidad:
+                                <b>{{torneoDetalle.modalidad}}</b></small>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-4 p-0">
+                        <div class="col-12 m-0 p-0 px-1">
+                            <h4 class="m-0">Fases</h4>
+                        </div>
+                        <div class="row m-0 my-2 p-0 text-start" *ngFor="let fase of torneoDetalle.fases; index as i">
+                            <div class="col-12 m-0 p-0 px-1">
+                                <h5 class="m-0">Fase {{i + 1}}</h5>
+                            </div>
+                            <div class="col-12 m-0 p-0 px-1">
+                                <p class="m-0 my-1">{{fase}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 my-4 p-0 justify-content-center" *ngIf="user.rol == 1 || user.rol == 2">
+                        <div class="col-8 m-0 p-0 px-1 text-center" *ngIf="torneoDetalle.participantes == torneoDetalle.max_players && torneoDetalle.estado == 0">
+                            <button class="btn btn-secondary w-50" (click)="comenzarTorneo(torneoDetalle.id)">Comenzar</button>
+                        </div>
+                        <div class="col-8 m-0 p-0 px-1" *ngIf="torneoDetalle.estado == 1">
+                            <button class="btn btn-secondary w-50" (click)="finalizarTorneo(torneoDetalle.id)">Finalizar</button>
+                        </div>
+                    </div>
+
+                    <div class="row col-12 m-0 my-4 p-0 justify-content-center">
+                        <button *ngIf="torneoDetalle.estado == 0 && token != null && torneoDetalle.participantes < torneoDetalle.max_players" class="btn btn-secondary w-50"
+                            data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg-inscribirse"
+                            (click)="inscribirse()">Inscribirse</button>
+                        <button *ngIf="torneoDetalle.estado == 0 && token == null" class="btn btn-secondary w-50"
+                            routerLink="/login">Iniciar sesion</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Bracket -->
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    id="bs-example-modal-lg-bracket">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content bg-black">
+            <app-bracket></app-bracket>
+        </div>
+    </div>
+</div>
+<!-- Fin Modal Bracket -->
+
+<!-- Modal Inscribirse -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    id="bs-example-modal-lg-inscribirse">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bg-black">
+            <div class="row m-0 p-0" *ngIf="miEquipo != undefined">
+                <div class="col-12 m-0 p-0">
+                    <div class="row m-2 p-0 text-center background-gg text-white">
+                        <div class="col-12 m-0 my-3 p-0" *ngIf="!es1vs1">
+                            <small class="d-block">Nombre del equipo a inscribir</small>
+                            <h5 class="m-0"><b>{{miEquipo.nombre}}</b></h5>
+                        </div>
+
+                        <div class="col-12 m-0 my-3 p-0" *ngIf="!es1vs1">
+                            <small class="d-block">Miembros del
+                                equipo:&nbsp;{{miEquipo.participantes}}/{{miEquipo.max_players}}</small>
+                        </div>
+
+                        <div class="col-12 m-0 my-3 p-0"
+                            *ngIf="miEquipo.participantes == 5 && miEquipo.pertenece == 0 && !es1vs1">
+                            <button class="btn btn-secondary w-25 mx-2" (click)="inscribirEquipo(miEquipo.id)">Inscribir
+                                equipo</button>
+                            <button type="button" class="btn btn-secondary w-25 mx-2" id="btn-closeInscripciones"
+                                data-bs-dismiss="modal" (click)="limpiarDatos()">Cerrar</button>
+                        </div>
+                        <div class="col-12 m-0 my-3 p-0"
+                            *ngIf="!es1vs1 && miEquipo.participantes < miEquipo.max_players || miEquipo.participantes > miEquipo.max_players">
+                            <small class="d-block">No puedes inscribir a este equipo en el torneo porque faltan
+                                miembros.</small>
+                            <button type="button" class="btn btn-secondary my-2 w-25" data-bs-dismiss="modal"
+                                (click)="limpiarDatos()">Cerrar</button>
+                        </div>
+                        <div class="col-12 m-0 my-3 p-0" *ngIf="miEquipo.pertenece == 1">
+                            <small class="d-block">No puedes inscribir a este equipo porque ya está inscrito</small>
+                            <button type="button" class="btn btn-secondary my-2 w-25" data-bs-dismiss="modal"
+                                (click)="limpiarDatos()">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-2 p-0 text-center background-gg text-white" *ngIf="miEquipo == undefined">
+                <div class="col-12 m-0 my-3 p-0" *ngIf="es1vs1 && !pertencezco1vs1">
+                    <small class="d-block">¿Quieres apuntarte en este torneo?</small>
+                </div>
+
+                <div class="col-12 m-0 my-3 p-0" *ngIf="es1vs1 && !pertencezco1vs1">
+                    <button class="btn btn-secondary w-25 mx-2" (click)="inscribirse1vs1()">Inscribirse</button>
+                    <button type="button" class="btn btn-secondary w-25 mx-2" id="btn-closeInscripciones"
+                        data-bs-dismiss="modal" (click)="limpiarDatos()">Cerrar</button>
+                </div>
+
+                <div class="col-12 m-0 my-3 p-0" *ngIf="es1vs1 && pertencezco1vs1">
+                    <small class="d-block">No puedes inscribirte a este torneo porque ya perteneces.</small>
+                    <button type="button" class="btn btn-secondary w-25 mx-2 my-3" id="btn-closeInscripciones"
+                        data-bs-dismiss="modal" (click)="limpiarDatos()">Cerrar</button>
+                </div>
+            </div>
+            <div class="row m-0 p-0" *ngIf="equipos != undefined">
+                <div class="col-12 m-0 p-0" *ngFor="let equipo of equipos; index as i">
+                    <div class="row m-2 p-0 text-center background-gg text-white" *ngIf="equipos.length > 1">
+                        <div class="col-12 m-0 my-3 p-0">
+                            <small class="d-block">Nombre del equipo</small>
+                            <h5 class="m-0"><b>{{equipo.nombre}}</b></h5>
+                        </div>
+                        <div class="col-12 m-0 p-0">
+                            <p>Para inscribirse en el torneo, contacte con el administrador de su equipo.</p>
+                            <button type="button" class="btn btn-secondary my-2 w-25"
+                                data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                    <div class="row m-2 p-0 text-center background-gg text-white" *ngIf="equipos.length <= 1">
+                        <div class="col-12 m-0 p-0">
+                            <p class="my-4">No hay equipos para inscribir.</p>
+                            <button type="button" class="btn btn-secondary my-2 w-25"
+                                data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin Modal Inscribirse -->
+
+<!-- Modal crear torneo -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="bs-example-modal-md-crear">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content bg-black">
+            <div class="row m-0 p-0">
+                <div class="col-12 m-0 p-0">
+                    <form [formGroup]="formularioCrearTorneo"
+                        class="row m-2 p-0 background-gg text-white justify-content-between">
+                        <div class="col-12 m-0 my-3 p-0 text-center">
+                            <p class="my-0 h5">Crea un torneo de:&nbsp;{{juego}}</p>
+                        </div>
+
+                        <div class="col-12 m-0 my-3 p-0">
+                            <p class="my-0 h6">Nombre del torneo</p>
+                            <input type="text" name="torneo_nombre" id="torneo_nombre" class="form-control"
+                                formControlName="torneo_nombre" required>
+                        </div>
+
+                        <div class="col-12 m-0 my-3 p-0">
+                            <p class="my-0 h6">Premio</p>
+                            <input type="text" name="torneo_premio" id="torneo_premio" class="form-control"
+                                formControlName="torneo_premio" required>
+                        </div>
+
+                        <div class="col-5 m-0 my-3 p-0">
+                            <p class="my-0 h6">Numero de participantes</p>
+                            <input type="number" name="torneo_max_player" id="torneo_max_players" class="form-control"
+                                (change)="calcularFases()" formControlName="max_players" required>
+                        </div>
+
+                        <div class="col-5 m-0 my-3 p-0">
+                            <p class="my-0 h6">Selecciona la modalidad</p>
+                            <select id="torneo_modalidad" class="form-control">
+                            </select>
+                        </div>
+
+                        <div class="col-5 m-0 my-3 p-0">
+                            <div class="row col-12 m-0 p-0 text-center">
+                                <p class="m-0 h6">Fin de inscripciones</p>
+                            </div>
+                            <div class="row m-0 p-0 justify-content-between">
+                                <div class="col-4 m-0 p-0">
+                                    <input type="number" name="dia_fin" id="dia_fin" class="form-control"
+                                        placeholder="dd" formControlName="dia_fin" required>
+                                </div>
+                                <div class="col-4 m-0 p-0">
+                                    <input type="number" name="mes_fin" id="mes_fin" class="form-control"
+                                        placeholder="mm" formControlName="mes_fin" required>
+                                </div>
+                                <div class="col-4 m-0 p-0">
+                                    <input type="number" name="anio_fin" id="anio_fin" class="form-control"
+                                        placeholder="aaaa" formControlName="anio_fin" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-5 m-0 my-3 p-0">
+                            <div class="row col-12 m-0 p-0 text-center">
+                                <p class="m-0 h6">Comienzo del torneo</p>
+                            </div>
+                            <div class="row m-0 p-0 justify-content-between">
+                                <div class="col-4 m-0 p-0">
+                                    <input type="number" name="dia_comienzo" id="dia_comienzo" class="form-control"
+                                        placeholder="dd" formControlName="dia_comienzo" required>
+                                </div>
+                                <div class="col-4 m-0 p-0">
+                                    <input type="number" name="mes_comienzo" id="mes_comienzo" class="form-control"
+                                        placeholder="mm" formControlName="mes_comienzo" required>
+                                </div>
+                                <div class="col-4 m-0 p-0">
+                                    <input type="number" name="anio_comienzo" id="anio_comienzo" class="form-control"
+                                        placeholder="aaaa" formControlName="anio_comienzo" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 m-0 my-3 p-0">
+                            <p class="my-0 h6">Reglas</p>
+                            <textarea formControlName="reglas" id="reglas" required rows="5"
+                                class="form-control"></textarea>
+                        </div>
+
+                        <div class="col-12 m-0 my-3 p-0" id="colocar">
+                        </div>
+
+                        <div class="col-12 m-0 my-3 p-0 text-center">
+                            <button class="btn btn-secondary w-25 mx-2" (click)="crearTorneo()">Crear torneo</button>
+                            <button type="button" class="btn btn-secondary w-25 mx-2" id="btn-closeCrear"
+                                data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin Modal crear -->
+
+<!-- Modal abrir reglas -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="bs-example-modal-lg-reglas">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bg-black">
+            <div class="row m-0 p-0">
+                <div class="col-12 m-0 p-0">
+                    <div class="row m-2 p-0 background-gg text-white justify-content-between">
+                        <div class="col-12 m-0 my-3 p-0 text-center">
+                            <p class="my-0 h5">Reglas</p>
+                        </div>
+                        <div class="col-12 p-0 text-start">
+                            <p class="m-0 p-3">{{reglas}}</p>
+                        </div>
+
+                        <div class="col-12 m-0 my-3 p-0 text-center">
+                            <button type="button" class="btn btn-secondary w-25 mx-2" id="btn-closeCrear"
+                                data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin cerrar reglas -->

@@ -17,6 +17,7 @@ export class PerfilPersonalComponent implements OnInit {
   modifyUsername: number
   modifyPassword: number
   modifyDescription: number
+  modifyValorant: number
   error: string
 
   nombre: string
@@ -26,12 +27,14 @@ export class PerfilPersonalComponent implements OnInit {
   username: string
   password: string
   description: string
+  valorant: string
 
   // Formularios
   emailForm: FormGroup
   passwordForm: FormGroup
   usernameForm: FormGroup
   descriptionForm: FormGroup
+  valorantForm: FormGroup
 
   constructor(private formBuilder: FormBuilder, private router: Router, public user: UserService) {
 
@@ -42,13 +45,14 @@ export class PerfilPersonalComponent implements OnInit {
     this.username = this.user.nombreUsuario
     this.password = this.user.password
     this.description = this.user.descripcion
+    this.valorant = this.user.valorant
 
     this.emailForm = this.formBuilder.group({
       email: [user.email, [Validators.email, Validators.required]]
     })
 
     this.passwordForm = this.formBuilder.group({
-      password: [user.password, [Validators.required]]
+      password: ['', [Validators.required]]
     })
 
     this.usernameForm = this.formBuilder.group({
@@ -57,6 +61,10 @@ export class PerfilPersonalComponent implements OnInit {
 
     this.descriptionForm = this.formBuilder.group({
       description: [user.descripcion, [Validators.required]]
+    })
+
+    this.valorantForm = this.formBuilder.group({
+      valorant: [user.valorant, [Validators.required]]
     })
 
   }
@@ -115,6 +123,42 @@ export class PerfilPersonalComponent implements OnInit {
     document.getElementById('cancelDescription').classList.add('d-none')
     document.getElementById('applyDescription').classList.add('d-none')
     document.getElementById('description').classList.add('d-none')
+  }
+
+  // Editar Valorant
+  editValorant = () => {
+    document.getElementById('originalValorant').classList.add('d-none')
+    document.getElementById('cancelValorant').classList.remove('d-none')
+    document.getElementById('applyValorant').classList.remove('d-none')
+    document.getElementById('valorant').classList.remove('d-none')
+  }
+
+  cancelValorant = () => {
+    document.getElementById('originalValorant').classList.remove('d-none')
+    document.getElementById('cancelValorant').classList.add('d-none')
+    document.getElementById('applyValorant').classList.add('d-none')
+    document.getElementById('valorant').classList.add('d-none')
+  }
+
+  guardarValorant = () => {
+    let datos = this.valorantForm.value
+    const user = {
+      id: this.user.id,
+      valorant: datos.valorant
+    }
+
+    this.user.editarValorant(user).subscribe(
+      (response) => {
+        this.valorant = user.valorant
+        this.modifyValorant = 1
+        this.cancelValorant()
+
+      },
+      (error) => {
+        this.modifyValorant = 2
+        this.error = 'Error al modificar.'
+      }
+    )
   }
 
   // Llamada a la API para guardar el Email

@@ -21,6 +21,7 @@ export class UserService {
   nombreUsuario: string
   access_token: any
   descripcion: string
+  valorant: string
   pais: string
   estado: number
   verificado: number
@@ -121,6 +122,18 @@ export class UserService {
     return this.http.post(url, user, extra);
   }
 
+  editarValorant = (user: any) => {
+    const url = environment.url_api + 'editValorant';
+    const extra = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization' : 'Bearer ' + sessionStorage.getItem(UserService.SESSION_STORAGE_TOKEN),
+      }),
+    };
+    return this.http.post(url, user, extra);
+  }
+
   set = (response: any) => {
     console.log(response);
     if (sessionStorage.getItem(UserService.SESSION_STORAGE_USER)) {
@@ -137,6 +150,7 @@ export class UserService {
       if (!response.hasOwnProperty('estado')) response.estado = user.estado;
       if (!response.hasOwnProperty('verificado')) response.verificado = user.verificado;
       if (!response.hasOwnProperty('descripcion')) response.descripcion = user.descripcion;
+      if (!response.hasOwnProperty('valorant')) response.valorant = user.valorant;
     }
 
     this.id = response.id;
@@ -151,6 +165,7 @@ export class UserService {
     this.estado = response.estado;
     this.verificado = response.verificado;
     this.descripcion = response.descripcion;
+    this.valorant = response.valorant
     this.rol = response.rol;
     this.isLoged= true
     if (response.hasOwnProperty('access_token')) {
