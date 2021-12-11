@@ -105,7 +105,7 @@
 </main>
 
 <!-- Bracket de 3 fases -->
-<main id="tournament" *ngIf="encuentros.length == 3">
+<main id="tournament" *ngIf="encuentros.length == 3 && user.isLoged" class="p-4 d-flex justify-content-center">
     <ul class="round round-2">
 
         <ng-container *ngFor="let encuentro of ronda1['encuentros']; index as i">
@@ -113,29 +113,29 @@
 
             <li class="game game-top winner" *ngIf="ronda1['tipo'] == 'BO3' && encuentro['resultado_equipo1'] == 2">{{encuentro['nombre_equipo1']}}</li>
             <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO3' && encuentro['resultado_equipo1'] < 2 && user.rol == 3">{{encuentro['nombre_equipo1']}}</li>
-            <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO3' && encuentro['resultado_equipo1'] == 1 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo1']}}<span><button class="btn border text-white" (click)="pasarFase(encuentro['id_equipo1'],ronda2['num_fase'])">Pasa</button></span></li>
+            <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO3' && encuentro['resultado_equipo1'] == 1 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo1']}}<span><button class="btn btn-light" (click)="pasarFase(encuentro['id_equipo1'],ronda2['num_fase'])">Pasa</button></span></li>
 
             <li class="game game-top winner" *ngIf="ronda1['tipo'] == 'BO1' && encuentro['resultado_equipo1'] == 1">{{encuentro['nombre_equipo1']}}</li>
             <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO1' && encuentro['resultado_equipo1'] == 0 && user.rol == 3">{{encuentro['nombre_equipo1']}}</li>
-            <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO1' && encuentro['resultado_equipo1'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo1']}}<span><button class="btn border text-white" (click)="pasarFase(encuentro['id_equipo1'],ronda2['num_fase'])">Pasa</button></span></li>
+            <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO1' && encuentro['resultado_equipo1'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo1']}}<span><button class="btn btn-light" (click)="pasarFase(encuentro['id_equipo1'],ronda2['num_fase'])">Pasa</button></span></li>
 
             <li class="game game-top winner" *ngIf="ronda1['tipo'] == 'BO5' && encuentro['resultado_equipo1'] == 3">{{encuentro['nombre_equipo1']}}</li>
             <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO5' && encuentro['resultado_equipo1'] < 3 && user.rol == 3">{{encuentro['nombre_equipo1']}}</li>
-            <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO3' && encuentro['resultado_equipo1'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo1']}}<span><button class="btn border text-white" (click)="pasarFase(encuentro['id_equipo1'],ronda2['num_fase'])">Pasa</button></span></li>
+            <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO3' && encuentro['resultado_equipo1'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo1']}}<span><button class="btn btn-light" (click)="pasarFase(encuentro['id_equipo1'],ronda2['num_fase'])">Pasa</button></span></li>
 
             <li class="game game-spacer">&nbsp;</li>
 
             <li class="game game-top winner" *ngIf="ronda1['tipo'] == 'BO3' && encuentro['resultado_equipo2'] == 2">{{encuentro['nombre_equipo2']}}</li>
             <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO3' && encuentro['resultado_equipo2'] < 2 && user.rol == 3">{{encuentro['nombre_equipo2']}}</li>
-            <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO3' && encuentro['resultado_equipo2'] == 1 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo2']}}<span><button class="btn border text-white" (click)="pasarFase(encuentro['id_equipo2'],ronda2['num_fase'])">Pasa</button></span></li>
+            <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO3' && encuentro['resultado_equipo2'] == 1 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo2']}}<span><button class="btn btn-light" (click)="pasarFase(encuentro['id_equipo2'],ronda2['num_fase'])">Pasa</button></span></li>
 
             <li class="game game-top winner" *ngIf="ronda1['tipo'] == 'BO1' && encuentro['resultado_equipo2'] == 1">{{encuentro['nombre_equipo2']}}</li>
             <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO1' && encuentro['resultado_equipo2'] == 0 && user.rol == 3">{{encuentro['nombre_equipo2']}}</li>
-            <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO1' && encuentro['resultado_equipo2'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo2']}}<span><button class="btn border text-white" (click)="pasarFase(encuentro['id_equipo2'],ronda2['num_fase'])">Pasa</button></span></li>
+            <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO1' && encuentro['resultado_equipo2'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo2']}}<span><button class="btn btn-light" (click)="pasarFase(encuentro['id_equipo2'],ronda2['num_fase'])">Pasa</button></span></li>
 
             <li class="game game-top winner" *ngIf="ronda1['tipo'] == 'BO5' && encuentro['resultado_equipo2'] == 3">{{encuentro['nombre_equipo2']}}</li>
             <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO5' && encuentro['resultado_equipo2'] < 3 && user.rol == 3">{{encuentro['nombre_equipo2']}}</li>
-            <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO3' && encuentro['resultado_equipo2'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo2']}}<span><button class="btn border text-white" (click)="pasarFase(encuentro['id_equipo2'],ronda2['num_fase'])">Pasa</button></span></li>
+            <li class="game game-top" *ngIf="ronda1['tipo'] == 'BO3' && encuentro['resultado_equipo2'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo2']}}<span><button class="btn btn-light" (click)="pasarFase(encuentro['id_equipo2'],ronda2['num_fase'])">Pasa</button></span></li>
 
             <li class="spacer">&nbsp;</li>
         </ng-container>
@@ -146,29 +146,29 @@
             
             <li class="game game-top winner" *ngIf="ronda2['tipo'] == 'BO3' && encuentro['resultado_equipo1'] == 2">{{encuentro['nombre_equipo1']}}</li>
             <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO3' && encuentro['resultado_equipo1'] < 1 && user.rol == 3">{{encuentro['nombre_equipo1']}}</li>
-            <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO3' && encuentro['resultado_equipo1'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo1']}}<span><button class="btn border text-white" (click)="pasarFase(encuentro['id_equipo1'],ronda3['num_fase'])">Pasa</button></span></li>
+            <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO3' && encuentro['resultado_equipo1'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo1']}}<span><button class="btn btn-light" (click)="pasarFase(encuentro['id_equipo1'],ronda3['num_fase'])">Pasa</button></span></li>
 
             <li class="game game-top winner" *ngIf="ronda2['tipo'] == 'BO1' && encuentro['resultado_equipo1'] == 1">{{encuentro['nombre_equipo1']}}</li>
             <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO1' && encuentro['resultado_equipo1'] == 0 && user.rol == 3">{{encuentro['nombre_equipo1']}}</li>
-            <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO1' && encuentro['resultado_equipo1'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo1']}}<span><button class="btn border text-white" (click)="pasarFase(encuentro['id_equipo1'],ronda3['num_fase'])">Pasa</button></span></li>
+            <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO1' && encuentro['resultado_equipo1'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo1']}}<span><button class="btn btn-light" (click)="pasarFase(encuentro['id_equipo1'],ronda3['num_fase'])">Pasa</button></span></li>
 
             <li class="game game-top winner" *ngIf="ronda2['tipo'] == 'BO5' && encuentro['resultado_equipo1'] == 3">{{encuentro['nombre_equipo1']}}</li>
             <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO5' && encuentro['resultado_equipo1'] < 3 && user.rol == 3">{{encuentro['nombre_equipo1']}}</li>
-            <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO5' && encuentro['resultado_equipo1'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo1']}}<span><button class="btn border text-white" (click)="pasarFase(encuentro['id_equipo1'],ronda3['num_fase'])">Pasa</button></span></li>
+            <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO5' && encuentro['resultado_equipo1'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo1']}}<span><button class="btn btn-light" (click)="pasarFase(encuentro['id_equipo1'],ronda3['num_fase'])">Pasa</button></span></li>
 
             <li class="game game-spacer">&nbsp;</li>
 
             <li class="game game-top winner" *ngIf="ronda2['tipo'] == 'BO3' && encuentro['resultado_equipo2'] == 2">{{encuentro['nombre_equipo2']}}</li>
             <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO3' && encuentro['resultado_equipo2'] < 1 && user.rol == 3">{{encuentro['nombre_equipo2']}}</li>
-            <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO3' && encuentro['resultado_equipo2'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo2']}}<span><button class="btn border text-white" (click)="pasarFase(encuentro['id_equipo2'],ronda3['num_fase'])">Pasa</button></span></li>
+            <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO3' && encuentro['resultado_equipo2'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo2']}}<span><button class="btn btn-light" (click)="pasarFase(encuentro['id_equipo2'],ronda3['num_fase'])">Pasa</button></span></li>
 
             <li class="game game-top winner" *ngIf="ronda2['tipo'] == 'BO1' && encuentro['resultado_equipo2'] == 1">{{encuentro['nombre_equipo2']}}</li>
             <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO1' && encuentro['resultado_equipo2'] == 0 && user.rol == 3">{{encuentro['nombre_equipo2']}}</li>
-            <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO1' && encuentro['resultado_equipo2'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo2']}}<span><button class="btn border text-white" (click)="pasarFase(encuentro['id_equipo2'],ronda3['num_fase'])">Pasa</button></span></li>
+            <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO1' && encuentro['resultado_equipo2'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo2']}}<span><button class="btn btn-light" (click)="pasarFase(encuentro['id_equipo2'],ronda3['num_fase'])">Pasa</button></span></li>
 
             <li class="game game-top winner" *ngIf="ronda2['tipo'] == 'BO5' && encuentro['resultado_equipo2'] == 3">{{encuentro['nombre_equipo2']}}</li>
             <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO5' && encuentro['resultado_equipo2'] < 3 && user.rol == 3">{{encuentro['nombre_equipo2']}}</li>
-            <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO5' && encuentro['resultado_equipo2'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo2']}}<span><button class="btn border text-white" (click)="pasarFase(encuentro['id_equipo2'],ronda3['num_fase'])">Pasa</button></span></li>
+            <li class="game game-top" *ngIf="ronda2['tipo'] == 'BO5' && encuentro['resultado_equipo2'] == 0 && user.rol == 1 || user.rol == 2">{{encuentro['nombre_equipo2']}}<span><button class="btn btn-light" (click)="pasarFase(encuentro['id_equipo2'],ronda3['num_fase'])">Pasa</button></span></li>
 
             <li class="spacer">&nbsp;</li>
         </ng-container>
@@ -206,4 +206,8 @@
             <li class="spacer">&nbsp;</li>
         </ng-container>
     </ul>
+</main>
+
+<main *ngIf="!user.isLoged" class="p-4 d-flex justify-content-center">
+    <h6 class="my-3 fw-bold">Necesitas iniciar sesion para ver el Bracket</h6>
 </main>

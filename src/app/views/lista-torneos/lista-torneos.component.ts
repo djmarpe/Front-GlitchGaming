@@ -18,6 +18,8 @@ export class ListaTorneosComponent implements OnInit {
   loading2: boolean
   loading3: boolean
   loading4: number
+  loading5: boolean
+  loading6: boolean
 
   idTorneo: number
   idJuego: number
@@ -111,6 +113,7 @@ export class ListaTorneosComponent implements OnInit {
       this.torneoService.getTorneosProgramados(idJuego).subscribe(
         (response) => {
           this.loading3 = false
+          this.loading6 = false
           this.torneosProgramados = response['torneosProgramados']
         }
       )
@@ -135,7 +138,7 @@ export class ListaTorneosComponent implements OnInit {
   }
 
   inscribirse = () => {
-    console.log('El torneo que se muestra es el: ' + this.idTorneo);
+    // console.log('El torneo que se muestra es el: ' + this.idTorneo);
 
     this.miEquipo = undefined
     this.equipos = undefined
@@ -146,6 +149,7 @@ export class ListaTorneosComponent implements OnInit {
       idTorneo: this.idTorneo
     }
 
+    this.loading5 = true
     this.torneoService.getFullTeam(params).subscribe(
       (response) => {
 
@@ -172,6 +176,7 @@ export class ListaTorneosComponent implements OnInit {
 
     this.torneoService.es1vs1(param).subscribe(
       (response) => {
+        this.loading5 = false
         this.es1vs1 = response['es1vs1']
       }
     )
@@ -767,7 +772,7 @@ export class ListaTorneosComponent implements OnInit {
     const params = {
       id: idTorneo
     }
-
+    this.loading6 = true
     this.torneoService.comenzarTorneo(params).subscribe(
       (response) => {
         this.getTorneos()

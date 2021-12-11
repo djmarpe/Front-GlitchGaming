@@ -4,9 +4,45 @@
 <div style="min-height: calc(100vh - 60px) !important;">
 
 
-    <div class="row m-0 p-0">
+    <div *ngIf="idJuego == 2" class="row m-0 p-0" id="fondoLol">
         <div class="col-12 my-4 p-0">
-            <h2 class="separator-title font-Ethnocentric">{{juego}}</h2>
+            <h2 id="nombreJuego" class="separator-title font-Ethnocentric">{{juego}}</h2>
+        </div>
+    </div>
+
+    <div *ngIf="idJuego == 1" class="row m-0 p-0" id="fondoValorant">
+        <div class="col-12 my-4 p-0">
+            <h2 id="nombreJuego" class="separator-title font-Ethnocentric">{{juego}}</h2>
+        </div>
+    </div>
+
+    <div *ngIf="idJuego == 3" class="row m-0 p-0" id="fondoCSGO">
+        <div class="col-12 my-4 p-0">
+            <h2 id="nombreJuego" class="separator-title font-Ethnocentric">{{juego}}</h2>
+        </div>
+    </div>
+
+    <div *ngIf="idJuego == 4" class="row m-0 p-0" id="fondoFH5">
+        <div class="col-12 my-4 p-0">
+            <h2 id="nombreJuego" class="separator-title font-Ethnocentric">{{juego}}</h2>
+        </div>
+    </div>
+
+    <div *ngIf="idJuego == 5" class="row m-0 p-0" id="fondoF12021">
+        <div class="col-12 my-4 p-0">
+            <h2 id="nombreJuego" class="separator-title font-Ethnocentric">{{juego}}</h2>
+        </div>
+    </div>
+
+    <div *ngIf="idJuego == 6" class="row m-0 p-0" id="fondoFIFA22">
+        <div class="col-12 my-4 p-0">
+            <h2 id="nombreJuego" class="separator-title font-Ethnocentric">{{juego}}</h2>
+        </div>
+    </div>
+
+    <div *ngIf="idJuego == 7" class="row m-0 p-0" id="fondoRocketLeague">
+        <div class="col-12 my-4 p-0">
+            <h2 id="nombreJuego" class="separator-title font-Ethnocentric">{{juego}}</h2>
         </div>
     </div>
 
@@ -14,7 +50,7 @@
         <div class="col-12 col-sm-7 m-0 p-0">
             <div class="row m-0 p-0 text-center" *ngIf="user.rol == 1 || user.rol == 2">
                 <div class="col-12 my-4 p-0">
-                    <button class="btn btn-secondary w-50" data-bs-toggle="modal"
+                    <button class="btn btn-light fw-bold w-50" data-bs-toggle="modal"
                         data-bs-target="#bs-example-modal-md-crear" (click)="obtenerDatosCrearTorneo()">Crear nuevo
                         torneo</button>
                 </div>
@@ -28,18 +64,30 @@
                 <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
             </div>
 
-            <div *ngIf="!loading1" class="row m-0 p-0 justify-content-between">
+            <div *ngIf="!loading1" class="row m-0 p-0 justify-content-center">
                 <div *ngFor="let torneoEnCurso of torneosEnCurso; index as i"
-                    class="col-12 col-sm-4 col-md-3 m-0 my-2 p-0 p-4 bg-black text-center">
-                    <h6 class="my-2 text-center"><b>{{torneoEnCurso.nombre}}</b></h6>
-                    <small class="d-block text-center h5 my-4">{{torneoEnCurso.premio}}</small>
-                    <small class="d-block my-2">Participantes:
-                        <b>{{torneoEnCurso.participantes}}/{{torneoEnCurso.max_players}}</b></small>
-                    <small class="d-block my-2">Inscripcion hasta:
-                        <b>{{torneoEnCurso.dia_fin}}/{{torneoEnCurso.mes_fin}}/{{torneoEnCurso.anio_fin}}</b></small>
-                    <button class="btn btn-secondary" (click)="verDetalles(torneoEnCurso.id)">Ver detalles</button>
+                    class="col-12 col-sm-4 col-md-3 m-3 my-2 p-0 p-4 bg-secondary text-white text-center main rounded">
+                    <div class="col-12 row m-0 p-0">
+                        <h6 class="my-2 text-center"><b>{{torneoEnCurso.nombre}}</b></h6>
+                    </div>
+                    <div class="col-12 row m-0 p-0">
+                        <small class="d-block text-center h5 my-4">{{torneoEnCurso.premio}}</small>
+                    </div>
+
+                    <div class="col-12 row m-0 mb-4 my-2 p-0">
+                        <small class="d-block my-2">Participantes:
+                            <b>{{torneoEnCurso.participantes}}/{{torneoEnCurso.max_players}}</b></small>
+                        <small class="d-block my-2">Inscripcion hasta:
+                            <b>{{torneoEnCurso.dia_fin}}/{{torneoEnCurso.mes_fin}}/{{torneoEnCurso.anio_fin}}</b></small>
+                    </div>
+
+                    <div class="row col-12 m-0 p-0 inside">
+                        <button class="btn btn-light fw-bold" (click)="verDetalles(torneoEnCurso.id)">Ver
+                            detalles</button>
+                    </div>
                 </div>
-                <div *ngIf="torneosEnCurso.length < 1" class="col-12 m-0 my-2 p-0 p-4 bg-black text-center">
+                <div *ngIf="torneosEnCurso.length < 1"
+                    class="col-12 col-md-11 m-0 my-2 p-0 p-4 bg-secondary text-white text-center rounded">
                     <h6 class="m-0">No hay torneos en curso actualmente</h6>
                 </div>
             </div>
@@ -54,18 +102,31 @@
                 <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
             </div>
 
-            <div *ngIf="!loading2" class="row m-0 p-0 justify-content-between">
+            <div *ngIf="!loading2" class="row m-0 p-0 justify-content-center">
                 <div *ngFor="let torneoProgramado of torneosProgramados; index as i"
-                    class="col-12 col-sm-4 col-md-3 m-0 my-2 p-0 p-4 bg-black text-center">
-                    <h6 class="my-2 text-center"><b>{{torneoProgramado.nombre}}</b></h6>
-                    <small class="d-block text-center h5 my-4">{{torneoProgramado.premio}}</small>
-                    <small class="d-block my-2">Participantes:
-                        <b>{{torneoProgramado.participantes}}/{{torneoProgramado.max_players}}</b></small>
-                    <small class="d-block my-2">Inscripcion hasta:
-                        <b>{{torneoProgramado.dia_fin}}/{{torneoProgramado.mes_fin}}/{{torneoProgramado.anio_fin}}</b></small>
-                    <button class="btn btn-secondary" (click)="verDetalles(torneoProgramado.id)">Ver detalles</button>
+                    class="col-12 col-sm-4 col-md-3 m-3 my-2 p-0 p-4 bg-secondary text-white text-center main rounded">
+                    <div class="col-12 row m-0 p-0">
+                        <h6 class="my-2 text-center"><b>{{torneoProgramado.nombre}}</b></h6>
+                    </div>
+                    <div class="col-12 row m-0 p-0">
+                        <small class="d-block text-center h5 my-4">{{torneoProgramado.premio}}</small>
+                    </div>
+
+                    <div class="col-12 row m-0 mb-4 my-2 p-0">
+                        <small class="d-block my-2">Participantes:
+                            <b>{{torneoProgramado.participantes}}/{{torneoProgramado.max_players}}</b></small>
+                        <small class="d-block my-2">Inscripcion hasta:
+                            <b>{{torneoProgramado.dia_fin}}/{{torneoProgramado.mes_fin}}/{{torneoProgramado.anio_fin}}</b></small>
+                    </div>
+
+                    <div class="row col-12 m-0 p-0 inside">
+                        <button class="btn btn-light fw-bold" (click)="verDetalles(torneoProgramado.id)">Ver
+                            detalles</button>
+                    </div>
                 </div>
-                <div *ngIf="torneosProgramados.length < 1" class="col-12 m-0 my-2 p-0 p-4 bg-black text-center">
+
+                <div *ngIf="torneosProgramados.length < 1"
+                    class="col-12 col-md-11 m-0 my-2 p-0 p-4 bg-secondary text-white text-center rounded">
                     <h6 class="m-0">No hay torneos programados actualmente</h6>
                 </div>
             </div>
@@ -80,18 +141,30 @@
                 <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
             </div>
 
-            <div *ngIf="!loading3" class="row m-0 p-0 justify-content-between">
+            <div *ngIf="!loading3" class="row m-0 p-0 justify-content-center">
                 <div *ngFor="let torneoFinalizado of torneosFinalizados; index as i"
-                    class="col-12 col-sm-4 col-md-3 m-0 my-2 p-0 p-4 bg-black text-center">
-                    <h6 class="my-2 text-center"><b>{{torneoFinalizado.nombre}}</b></h6>
-                    <small class="d-block text-center h5 my-4">{{torneoFinalizado.premio}}</small>
-                    <small class="d-block my-2">Participantes:
-                        <b>{{torneoFinalizado.participantes}}/{{torneoFinalizado.max_players}}</b></small>
-                    <small class="d-block my-2">Inscripcion hasta:
-                        <b>{{torneoFinalizado.dia_fin}}/{{torneoFinalizado.mes_fin}}/{{torneoFinalizado.anio_fin}}</b></small>
-                    <button class="btn btn-secondary" (click)="verDetalles(torneoFinalizado.id)">Ver detalles</button>
+                    class="col-12 col-sm-4 col-md-3 m-3 my-2 p-0 p-4 bg-secondary text-white text-center main rounded">
+                    <div class="col-12 row m-0 p-0">
+                        <h6 class="my-2 text-center"><b>{{torneoFinalizado.nombre}}</b></h6>
+                    </div>
+                    <div class="col-12 row m-0 p-0">
+                        <small class="d-block text-center h5 my-4">{{torneoFinalizado.premio}}</small>
+                    </div>
+
+                    <div class="col-12 row m-0 mb-4 my-2 p-0">
+                        <small class="d-block my-2">Participantes:
+                            <b>{{torneoFinalizado.participantes}}/{{torneoFinalizado.max_players}}</b></small>
+                        <small class="d-block my-2">Inscripcion hasta:
+                            <b>{{torneoFinalizado.dia_fin}}/{{torneoFinalizado.mes_fin}}/{{torneoFinalizado.anio_fin}}</b></small>
+                    </div>
+
+                    <div class="row col-12 m-0 p-0 inside">
+                        <button class="btn btn-light fw-bold" (click)="verDetalles(torneoFinalizado.id)">Ver
+                            detalles</button>
+                    </div>
                 </div>
-                <div *ngIf="torneosFinalizados.length < 1" class="col-12 m-0 my-2 p-0 p-4 bg-black text-center">
+                <div *ngIf="torneosFinalizados.length < 1"
+                    class="col-12 col-md-11 m-0 my-2 p-0 p-4 bg-secondary text-white text-center rounded">
                     <h6 class="m-0">No hay torneos finalizados actualmente</h6>
                 </div>
             </div>
@@ -109,21 +182,22 @@
                 <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
             </div>
             <div *ngIf="loading4 == 0" class="row m-0 p-0 justify-content-center">
-                <div class="col-11 m-0 my-2 p-0 p-4 bg-black text-center">
+                <div class="col-11 m-0 my-2 p-0 p-4 pb-0 bg-secondary text-white text-center main rounded">
                     <div class="row col-12 m-0 p-0">
                         <h3 class="my-2 text-center"><b>{{torneoDetalle.nombre}}</b></h3>
                     </div>
 
-                    <div class="row m-0 my-4 p-0 justify-content-between">
+                    <div class="row m-0 my-4 p-0 justify-content-center">
                         <div class="col-4 m-0 p-0" *ngIf="torneoDetalle.estado != 0">
-                            <button class="btn btn-secondary" data-bs-toggle="modal"
-                                data-bs-target="#bs-example-modal-lg-bracket" (click)="verFases(torneoDetalle.id)">Brackets</button>
+                            <button class="btn btn-light fw-bold" data-bs-toggle="modal"
+                                data-bs-target="#bs-example-modal-lg-bracket"
+                                (click)="verFases(torneoDetalle.id)">Brackets</button>
                         </div>
                         <!-- <div class="col-4 m-0 p-0">
                             <button class="btn btn-secondary">Participantes</button>
                         </div> -->
                         <div class="col-4 m-0 p-0">
-                            <button class="btn btn-secondary" data-bs-toggle="modal"
+                            <button class="btn btn-light fw-bold" data-bs-toggle="modal"
                                 data-bs-target="#bs-example-modal-lg-reglas"
                                 (click)="cargarReglas(torneoDetalle.id)">Reglas</button>
                         </div>
@@ -172,19 +246,26 @@
                     </div>
 
                     <div class="row m-0 my-4 p-0 justify-content-center" *ngIf="user.rol == 1 || user.rol == 2">
-                        <div class="col-8 m-0 p-0 px-1 text-center" *ngIf="torneoDetalle.participantes == torneoDetalle.max_players && torneoDetalle.estado == 0">
-                            <button class="btn btn-secondary w-50" (click)="comenzarTorneo(torneoDetalle.id)">Comenzar</button>
+                        <div class="col-8 m-0 p-0 px-1 text-center"
+                            *ngIf="torneoDetalle.participantes == torneoDetalle.max_players && torneoDetalle.estado == 0">
+                            <button *ngIf="!loading6" class="btn btn-light fw-bold w-75"
+                                (click)="comenzarTorneo(torneoDetalle.id)">Comenzar</button>
+                            <img *ngIf="loading6" src="../../../assets/gif/loading.gif" class="img-fluid size-25">
+
                         </div>
                         <div class="col-8 m-0 p-0 px-1" *ngIf="torneoDetalle.estado == 1">
-                            <button class="btn btn-secondary w-50" (click)="finalizarTorneo(torneoDetalle.id)">Finalizar</button>
+                            <button class="btn btn-light fw-bold w-75"
+                                (click)="finalizarTorneo(torneoDetalle.id)">Finalizar</button>
                         </div>
                     </div>
 
                     <div class="row col-12 m-0 my-4 p-0 justify-content-center">
-                        <button *ngIf="torneoDetalle.estado == 0 && token != null && torneoDetalle.participantes < torneoDetalle.max_players" class="btn btn-secondary w-50"
-                            data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg-inscribirse"
+                        <button
+                            *ngIf="torneoDetalle.estado == 0 && token != null && torneoDetalle.participantes < torneoDetalle.max_players"
+                            class="btn btn-light fw-bold w-75" data-bs-toggle="modal"
+                            data-bs-target="#bs-example-modal-lg-inscribirse"
                             (click)="inscribirse()">Inscribirse</button>
-                        <button *ngIf="torneoDetalle.estado == 0 && token == null" class="btn btn-secondary w-50"
+                        <button *ngIf="torneoDetalle.estado == 0 && token == null" class="btn btn-light fw-bold w-50"
                             routerLink="/login">Iniciar sesion</button>
                     </div>
                 </div>
@@ -194,12 +275,15 @@
 </div>
 
 <!-- Modal Bracket -->
-
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     id="bs-example-modal-lg-bracket">
     <div class="modal-dialog modal-xl">
-        <div class="modal-content bg-black">
+        <div class="modal-content bg-secondary">
             <app-bracket></app-bracket>
+            <div class="row col-12 m-0 my-2 p-0 justify-content-center">
+                <button type="button" class="btn btn-light fw-bold w-25" id="btn-closeBracket"
+                    data-bs-dismiss="modal">Cerrar</button>
+            </div>
         </div>
     </div>
 </div>
@@ -209,7 +293,10 @@
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     id="bs-example-modal-lg-inscribirse">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-black">
+        <div *ngIf="loading5" class="m-0 p-0 text-center">
+            <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
+        </div>
+        <div *ngIf="!loading5" class="modal-content bg-black">
             <div class="row m-0 p-0" *ngIf="miEquipo != undefined">
                 <div class="col-12 m-0 p-0">
                     <div class="row m-2 p-0 text-center background-gg text-white">
@@ -292,11 +379,10 @@
 <!-- Modal crear torneo -->
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="bs-example-modal-md-crear">
     <div class="modal-dialog modal-md">
-        <div class="modal-content bg-black">
+        <div class="modal-content bg-secondary">
             <div class="row m-0 p-0">
                 <div class="col-12 m-0 p-0">
-                    <form [formGroup]="formularioCrearTorneo"
-                        class="row m-2 p-0 background-gg text-white justify-content-between">
+                    <form [formGroup]="formularioCrearTorneo" class="row m-2 p-0 text-white justify-content-between">
                         <div class="col-12 m-0 my-3 p-0 text-center">
                             <p class="my-0 h5">Crea un torneo de:&nbsp;{{juego}}</p>
                         </div>
@@ -375,8 +461,9 @@
                         </div>
 
                         <div class="col-12 m-0 my-3 p-0 text-center">
-                            <button class="btn btn-secondary w-25 mx-2" (click)="crearTorneo()">Crear torneo</button>
-                            <button type="button" class="btn btn-secondary w-25 mx-2" id="btn-closeCrear"
+                            <button class="btn btn-light fw-bold w-25 mx-2" (click)="crearTorneo()">Crear
+                                torneo</button>
+                            <button type="button" class="btn btn-light text-muted w-25 mx-2" id="btn-closeCrear"
                                 data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </form>
@@ -388,21 +475,22 @@
 <!-- Fin Modal crear -->
 
 <!-- Modal abrir reglas -->
+
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="bs-example-modal-lg-reglas">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-black">
+        <div class="modal-content bg-secondary">
             <div class="row m-0 p-0">
                 <div class="col-12 m-0 p-0">
-                    <div class="row m-2 p-0 background-gg text-white justify-content-between">
+                    <div class="row m-2 p-0 text-white justify-content-between">
                         <div class="col-12 m-0 my-3 p-0 text-center">
-                            <p class="my-0 h5">Reglas</p>
+                            <p class="my-0 h5 fw-bold">Reglas</p>
                         </div>
                         <div class="col-12 p-0 text-start">
                             <p class="m-0 p-3">{{reglas}}</p>
                         </div>
 
                         <div class="col-12 m-0 my-3 p-0 text-center">
-                            <button type="button" class="btn btn-secondary w-25 mx-2" id="btn-closeCrear"
+                            <button type="button" class="btn btn-light fw-bold w-25 mx-2" id="btn-closeCrear"
                                 data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
