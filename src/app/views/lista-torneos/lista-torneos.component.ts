@@ -78,6 +78,7 @@ export class ListaTorneosComponent implements OnInit {
     this.idJuego = this.torneoService.idJuego
     this.getTorneos()
     this.torneoDetalle = null
+    this.torneoGeneradoError = false
   }
 
   getTorneos = () => {
