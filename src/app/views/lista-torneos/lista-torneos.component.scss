@@ -27,4 +27,122 @@
 .size-25 {
     width: 25px !important;
 }
+.inside {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.main {
+    position: relative;
+}
 
+#fondoValorant {
+    background-image: url(../../../assets/img/juegos/valorant.jpg);
+    background-position: center center;
+    position: relative;
+}
+#fondoLol {
+    background-image: url(../../../assets/img/juegos/lol.jpg);
+    background-position: center center;
+    position: relative;
+}
+#fondoCSGO {
+    background-image: url(../../../assets/img/juegos/csgo.jpg);
+    background-position: center center;
+    position: relative;
+}
+#fondoFH5 {
+    background-image: url(../../../assets/img/juegos/fh5.jpg);
+    background-position: center center;
+    position: relative;
+}
+#fondoF12021 {
+    background-image: url(../../../assets/img/juegos/f1-2021.webp);
+    background-position: center center;
+    position: relative;
+}
+#fondoFIFA22 {
+    background-image: url(../../../assets/img/juegos/fifa22.jpg);
+    background-position: center center;
+    position: relative;
+}
+#fondoRocketLeague {
+    background-image: url(../../../assets/img/juegos/rocket-league.jpg);
+    background-position: center center;
+    position: relative;
+}
+
+#nombreJuego {
+    position: relative;
+}
+
+#fondoValorant:before{
+    content:'';
+    position: absolute;
+    background-color: #000;
+    opacity: 0.8;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}
+#fondoLol:before{
+    content:'';
+    position: absolute;
+    background-color: #000;
+    opacity: 0.8;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}
+#fondoCSGO:before{
+    content:'';
+    position: absolute;
+    background-color: #000;
+    opacity: 0.8;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}
+#fondoFH5:before{
+    content:'';
+    position: absolute;
+    background-color: #000;
+    opacity: 0.8;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}
+#fondoF12021:before{
+    content:'';
+    position: absolute;
+    background-color: #000;
+    opacity: 0.8;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}
+#fondoFIFA22:before{
+    content:'';
+    position: absolute;
+    background-color: #000;
+    opacity: 0.8;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}
+#fondoRocketLeague:before{
+    content:'';
+    position: absolute;
+    background-color: #000;
+    opacity: 0.8;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}

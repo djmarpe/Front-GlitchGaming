@@ -312,8 +312,20 @@
           </div>
         </div>
 
-        <div class="py-2 text-center">
-          <button class="btn btn-enviar w-25" [disabled]=homeContact.invalid>Enviar</button>
+        <div *ngIf="loading2" class="py-2 text-center">
+          <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
+        </div>
+
+        <div *ngIf="!loading2" class="py-2 text-center">
+          <button class="btn btn-light fw-bold w-25" [disabled]=homeContact.invalid>Enviar</button>
+        </div>
+
+        <div *ngIf="mensajeEnviado == 1" class="py-2 text-center">
+          <p class="alert-success">Mensaje enviado</p>
+        </div>
+
+        <div *ngIf="mensajeEnviado == 2" class="py-2 text-center">
+          <p class="alert-danger">Error al enviar el mensaje</p>
         </div>
       </form>
     </div>
@@ -331,7 +343,7 @@
             placeholder="GG TheCharlesD#ESP">
         </div>
         <div class="py-2 text-center">
-          <button class="btn btn-enviar w-25" [disabled]=playerStatsForm.invalid>Buscar</button>
+          <button class="btn btn-light fw-bold w-25" [disabled]=playerStatsForm.invalid>Buscar</button>
         </div>
         <div *ngIf="loading1" class="row m-0 p-0 d-flex justify-content-center">
           <div class="col-12 m-0 my-1 p-1 text-center">

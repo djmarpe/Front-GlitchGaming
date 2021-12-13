@@ -48,9 +48,13 @@ export class LoginComponent implements OnInit {
       new_username: ['', [Validators.required]],
       new_password: ['', [Validators.required]],
     });
+
   }
 
   ngOnInit(): void {
+    if (this.user.isLoged) {
+      this.router.navigate(['/home']);
+    }
   }
 
   iniciarSesion = () => {
@@ -65,7 +69,7 @@ export class LoginComponent implements OnInit {
     this.loading1 = true
     this.user.login(user).subscribe(
       (response) => {
-        this.loading1=false
+        this.loading1 = false
         this.user.isLoged = true
         this.user.set(response)
         this.router.navigate(['/home']);
@@ -74,27 +78,27 @@ export class LoginComponent implements OnInit {
 
   }
 
-registrar = () => {
-  let datos = this.registroForm.value
-  
-  const newUser = {
-    nombre: datos.new_name,
-    apellidos: datos.new_surname,
-    diaNacimiento: datos.new_diaNacimiento,
-    mesNacimiento: datos.new_mesNacimiento,
-    anioNacimiento: datos.new_anioNacimiento,
-    email: datos.new_email,
-    nombreUsuario: datos.new_username,
-    password: datos.new_password
-  }
-  
-  this.user.register(newUser).subscribe(
-    (response) => {
-      this.verCorreo = 1
-      this.registroForm.reset()
-    }
-  )
+  registrar = () => {
+    let datos = this.registroForm.value
 
-}
+    const newUser = {
+      nombre: datos.new_name,
+      apellidos: datos.new_surname,
+      diaNacimiento: datos.new_diaNacimiento,
+      mesNacimiento: datos.new_mesNacimiento,
+      anioNacimiento: datos.new_anioNacimiento,
+      email: datos.new_email,
+      nombreUsuario: datos.new_username,
+      password: datos.new_password
+    }
+
+    this.user.register(newUser).subscribe(
+      (response) => {
+        this.verCorreo = 1
+        this.registroForm.reset()
+      }
+    )
+
+  }
 
 }

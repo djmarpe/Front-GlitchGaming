@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   faExclamation = icon.faExclamation;
 
   loading1: boolean
+  loading2: boolean
+  mensajeEnviado: number
 
   inscripciones: number;
 
@@ -51,6 +53,7 @@ export class HomeComponent implements OnInit {
   }
 
   enviarCorreo = () => {
+    this.loading2 = true
     if (this.homeContact.valid) {
       let mailAux = this.homeContact.value
       const mail = {
@@ -62,10 +65,12 @@ export class HomeComponent implements OnInit {
 
       this.mail.enviarCorreo(mail).subscribe(
         (response) => {
-          return true
+          this.loading2 = false
+          this.mensajeEnviado = 1
         },
         (error) => {
-          return false
+          this.loading2 = false
+          this.mensajeEnviado = 2
         }
       )
       this.homeContact.reset();
