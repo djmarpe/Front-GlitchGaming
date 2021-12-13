@@ -4,18 +4,18 @@
 <!-- Modal Borrar usuario -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content background-black">
+        <div class="modal-content bg-secondary">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">¿Eliminar usuario?</h5>
             </div>
             <div class="modal-body">
-                <small *ngIf="userAux !== undefined">¿Estas seguro que deseas eliminar al usuario
+                <small *ngIf="userAux !== undefined">¿Estas seguro que deseas desactivar al usuario
                     <b>{{userAux['nombreUsuario']}}</b>?</small>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                    (click)="deleteUser()">Eliminar</button>
+                <button type="button" class="btn btn-light text-muted" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-light fw-bold" data-bs-dismiss="modal"
+                    (click)="deleteUser()">Desactivar</button>
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
 <!-- Modal Añadir usuario -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content background-black">
+        <div class="modal-content bg-secondary">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Nuevo usuario</h5>
             </div>
@@ -88,9 +88,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                <button type="button" class="btn btn-light text-muted" data-bs-dismiss="modal"
                     id="btn-cerrar-create">Cerrar</button>
-                <button type="button" class="btn btn-primary" (click)="newUser()">Crear usuario</button>
+                <button type="button" class="btn btn-light fw-bold" (click)="newUser()">Crear usuario</button>
             </div>
         </div>
     </div>
@@ -100,7 +100,7 @@
 <!-- Modal Editar usuario -->
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content background-black">
+        <div class="modal-content bg-secondary">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Editar usuario</h5>
             </div>
@@ -165,16 +165,16 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-cerrar-edit"
+                <button type="button" class="btn btn-light text-muted" data-bs-dismiss="modal" id="btn-cerrar-edit"
                     (click)="limpiarRol()">Cerrar</button>
-                <button type="button" class="btn btn-primary" (click)="editUser()">Editar usuario</button>
+                <button type="button" class="btn btn-light fw-bold" (click)="editUser()">Editar usuario</button>
             </div>
         </div>
     </div>
 </div>
 <!-- Fin editar usuario -->
 
-<div class="row m-0 p-0">
+<div class="row m-0 p-0" style="min-height: calc(100vh - 60px) !important;">
     <div class="col-12">
         <table class="table text-white">
             <thead>

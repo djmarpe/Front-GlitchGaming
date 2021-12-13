@@ -296,10 +296,10 @@
         <div *ngIf="loading5" class="m-0 p-0 text-center">
             <img src="../../../assets/gif/loading.gif" class="img-fluid size-25">
         </div>
-        <div *ngIf="!loading5" class="modal-content bg-black">
+        <div *ngIf="!loading5" class="modal-content bg-secondary">
             <div class="row m-0 p-0" *ngIf="miEquipo != undefined">
                 <div class="col-12 m-0 p-0">
-                    <div class="row m-2 p-0 text-center background-gg text-white">
+                    <div class="row m-2 p-0 text-center text-white">
                         <div class="col-12 m-0 my-3 p-0" *ngIf="!es1vs1">
                             <small class="d-block">Nombre del equipo a inscribir</small>
                             <h5 class="m-0"><b>{{miEquipo.nombre}}</b></h5>
@@ -307,65 +307,65 @@
 
                         <div class="col-12 m-0 my-3 p-0" *ngIf="!es1vs1">
                             <small class="d-block">Miembros del
-                                equipo:&nbsp;{{miEquipo.participantes}}/{{miEquipo.max_players}}</small>
+                                equipo:&nbsp;<b class="fw-bold">{{miEquipo.participantes}}/{{miEquipo.max_players}}</b></small>
                         </div>
 
                         <div class="col-12 m-0 my-3 p-0"
                             *ngIf="miEquipo.participantes == 5 && miEquipo.pertenece == 0 && !es1vs1">
-                            <button class="btn btn-secondary w-25 mx-2" (click)="inscribirEquipo(miEquipo.id)">Inscribir
+                            <button class="btn btn-light fw-bold w-25 mx-2" (click)="inscribirEquipo(miEquipo.id)">Inscribir
                                 equipo</button>
-                            <button type="button" class="btn btn-secondary w-25 mx-2" id="btn-closeInscripciones"
+                            <button type="button" class="btn btn-light text-muted w-25 mx-2" id="btn-closeInscripciones"
                                 data-bs-dismiss="modal" (click)="limpiarDatos()">Cerrar</button>
                         </div>
                         <div class="col-12 m-0 my-3 p-0"
                             *ngIf="!es1vs1 && miEquipo.participantes < miEquipo.max_players || miEquipo.participantes > miEquipo.max_players">
                             <small class="d-block">No puedes inscribir a este equipo en el torneo porque faltan
                                 miembros.</small>
-                            <button type="button" class="btn btn-secondary my-2 w-25" data-bs-dismiss="modal"
+                            <button type="button" class="btn btn-light text-muted my-2 w-25" data-bs-dismiss="modal"
                                 (click)="limpiarDatos()">Cerrar</button>
                         </div>
                         <div class="col-12 m-0 my-3 p-0" *ngIf="miEquipo.pertenece == 1">
                             <small class="d-block">No puedes inscribir a este equipo porque ya está inscrito</small>
-                            <button type="button" class="btn btn-secondary my-2 w-25" data-bs-dismiss="modal"
+                            <button type="button" class="btn btn-light text-muted my-2 w-25" data-bs-dismiss="modal"
                                 (click)="limpiarDatos()">Cerrar</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row m-2 p-0 text-center background-gg text-white" *ngIf="miEquipo == undefined">
+            <div class="row m-2 p-0 text-center text-white" *ngIf="miEquipo == undefined">
                 <div class="col-12 m-0 my-3 p-0" *ngIf="es1vs1 && !pertencezco1vs1">
                     <small class="d-block">¿Quieres apuntarte en este torneo?</small>
                 </div>
 
                 <div class="col-12 m-0 my-3 p-0" *ngIf="es1vs1 && !pertencezco1vs1">
-                    <button class="btn btn-secondary w-25 mx-2" (click)="inscribirse1vs1()">Inscribirse</button>
-                    <button type="button" class="btn btn-secondary w-25 mx-2" id="btn-closeInscripciones"
+                    <button class="btn btn-light fw-bold w-25 mx-2" (click)="inscribirse1vs1()">Inscribirse</button>
+                    <button type="button" class="btn btn-light text-muted w-25 mx-2" id="btn-closeInscripciones"
                         data-bs-dismiss="modal" (click)="limpiarDatos()">Cerrar</button>
                 </div>
 
                 <div class="col-12 m-0 my-3 p-0" *ngIf="es1vs1 && pertencezco1vs1">
                     <small class="d-block">No puedes inscribirte a este torneo porque ya perteneces.</small>
-                    <button type="button" class="btn btn-secondary w-25 mx-2 my-3" id="btn-closeInscripciones"
+                    <button type="button" class="btn bg-light text-muted w-25 mx-2 my-3" id="btn-closeInscripciones"
                         data-bs-dismiss="modal" (click)="limpiarDatos()">Cerrar</button>
                 </div>
             </div>
             <div class="row m-0 p-0" *ngIf="equipos != undefined">
                 <div class="col-12 m-0 p-0" *ngFor="let equipo of equipos; index as i">
-                    <div class="row m-2 p-0 text-center background-gg text-white" *ngIf="equipos.length > 1">
+                    <div class="row m-2 p-0 text-center text-white" *ngIf="equipos.length > 1">
                         <div class="col-12 m-0 my-3 p-0">
                             <small class="d-block">Nombre del equipo</small>
                             <h5 class="m-0"><b>{{equipo.nombre}}</b></h5>
                         </div>
                         <div class="col-12 m-0 p-0">
                             <p>Para inscribirse en el torneo, contacte con el administrador de su equipo.</p>
-                            <button type="button" class="btn btn-secondary my-2 w-25"
+                            <button type="button" class="btn btn-light text-muted my-2 w-25"
                                 data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
-                    <div class="row m-2 p-0 text-center background-gg text-white" *ngIf="equipos.length <= 1">
+                    <div class="row m-2 p-0 text-center text-white" *ngIf="equipos.length <= 1">
                         <div class="col-12 m-0 p-0">
                             <p class="my-4">No hay equipos para inscribir.</p>
-                            <button type="button" class="btn btn-secondary my-2 w-25"
+                            <button type="button" class="btn btn-light text-muted my-2 w-25"
                                 data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
