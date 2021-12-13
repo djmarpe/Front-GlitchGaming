@@ -251,8 +251,12 @@
                             <button *ngIf="!loading6" class="btn btn-light fw-bold w-75"
                                 (click)="comenzarTorneo(torneoDetalle.id)">Comenzar</button>
                             <img *ngIf="loading6" src="../../../assets/gif/loading.gif" class="img-fluid size-25">
-
                         </div>
+
+                        <div class="col-8 m-0 p-0 px-1 text-center" *ngIf="torneoGeneradoError">
+                            <small class="alert-danger">Error al generar el torneo</small>
+                        </div>
+                        
                         <div class="col-8 m-0 p-0 px-1" *ngIf="torneoDetalle.estado == 1">
                             <button class="btn btn-light fw-bold w-75"
                                 (click)="finalizarTorneo(torneoDetalle.id)">Finalizar</button>

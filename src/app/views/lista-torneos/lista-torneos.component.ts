@@ -20,6 +20,7 @@ export class ListaTorneosComponent implements OnInit {
   loading4: number
   loading5: boolean
   loading6: boolean
+  torneoGeneradoError: boolean
 
   idTorneo: number
   idJuego: number
@@ -773,8 +774,13 @@ export class ListaTorneosComponent implements OnInit {
       id: idTorneo
     }
     this.loading6 = true
+    this.torneoGeneradoError = undefined
     this.torneoService.comenzarTorneo(params).subscribe(
       (response) => {
+        this.getTorneos()
+      },
+      (error) => {
+        this.torneoGeneradoError = true
         this.getTorneos()
       }
     )
